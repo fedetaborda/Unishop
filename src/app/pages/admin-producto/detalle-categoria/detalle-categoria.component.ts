@@ -81,7 +81,7 @@ export class DetalleCategoriaComponent implements OnInit {
       return;
     }
 
-    if(this.btn_editar == true) {
+    if (this.btn_editar == true) {
 
      this._categoriaService.guardarCategoria( this.categoria )
               .subscribe( () => this.cargarCategorias());
