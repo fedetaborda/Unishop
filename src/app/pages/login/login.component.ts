@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Usuario } from '../../nodels/usuario';
+import { Usuario } from '../../models/usuario';
 import { UsuarioService } from '../../service/service.index';
 
-
-import * as swal from 'sweetalert';
+import swal from 'sweetalert';
 
 
 
@@ -80,7 +79,7 @@ export class LoginComponent implements OnInit {
 
     this._usuarioService.crearUsuario( usuario )
               .subscribe( resp => {
-                console.log(resp);
+                swal( 'Correcto!', 'Usuario creado exitosamente!', 'success' );
                 this.formaregistro.reset();
 
               });
@@ -99,7 +98,8 @@ export class LoginComponent implements OnInit {
     let usuario_login = new Usuario(null, null, forma.value.email, forma.value.password );
 
     this._usuarioService.login( usuario_login, forma.value.recuerdame )
-                  .subscribe( correcto => this.router.navigate(['/productos'])  );
+                  .subscribe( correcto => this.router.navigate(['/productos'])
+                );
 
     }
 

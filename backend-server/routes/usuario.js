@@ -16,7 +16,7 @@ app.get('/', (req, res, next) => {
     var desde = req.query.desde || 0;
     desde = Number(desde);
 
-    Usuario.find({}, 'nombre email img role google')
+    Usuario.find({}, 'nombre apellido email img role telefono')
         .skip(desde)
         .limit(5)
         .exec(
@@ -76,6 +76,8 @@ app.put('/:id', [mdAutenticacion.verificaToken, mdAutenticacion.verificaADMIN_o_
 
 
         usuario.nombre = body.nombre;
+        usuario.apellido = body.apellido;
+        usuario.telefono = body.telefono;
         usuario.email = body.email;
         usuario.role = body.role;
 
@@ -113,6 +115,7 @@ app.post('/', (req, res) => {
 
     var usuario = new Usuario({
         nombre: body.nombre,
+        apellido: body.apellido,
         email: body.email,
         password: bcrypt.hashSync(body.password, 10),
         img: body.img,

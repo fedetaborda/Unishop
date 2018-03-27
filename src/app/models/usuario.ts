@@ -8,6 +8,7 @@ export class Usuario {
         public img?: string,
         public role?: string,
         public google?: boolean,
+        public telefono?: string,
         public _id?: string
     ) { }
 
