@@ -88,15 +88,13 @@ export class DetalleCategoriaComponent implements OnInit {
 
       this.btn_editar = false;
 
-    }else{
+    } else {
 
     this._categoriaService.crearCategoria( forma.value.nombre )
               .subscribe( () => this.cargarCategorias());
-              forma.reset()
-              
+              forma.reset();
     }
 
-  
   }
 
 }
