@@ -12,8 +12,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { NgForm } from '@angular/forms';
 
-import swal from 'sweetalert';
-
 
 @Injectable()
 export class ProductoService {
@@ -31,8 +29,12 @@ export class ProductoService {
     let url = URL_SERVICIOS + '/producto';
     url += '?token=' + this._usuarioService.token;
 
-    return this.http.post( url, { producto } )
-              .map( (resp: any) => resp.producto );
+    console.log(producto);
+
+    return this.http.post( url, producto  )
+          .map( (resp: any) => {
+          swal('Correcto', 'ingreso: ' + resp.producto.nombre , 'success');
+      });
   }
 
 }

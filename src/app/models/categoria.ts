@@ -1,8 +1,8 @@
 export class Categoria {
 
     constructor(
-        public nombre: string,
         public estado: boolean,
+        public nombre: string,
         public _id?: String
     ) { }
 

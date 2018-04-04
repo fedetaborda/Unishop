@@ -21,7 +21,8 @@ import {
     UsuarioService,
     LoginGuardGuard,
     SubirArchivoService,
-    CategoriaService
+    CategoriaService,
+    ProductoService
   ],
   declarations: []
 })

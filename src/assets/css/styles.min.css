@@ -8366,3 +8366,11 @@ screen and (-ms-high-contrast: none) {
 .top60 {
     margin-top: 60px;
 }
+
+.top15 {
+    margin-top: 15px;
+}
+
+#capitalize {
+    text-transform: capitalize;
+}

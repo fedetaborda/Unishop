@@ -4,12 +4,12 @@ export class Producto {
         public nombre: string,
         public costo: Number,
         public precio: Number,
-        public usuario: string,
+        public descripcion: String,
+        public descuento: String,
+        public precio_desc: Number,
         public categoria: string,
-        public marca: string,
         public estado: boolean,
-        public cant_ventas?: Number,
-        public fecha?: Date,
+        public marca: string,
         public _id?: String
     ) { }
 

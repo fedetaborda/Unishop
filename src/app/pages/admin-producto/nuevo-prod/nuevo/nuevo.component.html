@@ -2,38 +2,41 @@
     <div class="col-lg-10 col-md-10 order-md-2">
         <h6 class="text-muted text-normal text-uppercase">Detalle del Producto</h6>
         <hr class="margin-bottom-1x">
-<!--
-        <form ngNativeValidate [formGroup]="forma" (ngSubmit)="registrarProducto()">
+
+        <form ngNativeValidate #f="ngForm" (ngSubmit)="registrarProducto( f )">
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="normal-pill-input">Nombre del Producto</label>
-                        <input class="form-control" formControlName="nombre" name="nombre" required>
+                        <input class="form-control" id="capitalize" [(ngModel)]="producto.nombre" name="nombre" required>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="normal-pill-input">Precio de Costo</label>
-                        <input class="form-control" type="text" formControlName="precio" name="precio" required>
+                        <input class="form-control" type="text" [(ngModel)]="producto.precio" name="precio" required>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="normal-pill-input">Precio de Costo</label>
-                        <input class="form-control" type="text" formControlName="costo" name="costo" required>
+                        <input class="form-control" type="text" [(ngModel)]="producto.costo" name="costo" required>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
                         <label class="col-6 col-form-label" for="select-input">Marca del Producto</label>
-                        <select class="form-control" formControlName="marca" name="marca" required>
+                        <select class="form-control" id="capitalize" [(ngModel)]="producto.marca" name="marca" required>
                         <option>Choose option...</option>
                       </select>
                     </div>
                     <div class="form-group">
                         <label class="col-6 col-form-label" for="select-input">Categoria Asignada</label>
-                        <select class="form-control" formControlName="categoria" name="categoria" required>
-                        <option>Choose option...</option>
+                        <select [(ngModel)]="producto.categoria" class="form-control" id="capitalize" name="categoria" required>
+                            <option value="">Seleccione Categoria</option>
+                            <option *ngFor="let categoria of categorias" [(value)]="categoria._id">
+                              {{ categoria.nombre }}
+                            </option>
                       </select>
                     </div>
                 </div>
@@ -42,61 +45,42 @@
             </div>
             <br>
             <div class="row">
-                <h6 class="text-muted text-normal text-uppercase">Promocionar Producto</h6>
-                <hr class="margin-bottom-2x"><br>
-                <div class="col-md-12"></div>
-                <div class="col-md-4">
+                <div class="col-md-12">
+                    <h6 class="text-muted text-normal text-uppercase">Promocionar Producto</h6>
+                    <hr class="margin-bottom-1x">
+                </div>
+
+                <div class="col-md-12">
+                    <div class="custom-control custom-checkbox d-block">
+                        <input checked="" class="custom-control-input" id="subscribe_me" type="checkbox">
+                        <label class="custom-control-label" for="subscribe_me">Promocionar Producto</label>
+                    </div>
+                </div>
+
+                <div class="col-md-4 top15">
                     <div class="form-group">
                         <label for="normal-pill-input">Descuento en Promociónl</label>
-                        <input class="form-control" type="text" id="normal-pill-input">
+                        <input class="form-control" type="text" [(ngModel)]="producto.descuento" name="descuento" id="normal-pill-input">
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 top15">
                     <div class="form-group">
                         <label for="normal-pill-input">Precio Promocional</label>
-                        <input class="form-control" type="text" id="normal-pill-input">
-                    </div>
-                </div>
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <label class="col-6 col-form-label" for="select-input">Marca del Producto</label>
-                        <select class="form-control" id="select-input">
-                        <option>Choose option...</option>
-                        <option>Option item 1</option>
-                        <option>Option item 2</option>
-                        <option>Option item 3</option>
-                      </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-6 col-form-label" for="select-input">Categoria Asignada</label>
-                        <select class="form-control" id="select-input">
-                        <option>Choose option...</option>
-                        <option>Option item 1</option>
-                        <option>Option item 2</option>
-                        <option>Option item 3</option>
-                      </select>
+                        <input class="form-control" type="text" [(ngModel)]="producto.precio_desc" name="precio_desc" id="normal-pill-input">
                     </div>
                 </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="normal-pill-input">Precio de Costo</label>
-                        <input class="form-control" type="text" id="normal-pill-input">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="normal-pill-input">Precio de Costo</label>
-                        <input class="form-control" type="text" id="normal-pill-input">
-                    </div>
+                <div class="col-md-12 top15">
+                    <h6 class="text-muted text-normal text-uppercase">Descripción</h6>
+                    <hr class="margin-bottom-1x">
+                    <label for="normal-pill-input">Descripción del Productos</label>
+                    <textarea class="form-control" id="textarea-input" [(ngModel)]="producto.descripcion" name="descripcion" rows="4"></textarea>
                 </div>
 
-                <div class="col-12">
-                    <hr class="mt-2 mb-3">
+                <div class="col-md-12 top15">
+                    <hr class="margin-bottom-1x">
                     <div class="d-flex flex-wrap justify-content-between align-items-center">
                         <div class="custom-control custom-checkbox d-block">
-                            <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
-                            <label class="custom-control-label" for="subscribe_me">Subscribe me to Newsletter</label>
                         </div>
                         <button class="btn btn-primary margin-right-none" type="submit"> Guardar </button>
                     </div>
@@ -105,7 +89,7 @@
 
             </div>
 
-        </form> -->
+        </form>
 
     </div>
     <!-- col -->

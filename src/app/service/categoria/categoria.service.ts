@@ -17,6 +17,8 @@ export class CategoriaService {
     public _usuarioService: UsuarioService
   ) { }
 
+
+
   cargarCategoria( id: string ) {
 
     let url = URL_SERVICIOS + '/categoria/' + id;
@@ -38,6 +40,20 @@ export class CategoriaService {
               });
   }
 
+  activarCategoria( categoria ) {
+
+    let url = URL_SERVICIOS + '/categoria';
+    url += '/' + categoria._id;
+    url += '?token=' + this._usuarioService.token;
+
+    return this.http.put( url, categoria )
+              .map( (resp: any) => {
+                swal('Categoria Actualizada', categoria.nombre, 'success');
+                return resp.categoria;
+              });
+
+  }
+
 
   guardarCategoria( categoria: Categoria ) {
 
@@ -51,11 +67,11 @@ export class CategoriaService {
       return this.http.put( url, categoria )
                 .map( (resp: any) => {
                   swal('Categoria Actualizada', categoria.nombre, 'success');
-                  return resp.medico;
-
+                  return resp.categoria;
                 });
 
     }else {
+
       // creando
       url += '?token=' + this._usuarioService.token;
       return this.http.post( url, categoria )
@@ -64,8 +80,6 @@ export class CategoriaService {
                 return resp.medico;
               });
     }
-
-
 
 
   }

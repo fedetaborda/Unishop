@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-lg-10 col-md-10 order-md-2">
+    <div class="col-lg-12 col-md-12">
         <h6 class="text-muted text-normal text-uppercase">Detalle de Categorias</h6>
         <hr class="margin-bottom-1x">
 
@@ -8,7 +8,7 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label for="normal-pill-input">Nombre de la Categoria</label>
-                        <input class="form-control" [ngModel]="nombre" name="nombre" required>
+                        <input class="form-control" id="capitalize" [ngModel]="nombre" name="nombre" required>
                     </div>
                 </div>
                 <div class="col-md-2" *ngIf="!btn_editar">
@@ -26,51 +26,74 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label for="normal-pill-input">Nombre de la Categoria</label>
-                        <input class="form-control" [(ngModel)]="categoria.nombre" name="categoria" required>
+                        <input class="form-control" id="capitalize" [(ngModel)]="categoria.nombre" name="nombre" required>
                     </div>
+                    <h6 class="text-muted text-normal text-uppercase padding-top-2x">Estado de la Categoria</h6>
+                    <hr class="margin-bottom-1x">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="ex-radio-1" name="radio" [value]="true" [(ngModel)]="!categoria.estado">
+                                <label class="custom-control-label" for="ex-radio-1">Activo</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input class="custom-control-input" type="radio" id="ex-radio-2" name="radio" [value]="false" [(ngModel)]="categoria.estado">
+                                <label class="custom-control-label" for="ex-radio-2">Desactivo</label>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="col-md-2">
-                    <div class="top25">
-                        <button class="btn btn-sm btn-success" type="submit">
-                            <i class="fas fa-pencil-alt"></i> Editar
+                <div class="col-md-4 ">
+                    <div class="top25 ">
+                        <button class="btn btn-sm btn-success " type="submit ">
+                            <i class="fas fa-pencil-alt "></i> Editar
+                        </button>
+                        <button class="btn btn-sm btn-secondary " (click)="btn_editar=false ">
+                            <i class="fas fa-ban "></i> Cancel
                         </button>
                     </div>
                 </div>
             </div>
         </form>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="top60 text-right">
-                    <small class="text-muted"> 
-                        <i class="fas fa-list-ul"></i>
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="top60 ">
+                    <small class="text-muted "> 
+                        <i class="fas fa-list-ul "></i>
                         Categorias: ( 5 de un total de: {{ totalRegistros }} ) 
                     </small>
                 </div>
-                <div class="table-responsive">
-                    <table class="table">
+            </div>
+            <div class="col-md-12 ">
+                <div class="table-responsive ">
+                    <table class="table ">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Categoria</th>
                                 <th>Estado</th>
                                 <th>Ingreso</th>
+                                <th></th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let categoria of categorias">
-                                <th scope="row">1</th>
-                                <td>{{ categoria.nombre }}</td>
-                                
+                            <tr *ngFor="let categoria of categorias ">
+                                <th scope="row ">1</th>
+                                <td id="capitalize">{{ categoria.nombre }}</td>
+
                                 <td>
-                                    <strong *ngIf="!categoria.estado" class="text-lg text-danger"> Desactivado </strong>
-                                    <strong *ngIf="categoria.estado" class="text-lg text-primary"> Activo </strong>
+                                    <strong *ngIf="!categoria.estado " class="text-lg text-danger "> Desactivado </strong>
+                                    <strong *ngIf="categoria.estado " class="text-lg text-primary "> Activo </strong>
                                 </td>
 
                                 <td>{{ categoria.fecha }}</td>
                                 <td>
-                                    <button class="btn btn-secondary btn-sm" type="button" (click)="editar(categoria._id)"><i class="fas fa-pencil-alt"></i></button>
-                                    <button class="btn btn-secondary btn-sm" type="button"><i class="fas fa-trash-alt"></i></button>
+                                    <button class="btn btn-secondary btn-sm " type="button" (click)="editar(categoria._id)" title="Editar" *ngIf="categoria.estado"><i class="fas fa-pencil-alt "></i></button>
+                                    <button class="btn btn-secondary btn-sm " type="button" *ngIf="categoria.estado" (click)="desactivarCategoria(categoria)" title="Desactivar"><i class="fas fa-trash-alt "></i></button>
+                                    <button class="btn btn-secondary btn-sm " type="button" (click)="activarCategoria(categoria)" *ngIf="!categoria.estado" title="Activar"><i class="fas fa-sync-alt"></i></button>
 
                                 </td>
                             </tr>
@@ -78,19 +101,19 @@
                     </table>
                 </div>
 
-                <div class="entry-navigation">
-                    <div class="column text-left">
-                        <button class="btn btn-outline-secondary btn-sm" (click)="cambiarDesde(-5)">
-                            <i class="icon-arrow-left"></i>&nbsp;Anterior
+                <div class="entry-navigation ">
+                    <div class="column text-left ">
+                        <button class="btn btn-outline-secondary btn-sm " (click)="cambiarDesde(-5) ">
+                            <i class="icon-arrow-left "></i>&nbsp;Anterior
                         </button>
                     </div>
-                    <div class="column">
-                        <button class="btn btn-outline-secondary view-all" title="Todos" (click)="cambiarDesde(0)">
-                            <i class="icon-menu"></i>
+                    <div class="column ">
+                        <button class="btn btn-outline-secondary view-all " title="Todos " (click)="cambiarDesde(0) ">
+                            <i class="icon-menu "></i>
                         </button>
                     </div>
                     <div class="column text-right ">
-                        <button class="btn btn-outline-secondary btn-sm " (click)="cambiarDesde(5)">
+                        <button class="btn btn-outline-secondary btn-sm " (click)="cambiarDesde(5) ">
                                 Siguiente&nbsp;<i class="icon-arrow-right "></i>
                         </button>
                     </div>

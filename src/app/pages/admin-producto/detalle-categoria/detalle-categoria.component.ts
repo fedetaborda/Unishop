@@ -20,28 +20,46 @@ export class DetalleCategoriaComponent implements OnInit {
   constructor(public _categoriaService: CategoriaService) { }
 
   ngOnInit() {
-  
+
     this.cargarCategorias();
 
   }
 
-  editar( id: string) {
+  activarCategoria ( categoria: Categoria ) {
+
+
+    this.categoria = new Categoria( true ,  categoria.nombre , categoria._id );
+
+    this._categoriaService.activarCategoria(  this.categoria )
+              .subscribe( () => this.cargarCategorias());
+
+  }
+
+  desactivarCategoria ( categoria: Categoria ) {
+
+
+    this.categoria = new Categoria( false ,  categoria.nombre , categoria._id );
+
+    this._categoriaService.activarCategoria(  this.categoria )
+              .subscribe( () => this.cargarCategorias());
+
+  }
+
+
+  editar( id: string ) {
 
   this.btn_editar = true;
 
   this._categoriaService.cargarCategoria( id )
           .subscribe( categoria => {
-            console.log(categoria.nombre)
             this.categoria = categoria;
-            
-          }) 
-          
+          });
   }
 
 
   cambiarDesde( valor: number ) {
 
-    let desde = this.desde + valor;
+    const desde = this.desde + valor;
 
     if (valor === 0 ) {
       this.desde = 0;
@@ -81,7 +99,7 @@ export class DetalleCategoriaComponent implements OnInit {
       return;
     }
 
-    if (this.btn_editar == true) {
+    if (this.btn_editar === true) {
 
      this._categoriaService.guardarCategoria( this.categoria )
               .subscribe( () => this.cargarCategorias());

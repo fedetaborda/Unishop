@@ -74,6 +74,7 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
 
 
         categoria.nombre = body.nombre;
+        categoria.estado = body.estado;
 
 
         categoria.save((err, categoriaGuardada) => {
@@ -81,7 +82,7 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
             if (err) {
                 return res.status(400).json({
                     ok: false,
-                    mensaje: 'Error al actualizar medico',
+                    mensaje: 'Error al actualizar la categoria',
                     errors: err
                 });
             }

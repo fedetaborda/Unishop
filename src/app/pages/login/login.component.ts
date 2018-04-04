@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
 
     
     this.email = localStorage.getItem('email') || '';
-    console.log(this.email);
     if ( this.email.length > 1 ) {
       this.recuerdame = true;
     }
@@ -87,9 +86,6 @@ export class LoginComponent implements OnInit {
   }
 
   ingresar ( forma: NgForm ) {
-
-    console.log(forma.value);
-    console.log(forma.valid);
 
     if ( forma.invalid ) {
       return;

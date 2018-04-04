@@ -6,27 +6,32 @@ var mdAutenticacion = require('../middlewares/autenticacion');
 
 var app = express();
 
+var moment = require('moment');
+
+
 var Producto = require('../models/producto');
 
 
 // ==========================================
 // Crear un nuevo producto
 // ==========================================
-app.post('/', mdAutenticacion.verificaToken , (req, res) => {
+app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
     var body = req.body;
 
     var producto = new Producto({
         nombre: body.nombre,
         costo: body.costo,
-        precio_publico: body.precio_publico,
-        usuario: req.usuario.id,
-        categoria: req.categoria.id,
-        marca: req.marca.id,
-        cant_ventas: body.cant_ventas,
+        precio: body.precio,
+        precio_desc: body.precio_desc,
+        descuento: body.descuento,
+        usuario: req.usuario._id,
+        categoria: body.categoria,
+        marca: body.marca.id,
         estado: body.estado,
         img: body.img,
-        fecha: body.fecha
+        descripcion: body.descripcion,
+        fecha: moment().format('L')
     });
 
     producto.save((err, productoGuardado) => {
@@ -39,13 +44,49 @@ app.post('/', mdAutenticacion.verificaToken , (req, res) => {
             });
         }
 
-        res.status(201).json({
+        res.status(200).json({
             ok: true,
-            producto: usuarioGuardado
+            producto: productoGuardado
         });
 
 
     });
+
+});
+
+// ==========================================
+// Obtener todas las categoria
+// ==========================================
+app.get('/', (req, res, next) => {
+
+    var desde = req.query.desde || 0;
+    desde = Number(desde);
+
+    Producto.find({})
+        .skip(desde)
+        .limit(5)
+        .populate('producto')
+        .exec(
+            (err, productos) => {
+
+                if (err) {
+                    return res.status(500).json({
+                        ok: false,
+                        mensaje: 'Error cargando productos',
+                        errors: err
+                    });
+                }
+
+                Producto.count({}, (err, conteo) => {
+                    res.status(200).json({
+                        ok: true,
+                        productos: productos,
+                        total: conteo
+                    });
+
+                })
+
+            });
 
 });
 

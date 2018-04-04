@@ -1,8 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
-import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { FormGroup, FormControl, NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
+
+// Models
 import { Producto } from '../../../../models/producto';
+import { Categoria } from '../../../../models/categoria';
+
+// Servicios
+import { CategoriaService, ProductoService } from '../../../../service/service.index';
+
 
 @Component({
   selector: 'app-nuevo',
@@ -11,21 +19,37 @@ import { Producto } from '../../../../models/producto';
 })
 export class NuevoComponent implements OnInit {
 
-  forma: FormGroup;
+  categorias: Categoria[] = [];
+  producto: Producto = new Producto('', 0 , 0 , '', '', 0 , '' , true , '' );
 
-  constructor(public router: Router) { }
+  constructor(public router: Router,
+              public _categoriaService: CategoriaService,
+              public _productoService: ProductoService) {}
 
   ngOnInit() {
 
-    this.forma = new FormGroup({
-      nombre: new FormControl( null , Validators.required ),
-      precio: new FormControl( null , Validators.required )
-    });
+      this._categoriaService.cargarCategorias()
+              .subscribe( (resp: any) => {
+                this.categorias = resp.categorias;
+              });
+
+              console.log(this.categorias);
 
   }
 
-  registrarProducto( forma ) {
+  registrarProducto( forma: NgForm ) {
+
+
+    if ( forma.invalid  ) {
+      return;
+    }
+
+    this._productoService.crearProducto( this.producto )
+            .subscribe();
+            
+            forma.reset();
 
   }
+
 
 }
