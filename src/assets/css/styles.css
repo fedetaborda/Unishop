@@ -1947,7 +1947,7 @@ select.form-control.form-control-sm:not([size]):not([multiple]) {
 
 .custom-file-label,
 .custom-file-label::after {
-    height: 44px;
+    height: 10px;
     border-radius: 22px;
     border-color: #dbe2e8;
     color: #606975;
@@ -8495,4 +8495,8 @@ screen and (-ms-high-contrast: none) {
 .entry-share .social-button {
     margin-right: 0;
     margin-left: 8px;
+}
+
+a i {
+    color: #374250;
 }

@@ -13,6 +13,8 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { NgForm } from '@angular/forms';
 
+import swal from 'sweetalert';
+
 
 @Injectable()
 export class UsuarioService {
@@ -80,14 +82,15 @@ export class UsuarioService {
     return this.http.post( url, usuario )
               .map( (resp: any) => {
                 return resp.usuario;
-              })
-  }
+              });
+
+         }
 
   login( usuario: Usuario, recordar: boolean = false ) {
 
     if ( recordar ) {
       localStorage.setItem('email', usuario.email );
-    }else {
+    } else {
       localStorage.removeItem('email');
     }
 
@@ -121,7 +124,7 @@ export class UsuarioService {
                   swal('Usuario actualizado', usuario.nombre, 'success' );
 
                   return true;
-                })
+                });
 
   }
 

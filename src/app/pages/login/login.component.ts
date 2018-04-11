@@ -5,8 +5,6 @@ import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario';
 import { UsuarioService } from '../../service/service.index';
 
-import swal from 'sweetalert';
-
 
 
 @Component({
@@ -78,9 +76,8 @@ export class LoginComponent implements OnInit {
 
     this._usuarioService.crearUsuario( usuario )
               .subscribe( resp => {
-                swal( 'Correcto!', 'Usuario creado exitosamente!', 'success' );
                 this.formaregistro.reset();
-
+                console.log(resp.usuario);
               });
 
   }

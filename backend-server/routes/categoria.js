@@ -145,7 +145,7 @@ app.get('/', (req, res, next) => {
 
     Categoria.find({})
         .skip(desde)
-        .limit(5)
+        .limit(15)
         .populate('categoria')
         .exec(
             (err, categorias) => {

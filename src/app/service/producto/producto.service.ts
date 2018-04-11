@@ -29,12 +29,18 @@ export class ProductoService {
     let url = URL_SERVICIOS + '/producto';
     url += '?token=' + this._usuarioService.token;
 
-    console.log(producto);
-
     return this.http.post( url, producto  )
           .map( (resp: any) => {
           swal('Correcto', 'ingreso: ' + resp.producto.nombre , 'success');
       });
+  }
+
+
+  cargarProductos( desde: number = 0 ) {
+
+    let url = URL_SERVICIOS + '/producto?desde=' + desde;
+    return this.http.get( url );
+
   }
 
 }

@@ -6,12 +6,14 @@
         <form ngNativeValidate #f="ngForm" (ngSubmit)="guardarCategoria( f )" *ngIf="!btn_editar">
             <div class="row">
                 <div class="col-md-8">
+                    <label for="normal-pill-input"></label>
                     <div class="form-group">
                         <label for="normal-pill-input">Nombre de la Categoria</label>
                         <input class="form-control" id="capitalize" [ngModel]="nombre" name="nombre" required>
                     </div>
                 </div>
                 <div class="col-md-2" *ngIf="!btn_editar">
+                    <label for="normal-pill-input"></label>
                     <div class="top25">
                         <button class="btn btn-sm btn-primary" type="submit">
                             <i class="fas fa-save"></i> Nuevo
@@ -20,6 +22,7 @@
                 </div>
             </div>
         </form>
+
 
         <form ngNativeValidate #f="ngForm" (ngSubmit)="guardarCategoria( f )" *ngIf="btn_editar">
             <div class="row">
@@ -45,7 +48,7 @@
 
                 </div>
                 <div class="col-md-4 ">
-                    <div class="top25 ">
+                    <div class="top25">
                         <button class="btn btn-sm btn-success " type="submit ">
                             <i class="fas fa-pencil-alt "></i> Editar
                         </button>
@@ -59,14 +62,14 @@
 
         <div class="row ">
             <div class="col-md-12 ">
-                <div class="top60 ">
+                <div class="text-right">
                     <small class="text-muted "> 
                         <i class="fas fa-list-ul "></i>
-                        Categorias: ( 5 de un total de: {{ totalRegistros }} ) 
+                        Categorias: ( Total: {{ totalRegistros }} ) 
                     </small>
                 </div>
             </div>
-            <div class="col-md-12 ">
+            <div class="col-md-12">
                 <div class="table-responsive ">
                     <table class="table ">
                         <thead>
@@ -74,14 +77,14 @@
                                 <th>#</th>
                                 <th>Categoria</th>
                                 <th>Estado</th>
-                                <th>Ingreso</th>
+                                <th>Creado</th>
                                 <th></th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let categoria of categorias ">
-                                <th scope="row ">1</th>
+                            <tr *ngFor="let categoria of categorias; let i=index">
+                                <td>{{ i+1 }}</td>
                                 <td id="capitalize">{{ categoria.nombre }}</td>
 
                                 <td>
@@ -89,7 +92,7 @@
                                     <strong *ngIf="categoria.estado " class="text-lg text-primary "> Activo </strong>
                                 </td>
 
-                                <td>{{ categoria.fecha }}</td>
+                                <td>{{ categoria.fecha | date:'dd - MM - y' }}</td>
                                 <td>
                                     <button class="btn btn-secondary btn-sm " type="button" (click)="editar(categoria._id)" title="Editar" *ngIf="categoria.estado"><i class="fas fa-pencil-alt "></i></button>
                                     <button class="btn btn-secondary btn-sm " type="button" *ngIf="categoria.estado" (click)="desactivarCategoria(categoria)" title="Desactivar"><i class="fas fa-trash-alt "></i></button>

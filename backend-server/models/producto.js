@@ -4,8 +4,9 @@ var Schema = mongoose.Schema;
 
 var productoSchema = new Schema({
     nombre: { type: String, required: [true, 'El nombre del producto es necesario'] },
-    costo: { type: Number, required: [false, 'El precio de costo es necesario'] },
-    precio: { type: Number, required: [false, 'El precio es necesario'] },
+    costo: { type: Number, required: [true, 'El precio de costo es necesario'] },
+    precio: { type: Number, required: [true, 'El precio es necesario'] },
+    rango: { type: String, required: [true, 'El valor de rango de precio es requerido'] },
     usuario: {
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
@@ -18,14 +19,15 @@ var productoSchema = new Schema({
     },
     marca: {
         type: Schema.Types.ObjectId,
-        ref: 'Marca',
+        ref: 'Categoria',
         required: [false, 'La marca es obligatorio']
     },
+    imagen: { type: String, required: false },
     precio_desc: { type: Number, required: false },
     descuento: { type: Number, required: false },
     estado: { type: Boolean, required: true, default: true },
     descripcion: { type: String, required: false },
-    fecha: { type: Date, required: false }
+    fecha: { type: Date, required: true }
 });
 
 

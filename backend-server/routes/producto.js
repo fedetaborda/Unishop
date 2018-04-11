@@ -19,17 +19,21 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
     var body = req.body;
 
+    if (body.imagen) {
+        console.log(body.imagen);
+    }
+
     var producto = new Producto({
         nombre: body.nombre,
         costo: body.costo,
         precio: body.precio,
         precio_desc: body.precio_desc,
         descuento: body.descuento,
+        rango: body.rango,
         usuario: req.usuario._id,
         categoria: body.categoria,
         marca: body.marca.id,
         estado: body.estado,
-        img: body.img,
         descripcion: body.descripcion,
         fecha: moment().format('L')
     });
@@ -64,7 +68,7 @@ app.get('/', (req, res, next) => {
 
     Producto.find({})
         .skip(desde)
-        .limit(5)
+        .limit(15)
         .populate('producto')
         .exec(
             (err, productos) => {

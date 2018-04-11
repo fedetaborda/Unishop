@@ -8358,19 +8358,24 @@ screen and (-ms-high-contrast: none) {
     margin-left: 8px
 }
 
+#icon {
+    color: #b5b7b9;
+}
+
 .top25 {
-    padding-top: 25px;
-    margin-left: 0px;
+    margin-top: 25px;
 }
 
-.top60 {
-    margin-top: 60px;
-}
-
-.top15 {
-    margin-top: 15px;
-}
-
-#capitalize {
+.capitalize {
     text-transform: capitalize;
+}
+
+.trash {
+    float: right;
+    margin-right: 10px;
+    color: #007bff;
+}
+
+.w165 {
+    width: 165px;
 }

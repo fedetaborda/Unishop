@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+
+// LOCALE_ID Mes en Español
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
@@ -12,8 +14,6 @@ import { APP_ROUTES } from './app.rutes';
 // Modules
 import { PagesModule } from './pages/pages.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-
 
 
 // Services
@@ -39,7 +39,7 @@ import { DetalleCategoriaComponent } from './pages/admin-producto/detalle-catego
     FormsModule,
     ReactiveFormsModule,
     ServicesModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

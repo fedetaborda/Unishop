@@ -22,6 +22,7 @@ import { ProducListComponent } from './admin-producto/produc-list/produc-list.co
 
 
 
+
 @NgModule({
     declarations: [
         ProductosComponent,
@@ -42,6 +43,5 @@ import { ProducListComponent } from './admin-producto/produc-list/produc-list.co
         FormsModule,
         PipesModule
     ]
-
-  })
+})
   export class PagesModule {}

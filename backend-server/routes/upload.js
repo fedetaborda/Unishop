@@ -6,7 +6,7 @@ var fs = require('fs');
 
 var app = express();
 
-var Usuario = require('../models/usuario');
+var Producto = require('../models/producto');
 
 
 // default options
@@ -21,7 +21,7 @@ app.put('/:tipo/:id', (req, res, next) => {
     var id = req.params.id;
 
     // tipos de colección
-    var tiposValidos = ['hospitales', 'medicos', 'usuarios'];
+    var tiposValidos = ['producto'];
     if (tiposValidos.indexOf(tipo) < 0) {
         return res.status(400).json({
             ok: false,
@@ -75,54 +75,44 @@ app.put('/:tipo/:id', (req, res, next) => {
 
 
         subirPorTipo(tipo, id, nombreArchivo, res);
-
-        // res.status(200).json({
-        //     ok: true,
-        //     mensaje: 'Archivo movido',
-        //     extensionArchivo: extensionArchivo
-        // });
-
-
-    })
+    });
 
 
 
 });
 
-
-
 function subirPorTipo(tipo, id, nombreArchivo, res) {
 
-    if (tipo === 'usuarios') {
+    if (tipo === 'producto') {
 
-        Usuario.findById(id, (err, usuario) => {
+        Producto.findById(id, (err, producto) => {
 
-            if (!usuario) {
+            if (!producto) {
                 return res.status(400).json({
                     ok: true,
-                    mensaje: 'Usuario no existe',
-                    errors: { message: 'Usuario no existe' }
+                    mensaje: 'Producto no existe',
+                    errors: { message: 'Producto no existe' }
                 });
             }
 
 
-            var pathViejo = './uploads/usuarios/' + usuario.img;
+            var pathViejo = './uploads/producto/' + producto.img;
 
             // Si existe, elimina la imagen anterior
             if (fs.existsSync(pathViejo)) {
                 fs.unlink(pathViejo);
             }
 
-            usuario.img = nombreArchivo;
+            producto.img = nombreArchivo;
 
-            usuario.save((err, usuarioActualizado) => {
+            producto.save((err, productoActualizado) => {
 
-                usuarioActualizado.password = ':)';
+                productoActualizado.password = ':)';
 
                 return res.status(200).json({
                     ok: true,
-                    mensaje: 'Imagen de usuario actualizada',
-                    usuario: usuarioActualizado
+                    mensaje: 'Imagen de subida correctamente',
+                    producto: productoActualizado
                 });
 
             })
@@ -130,74 +120,6 @@ function subirPorTipo(tipo, id, nombreArchivo, res) {
 
         });
 
-    }
-
-    if (tipo === 'medicos') {
-
-        Medico.findById(id, (err, medico) => {
-
-            if (!medico) {
-                return res.status(400).json({
-                    ok: true,
-                    mensaje: 'Médico no existe',
-                    errors: { message: 'Médico no existe' }
-                });
-            }
-
-            var pathViejo = './uploads/medicos/' + medico.img;
-
-            // Si existe, elimina la imagen anterior
-            if (fs.existsSync(pathViejo)) {
-                fs.unlink(pathViejo);
-            }
-
-            medico.img = nombreArchivo;
-
-            medico.save((err, medicoActualizado) => {
-
-                return res.status(200).json({
-                    ok: true,
-                    mensaje: 'Imagen de médico actualizada',
-                    medico: medicoActualizado
-                });
-
-            })
-
-        });
-    }
-
-    if (tipo === 'hospitales') {
-
-        Hospital.findById(id, (err, hospital) => {
-
-            if (!hospital) {
-                return res.status(400).json({
-                    ok: true,
-                    mensaje: 'Hospital no existe',
-                    errors: { message: 'Hospital no existe' }
-                });
-            }
-
-            var pathViejo = './uploads/hospitales/' + hospital.img;
-
-            // Si existe, elimina la imagen anterior
-            if (fs.existsSync(pathViejo)) {
-                fs.unlink(pathViejo);
-            }
-
-            hospital.img = nombreArchivo;
-
-            hospital.save((err, hospitalActualizado) => {
-
-                return res.status(200).json({
-                    ok: true,
-                    mensaje: 'Imagen de hospital actualizada',
-                    hospital: hospitalActualizado
-                });
-
-            })
-
-        });
     }
 
 

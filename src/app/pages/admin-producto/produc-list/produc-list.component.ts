@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductoService } from '../../../service/service.index';
 
-import swal from 'sweetalert';
+// Models
+import { Producto } from '../../../models/producto';
+
 
 @Component({
   selector: 'app-produc-list',
@@ -9,9 +12,17 @@ import swal from 'sweetalert';
 })
 export class ProducListComponent implements OnInit {
 
-  constructor() { }
+  productos: Producto[] = [];
+
+  constructor(public _productoService: ProductoService) { }
 
   ngOnInit() {
+
+    this._productoService.cargarProductos()
+              .subscribe( (resp: any) => {
+                this.productos = resp.productos;
+                console.log(this.productos);
+              });
   }
 
   

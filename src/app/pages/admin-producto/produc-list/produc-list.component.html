@@ -1,17 +1,14 @@
 <!-- Shop Toolbar-->
-<div class="shop-toolbar padding-bottom-1x mb-2">
+<div class="shop-toolbar padding-bottom-1x mb-1">
     <div class="column">
-        <div class="shop-sorting">
-            <label for="sorting">Sort by:</label>
-            <select class="form-control" id="sorting">
-                    <option>Popularity</option>
-                    <option>Low - High Price</option>
-                    <option>High - Low Price</option>
-                    <option>Avarage Rating</option>
-                    <option>A - Z Order</option>
-                    <option>Z - A Order</option>
-            </select><span class="text-muted">Showing:&nbsp;</span><span>1 - 12 items</span>
+        <div class="form-group">
+            <label>Busqueda de Productos</label>
+            <form class="input-group form-group" method="get"><span class="input-group-btn">
+                    <button type="submit"><i class="icon-search"></i></button></span>
+                <input class="form-control" type="search">
+            </form>
         </div>
+        <span class="text-muted">Showing:&nbsp;</span><span>1 - 12 items</span>
     </div>
     <div class="column">
         <a class="btn btn-success" routerLink="nuevo">
@@ -23,19 +20,20 @@
 
 <!-- Product-->
 
-<div class="product-card product-list">
+<div *ngFor="let producto of productos" class="product-card product-list">
     <a class="product-thumb" href="shop-single.html">
-        <div class="product-badge text-danger">50% Off</div><img src="img/shop/products/01.jpg" alt="Product"></a>
+
+        <div *ngIf="producto.descuento > 0" class="product-badge text-danger">{{producto.descuento}}% Off</div><img [src]="producto.imagen" alt="Product"></a>
+
     <div class="product-info">
-        <h3 class="product-title"><a href="shop-single.html">Unionbay Park</a></h3>
+        <h3 class="product-title"><a href="shop-single.html">{{producto.nombre}}</a></h3>
         <h4 class="product-price">
-            <del>$99.99</del>$49.99
+            <del>$99.99</del>${{producto.precio}}
         </h4>
-        <p class="hidden-xs-down">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore odit officiis illo perferendis deserunt, ipsam dolor ad dolorem eaque veritatis harum facilis aliquid id doloribus incidunt quam beatae, soluta magni alori sedum quanto.
-        </p>
+        <p class="hidden-xs-down">{{producto.descripcion}}</p>
         <div class="product-buttons">
             <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-            <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
+            <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="fas fa-shopping-cart"></i> Agregar </button>
         </div>
     </div>
 </div>
