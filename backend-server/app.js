@@ -35,7 +35,7 @@ var busquedaRoutes = require('./routes/busqueda');
 
 
 // Conexión a la base de datos
-mongoose.connection.openUri('mongodb://fede:4303@ds249299.mlab.com:49299/unishop', (err, res) => {
+mongoose.connection.openUri('mongodb://localhost:27017/VentasKcity', (err, res) => {
 
     if (err) throw err;
 
