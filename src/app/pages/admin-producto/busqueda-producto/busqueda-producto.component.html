@@ -1,0 +1,103 @@
+<!-- Page Title-->
+<div class="page-title">
+    <div class="container">
+        <div class="column">
+            <h1>Busqueda de Productos</h1>
+        </div>
+        <div class="column">
+            <ul class="breadcrumbs">
+                <li><a routerLink="/">Inicio</a>
+                </li>
+                <li class="separator">&nbsp;</li>
+                <li>Resultados de Busqueda</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- Page Content-->
+<div [hidden]="producto.length === 0">
+    <div class="container padding-bottom-3x mb-1">
+        <!-- Shop Toolbar-->
+        <div class="shop-toolbar padding-bottom-1x mb-2">
+            <div class="column">
+                <div class="shop-sorting">
+                    <label for="sorting">Sort by:</label>
+                    <select class="form-control" id="sorting">
+                <option>Popularity</option>
+                <option>Low - High Price</option>
+                <option>High - Low Price</option>
+                <option>Avarage Rating</option>
+                <option>A - Z Order</option>
+                <option>Z - A Order</option>
+            </select><span class="text-muted">Showing:&nbsp;</span><span>1 - 12 items</span>
+                </div>
+            </div>
+            <div class="column">
+                <div class="shop-view"><a class="grid-view active" href="shop-grid-ns.html"><span></span><span></span><span></span></a><a class="list-view" href="shop-list-ns.html"><span></span><span></span><span></span></a></div>
+            </div>
+        </div>
+        <!-- Products Grid-->
+        <div class="isotope-grid cols-4 mb-2">
+            <div class="gutter-sizer"></div>
+            <div class="grid-sizer"></div>
+
+            <!-- Product con Descuento-->
+            <div class="grid-item" *ngIf="producto.length > 0 && producto[0].descuento">
+                <div class="product-card">
+                    <div class="product-badge text-danger">{{producto[0].descuento}}% OFF</div>
+                    <a class="product-thumb" href="shop-single.html"><img [src]="producto[0].imagen | imagen:'producto'" alt="{{ producto[0].nombre }}"></a>
+                    <h3 class="product-title"><a href="shop-single.html">{{ producto[0].nombre }}</a></h3>
+                    <h4 class="product-price">
+                        <del>{{ producto[0].precio }}</del>${{producto[0].precio_desc}}
+                    </h4>
+                    <div class="product-buttons">
+                        <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                        <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="fas fa-shopping-cart"></i> Agregar </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product sin Descuento-->
+            <div class="grid-item" *ngIf="producto.length > 0 && !producto[0].descuento">
+                <div class="product-card">
+                    <a class="product-thumb" href="shop-single.html"><img [src]="producto[0].imagen | imagen:'producto'" alt="Product"></a>
+                    <h3 class="product-title"><a href="shop-single.html">{{ producto[0].nombre }}</a></h3>
+                    <h4 class="product-price">${{ producto[0].precio }}</h4>
+                    <div class="product-buttons">
+                        <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                        <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="fas fa-shopping-cart"></i> Agregar </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination-->
+        <nav class="pagination">
+            <div class="column">
+                <ul class="pages">
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li>...</li>
+                    <li><a href="#">12</a></li>
+                </ul>
+            </div>
+            <div class="column text-right hidden-xs-down"><a class="btn btn-outline-secondary btn-sm" href="#">Next&nbsp;<i class="icon-arrow-right"></i></a></div>
+        </nav>
+    </div>
+</div>
+
+<div class="container center">
+    <br><br>
+    <div class="col-10">
+        <div *ngIf="producto.length === 0" class="alert alert-primary alert-dismissible fade show text-center margin-bottom-1x">
+            <span class="alert-close" data-dismiss="alert"></span><i class="icon-camera"></i> &nbsp;&nbsp;
+            <strong>No Result..</strong> No existen resultados para la busqueda que intenta realizar.
+            <a href="#">quaerat mollitia.</a>
+        </div>
+    </div>
+    <br><br><br><br>
+
+</div>

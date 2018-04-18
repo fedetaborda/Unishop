@@ -12,27 +12,51 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { NgForm } from '@angular/forms';
 
+import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
+import { Usuario } from '../../models/usuario';
+
 
 @Injectable()
 export class ProductoService {
 
   producto: Producto;
 
+  archivo: File;
+
   constructor(
     public http: HttpClient,
-    public _usuarioService: UsuarioService
+    public _usuarioService: UsuarioService,
+    public _subirArchivoService: SubirArchivoService
   ) { }
 
 
-  crearProducto( producto: Producto ) {
+  crearProducto( producto: Producto , imagen: File ) {
 
     let url = URL_SERVICIOS + '/producto';
     url += '?token=' + this._usuarioService.token;
 
+    this.archivo = imagen;
+
     return this.http.post( url, producto  )
           .map( (resp: any) => {
-          swal('Correcto', 'ingreso: ' + resp.producto.nombre , 'success');
+
+           this.cambiarImagen( this.archivo , resp.producto._id );
+
+         swal('Correcto', 'ingreso: ' + resp.producto.nombre , 'success');
       });
+
+  }
+
+  cambiarImagen( archivo: File, id: string ) {
+
+    this._subirArchivoService.subirArchivo( archivo, 'producto' , id )
+          .then( (resp: any) => {
+            console.log( resp );
+          })
+          .catch( resp => {
+            console.log( resp );
+          }) ;
+
   }
 
 

@@ -11,7 +11,7 @@ export class Producto {
         public marca: string,
         public descuento?: String,
         public precio_desc?: Number,
-        public imagen?: String,
+        public imagen?: File,
         public _id?: String
     ) { }
 

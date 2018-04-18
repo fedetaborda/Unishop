@@ -31,6 +31,7 @@ var imagenesRoutes = require('./routes/imagenes');
 var productoRoutes = require('./routes/producto');
 var categoriaRoutes = require('./routes/categoria');
 var marcaRoutes = require('./routes/marca');
+var busquedaRoutes = require('./routes/busqueda');
 
 
 // Conexión a la base de datos
@@ -57,6 +58,8 @@ app.use('/img', imagenesRoutes);
 app.use('/producto', productoRoutes);
 app.use('/categoria', categoriaRoutes);
 app.use('/marca', marcaRoutes);
+app.use('/busqueda', busquedaRoutes);
+
 
 app.use('/', appRoutes);
 

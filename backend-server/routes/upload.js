@@ -6,6 +6,7 @@ var fs = require('fs');
 
 var app = express();
 
+var Usuario = require('../models/usuario');
 var Producto = require('../models/producto');
 
 
@@ -21,7 +22,7 @@ app.put('/:tipo/:id', (req, res, next) => {
     var id = req.params.id;
 
     // tipos de colección
-    var tiposValidos = ['producto'];
+    var tiposValidos = ['producto', 'usuarios'];
     if (tiposValidos.indexOf(tipo) < 0) {
         return res.status(400).json({
             ok: false,
@@ -75,13 +76,56 @@ app.put('/:tipo/:id', (req, res, next) => {
 
 
         subirPorTipo(tipo, id, nombreArchivo, res);
+
+
     });
 
 
 
 });
 
+
+
 function subirPorTipo(tipo, id, nombreArchivo, res) {
+
+    if (tipo === 'usuarios') {
+
+        Usuario.findById(id, (err, usuario) => {
+
+            if (!usuario) {
+                return res.status(400).json({
+                    ok: true,
+                    mensaje: 'Usuario no existe',
+                    errors: { message: 'Usuario no existe' }
+                });
+            }
+
+
+            var pathViejo = './uploads/usuarios/' + usuario.img;
+
+            // Si existe, elimina la imagen anterior
+            if (fs.existsSync(pathViejo)) {
+                fs.unlink(pathViejo);
+            }
+
+            usuario.img = nombreArchivo;
+
+            usuario.save((err, usuarioActualizado) => {
+
+                usuarioActualizado.password = ':)';
+
+                return res.status(200).json({
+                    ok: true,
+                    mensaje: 'Imagen de usuario actualizada',
+                    usuario: usuarioActualizado
+                });
+
+            })
+
+
+        });
+
+    }
 
     if (tipo === 'producto') {
 
@@ -90,36 +134,33 @@ function subirPorTipo(tipo, id, nombreArchivo, res) {
             if (!producto) {
                 return res.status(400).json({
                     ok: true,
-                    mensaje: 'Producto no existe',
+                    mensaje: 'El Producto no existe',
                     errors: { message: 'Producto no existe' }
                 });
             }
 
+            console.log(producto);
 
-            var pathViejo = './uploads/producto/' + producto.img;
+            var pathViejo = './uploads/producto/' + producto.imagen;
 
             // Si existe, elimina la imagen anterior
             if (fs.existsSync(pathViejo)) {
                 fs.unlink(pathViejo);
             }
 
-            producto.img = nombreArchivo;
+            producto.imagen = nombreArchivo;
 
             producto.save((err, productoActualizado) => {
 
-                productoActualizado.password = ':)';
-
                 return res.status(200).json({
                     ok: true,
-                    mensaje: 'Imagen de subida correctamente',
+                    mensaje: 'Imagen del Producto actualizada',
                     producto: productoActualizado
                 });
 
             })
 
-
         });
-
     }
 
 

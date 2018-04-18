@@ -8,8 +8,13 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+// component
+import { BuscadorComponent } from '../../componentes/buscador/buscador.component';
+
+
 // PIPES
 import { PipesModule } from '../../pipes/pipes.module';
+
 
 
 @NgModule({
@@ -20,7 +25,8 @@ import { PipesModule } from '../../pipes/pipes.module';
     ],
     declarations: [
         HeaderComponent,
-        FooterComponent
+        FooterComponent,
+        BuscadorComponent
     ],
     exports: [
         FooterComponent,

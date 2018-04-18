@@ -21,10 +21,7 @@ export class ProducListComponent implements OnInit {
     this._productoService.cargarProductos()
               .subscribe( (resp: any) => {
                 this.productos = resp.productos;
-                console.log(this.productos);
               });
   }
-
-  
 
 }

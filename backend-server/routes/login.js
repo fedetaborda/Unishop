@@ -18,11 +18,11 @@ const GOOGLE_SECRET = require('../config/config').GOOGLE_SECRET;
 var mdAutenticacion = require('../middlewares/autenticacion');
 
 // ==========================================
-//  Autenticación De Google
+//  Autenticación Renueva token
 // ==========================================
 app.get('/renuevatoken', mdAutenticacion.verificaToken, (req, res) => {
 
-    var token = jwt.sign({ usuario: req.usuario }, SEED, { expiresIn: 14400 }); // 4 horas
+    var token = jwt.sign({ usuario: req.usuario }, SEED, { expiresIn: 86400 }); // 24 horas 86400 tiempo en segundo
 
     res.status(200).json({
         ok: true,

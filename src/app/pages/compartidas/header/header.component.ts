@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
               public router: Router) { }
 
   ngOnInit() {
+    init_plugins();
     this.usuario = this._usuarioService.usuario;
   }
 

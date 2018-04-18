@@ -429,11 +429,18 @@
 <!-- Navbar-->
 <!-- Remove "navbar-sticky" class to make navigation bar scrollable with the page.-->
 <header class="navbar navbar-sticky">
-    <!-- Search-->
-    <form class="site-search" method="get">
-        <input type="text" name="site_search" placeholder="Type to search...">
+
+    <!-- Search -->
+
+    <app-buscador></app-buscador>
+
+
+    <!-- <form class="site-search">
+        <input type="text" name="site_search" placeholder="Buscar Producto..">
         <div class="search-tools"><span class="clear-search">Clear</span><span class="close-search"><i class="icon-cross"></i></span></div>
-    </form>
+    </form> -->
+
+
     <div class="site-branding">
         <div class="inner">
             <!-- Off-Canvas Toggle (#shop-categories)-->
@@ -441,7 +448,7 @@
             <!-- Off-Canvas Toggle (#mobile-menu)-->
             <a class="offcanvas-toggle menu-toggle" href="#mobile-menu" data-toggle="offcanvas"></a>
             <!-- Site Logo-->
-            <a class="site-logo" href="index.html"><img src="img/logo/logo.png" alt="Unishop"></a>
+            <a class="site-logo" href="index.html"><img src="../assets/logo.png" alt="Unishop"></a>
         </div>
     </div>
     <!-- Main Navigation-->
@@ -460,8 +467,8 @@
                         <a routerLink="/admin-prod/categorias">Detalle categorias</a>
                     </li>
                     <li routerLinkActive="active">
-                            <a routerLink="/admin-prod/marcas">Detalle marcas</a>
-                        </li>
+                        <a routerLink="/admin-prod/marcas">Detalle marcas</a>
+                    </li>
                 </ul>
             </li>
 

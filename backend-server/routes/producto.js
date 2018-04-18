@@ -59,7 +59,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 });
 
 // ==========================================
-// Obtener todas las categoria
+// Obtener todos los productos
 // ==========================================
 app.get('/', (req, res, next) => {
 
