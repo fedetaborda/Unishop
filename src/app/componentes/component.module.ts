@@ -4,15 +4,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 
-import { BarraLateralComponent } from './barra-lateral/barra-lateral.component';
-
-
 
 @NgModule({
     imports: [
          ],
     declarations: [
-        BarraLateralComponent
+
     ],
     exports: [
 

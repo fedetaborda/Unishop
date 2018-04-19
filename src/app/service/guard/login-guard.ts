@@ -12,7 +12,7 @@ export class LoginGuardGuard implements CanActivate {
     public router: Router
   ) {}
   
-  canActivate(){
+  canActivate() {
 
     if ( this._usuarioService.estaLogueado() ) {
       return true;

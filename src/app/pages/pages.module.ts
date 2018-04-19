@@ -11,11 +11,10 @@ import { AdminProductoComponent } from './admin-producto/admin-producto.componen
 import { ProducListComponent } from './admin-producto/produc-list/produc-list.component';
 import { DetalleMarcaComponent } from './admin-producto/detalle-marca/detalle-marca.component';
 import { DetalleCategoriaComponent } from './admin-producto/detalle-categoria/detalle-categoria.component';
-import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/busqueda-producto.component';
 import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo.component';
+import { RecuperoComponent } from './recupero-login/recupero/recupero.component';
 
 
-import { BarraLateralComponent } from '../componentes/barra-lateral/barra-lateral.component';
 
 // Module
 import { CompartidaModule } from './compartidas/compartida.module';
@@ -26,7 +25,11 @@ import { PipesModule } from '../pipes/pipes.module';
 
 import { PAGES_ROUTES } from './pages.routes';
 import { ServicesModule } from '../service/services.module';
+
 import { Buscadorview2Component } from './admin-producto/busqueda-producto/buscadorview2.component';
+import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/busqueda-producto.component';
+import { BarraLateralComponent } from '../componentes/barra-lateral/barra-lateral.component';
+
 
 
 @NgModule({
@@ -38,10 +41,11 @@ import { Buscadorview2Component } from './admin-producto/busqueda-producto/busca
         ProducListComponent,
         DetalleMarcaComponent,
         DetalleCategoriaComponent,
-        BarraLateralComponent ,
-        BusquedaProductoComponent,
         NuevoComponent,
-        Buscadorview2Component
+        Buscadorview2Component,
+        BusquedaProductoComponent,
+        BarraLateralComponent,
+        RecuperoComponent
     ],
     exports: [
         ProductosComponent

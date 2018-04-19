@@ -2,18 +2,7 @@
 <div class="page-title">
     <div class="container">
         <div class="column">
-            <h1>Login / Register Account</h1>
-        </div>
-        <div class="column">
-            <ul class="breadcrumbs">
-                <li><a href="index.html">Home</a>
-                </li>
-                <li class="separator">&nbsp;</li>
-                <li><a href="account-orders.html">Account</a>
-                </li>
-                <li class="separator">&nbsp;</li>
-                <li>Login / Register</li>
-            </ul>
+            <h1>Login / Nuevo Registro</h1>
         </div>
     </div>
 </div>
@@ -27,7 +16,7 @@
                     <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block twitter-btn" href="#"><i class="socicon-twitter"></i>&nbsp;Twitter login</a></div>
                     <div class="col-xl-4 col-md-6 col-sm-4"><a class="btn btn-sm btn-block google-btn" href="#"><i class="socicon-googleplus"></i>&nbsp;Google+ login</a></div>
                 </div>
-                <h4 class="margin-bottom-1x">Or using form below</h4>
+                <h4 class="margin-bottom-1x">Inicio de Seccion</h4>
                 <div class="form-group input-group">
                     <input class="form-control" [ngModel]="email" name="email" type="email" placeholder="Email" required><span class="input-group-addon"><i class="icon-mail"></i></span>
                 </div>
@@ -38,7 +27,7 @@
                     <div class="custom-control custom-checkbox">
                         <input [(ngModel)]="recuerdame" name="recuerdame" class="custom-control-input" type="checkbox" id="remember_me" checked>
                         <label class="custom-control-label" for="remember_me">Recuérdame</label>
-                    </div><a class="navi-link" href="account-password-recovery.html">olvide la contraseña!</a>
+                    </div><a class="navi-link" routerLink="/recupero_login">olvide la contraseña!</a>
                 </div>
                 <div class="text-center text-sm-right">
                     <button class="btn btn-primary margin-bottom-none" type="submit">Ingresar</button>
@@ -47,8 +36,10 @@
         </div>
         <div class="col-md-6">
             <div class="padding-top-3x hidden-md-up"></div>
-            <h3 class="margin-bottom-1x">No Account? Register</h3>
-            <p>Registro de un nuevo usuario</p>
+            <h3 class="margin-bottom-1x">
+                Regístrate Gratis!
+            </h3>
+            <p>Registro de un nuevo usuario.</p>
             <form [formGroup]="formaregistro" (ngSubmit)="registrarUsuario()" class="row" method="post">
                 <div class="col-sm-6">
                     <div class="form-group">
@@ -62,7 +53,7 @@
                         <input formControlName="apellido" class="form-control" type="text" id="reg-ln" required>
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-12">
                     <div class="form-group">
                         <label for="reg-email">Email</label>
                         <input formControlName="correo" name="correo" class="form-control" type="email" id="reg-email" required>

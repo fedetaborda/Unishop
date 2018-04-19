@@ -17,6 +17,7 @@ import { PipesModule } from '../../pipes/pipes.module';
 
 
 
+
 @NgModule({
     imports: [
         RouterModule,

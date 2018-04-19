@@ -14,6 +14,7 @@ import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/bu
 import { Buscadorview2Component } from './admin-producto/busqueda-producto/buscadorview2.component';
 
 
+
 const PagesRoutes: Routes = [
 
     { path: '',
@@ -24,7 +25,7 @@ const PagesRoutes: Routes = [
         { path: 'productos', component: ProductosComponent },
         { path: 'busqueda/:id', component: BusquedaProductoComponent },
         { path: 'view-list', component: Buscadorview2Component },
-
+        
         { path: 'perfil',
         component: PerfilComponent, canActivate: [ VerificaTokenGuard ] },
 
