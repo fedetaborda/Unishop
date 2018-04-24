@@ -87,6 +87,8 @@ export class DetalleCategoriaComponent implements OnInit {
 
                 this.totalRegistros = resp.total;
                 this.categorias = resp.categorias;
+
+                console.log(this.totalRegistros);
               });
 
   }

@@ -14,6 +14,8 @@ export class ProducListComponent implements OnInit {
 
   productos: Producto[] = [];
 
+  totalProductos: number = 0;
+
   constructor(public _productoService: ProductoService) { }
 
   ngOnInit() {
@@ -21,6 +23,7 @@ export class ProducListComponent implements OnInit {
     this._productoService.cargarProductos()
               .subscribe( (resp: any) => {
                 this.productos = resp.productos;
+                this.totalProductos = resp.total;
               });
   }
 

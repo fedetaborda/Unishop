@@ -11,7 +11,7 @@ import { Producto } from '../../../models/producto';
 })
 export class Buscadorview2Component implements OnInit {
 
-  producto: Producto[] = [];
+  productos: Producto[] = [];
 
   termino: string;
 
@@ -39,7 +39,7 @@ export class Buscadorview2Component implements OnInit {
 
           console.log( resp.producto );
 
-          this.producto = resp.producto;
+          this.productos = resp.producto;
 
         });
   }

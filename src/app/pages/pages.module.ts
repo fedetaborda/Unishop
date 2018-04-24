@@ -29,6 +29,8 @@ import { ServicesModule } from '../service/services.module';
 import { Buscadorview2Component } from './admin-producto/busqueda-producto/buscadorview2.component';
 import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/busqueda-producto.component';
 import { BarraLateralComponent } from '../componentes/barra-lateral/barra-lateral.component';
+import { PaginadorComponent } from './componentes/paginador/paginador.component';
+import { FiltroComponent } from './componentes/filtro/filtro.component';
 
 
 
@@ -45,7 +47,9 @@ import { BarraLateralComponent } from '../componentes/barra-lateral/barra-latera
         Buscadorview2Component,
         BusquedaProductoComponent,
         BarraLateralComponent,
-        RecuperoComponent
+        RecuperoComponent,
+        PaginadorComponent,
+        FiltroComponent
     ],
     exports: [
         ProductosComponent

@@ -68,7 +68,7 @@ app.get('/', (req, res, next) => {
 
     Producto.find({})
         .skip(desde)
-        .limit(15)
+        .limit(2)
         .populate('producto')
         .exec(
             (err, productos) => {

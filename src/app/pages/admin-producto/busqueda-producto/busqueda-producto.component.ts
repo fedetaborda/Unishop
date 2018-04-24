@@ -13,7 +13,7 @@ declare function init_plugin();
 })
 export class BusquedaProductoComponent implements OnInit {
 
-  producto: Producto[] = [];
+  productos: Producto[] = [];
 
   termino: string;
 
@@ -21,14 +21,12 @@ export class BusquedaProductoComponent implements OnInit {
     public activatedRoute: ActivatedRoute,
     public http: HttpClient)
     {
-      
+
       this.activatedRoute.params
       .subscribe( params => {
         this.termino = params['id'];
         this.buscar( this.termino );
       });
-
-      this.producto = [];
 
     }
 
@@ -41,18 +39,18 @@ export class BusquedaProductoComponent implements OnInit {
 
   buscar( termino: string ) {
 
-    
-
     let url = URL_SERVICIOS + '/busqueda/producto/' + termino;
 
     this.http.get( url )
         .subscribe( (resp: any) => {
 
-          //console.log( resp.producto );
+          this.productos = resp.producto;
 
-          this.producto = resp.producto;
+          console.log( this.productos );
 
         });
+
+        this.productos = [];
   }
 
 
