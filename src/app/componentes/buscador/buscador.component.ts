@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-declare function init_plugins();
 
 @Component({
   selector: 'app-buscador',
@@ -16,7 +15,6 @@ export class BuscadorComponent implements OnInit {
 
   ngOnInit() {
 
-    init_plugins();
   }
 
   buscar( termino: string ) {

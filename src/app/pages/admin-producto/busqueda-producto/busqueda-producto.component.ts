@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../../config/config';
 import { Producto } from '../../../models/producto';
 
-declare function init_plugins();
+declare function init_plugin();
 
 
 @Component({
@@ -15,6 +15,8 @@ export class BusquedaProductoComponent implements OnInit {
 
   producto: Producto[] = [];
 
+  termino: string;
+
   constructor(
     public activatedRoute: ActivatedRoute,
     public http: HttpClient)
@@ -22,8 +24,8 @@ export class BusquedaProductoComponent implements OnInit {
       
       this.activatedRoute.params
       .subscribe( params => {
-        let termino = params['id'];
-        this.buscar( termino );
+        this.termino = params['id'];
+        this.buscar( this.termino );
       });
 
       this.producto = [];
@@ -31,7 +33,9 @@ export class BusquedaProductoComponent implements OnInit {
     }
 
   ngOnInit() {
-    init_plugins();
+
+    init_plugin();
+
   }
 
 
@@ -44,7 +48,7 @@ export class BusquedaProductoComponent implements OnInit {
     this.http.get( url )
         .subscribe( (resp: any) => {
 
-          console.log( resp.producto );
+          //console.log( resp.producto );
 
           this.producto = resp.producto;
 

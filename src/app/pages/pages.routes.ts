@@ -24,8 +24,8 @@ const PagesRoutes: Routes = [
      children: [
         { path: 'productos', component: ProductosComponent },
         { path: 'busqueda/:id', component: BusquedaProductoComponent },
-        { path: 'view-list', component: Buscadorview2Component },
-        
+        { path: 'list/:id', component: Buscadorview2Component },
+
         { path: 'perfil',
         component: PerfilComponent, canActivate: [ VerificaTokenGuard ] },
 

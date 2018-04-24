@@ -5,13 +5,14 @@ import { Usuario } from '../../../models/usuario';
 import { Router } from '@angular/router';
 
 
-declare function init_plugins();
+declare function init_plugin();
+
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
-  styles: []
+  templateUrl: './header.component.html'
 })
+
 export class HeaderComponent implements OnInit {
 
   usuario: Usuario;
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
               public router: Router) { }
 
   ngOnInit() {
-    init_plugins();
+    init_plugin();
     this.usuario = this._usuarioService.usuario;
   }
 

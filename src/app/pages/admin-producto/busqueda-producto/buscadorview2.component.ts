@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { URL_SERVICIOS } from '../../../config/config';
+import { Producto } from '../../../models/producto';
 
-
-
-
-declare function init_plugins();
 
 @Component({
   selector: 'app-buscadorview2',
@@ -11,10 +11,37 @@ declare function init_plugins();
 })
 export class Buscadorview2Component implements OnInit {
 
-  constructor() { }
+  producto: Producto[] = [];
 
-  ngOnInit() {
-    init_plugins();
+  termino: string;
+
+  constructor(public activatedRoute: ActivatedRoute,
+    public http: HttpClient) {
+        
+      this.activatedRoute.params
+      .subscribe( params => {
+        this.termino = params['id'];
+        this.buscar( this.termino );
+      });
+
+     }
+
+  ngOnInit() { 
+
+  }
+
+  buscar( termino: string ) {
+
+    let url = URL_SERVICIOS + '/busqueda/producto/' + termino;
+
+    this.http.get( url )
+        .subscribe( (resp: any) => {
+
+          console.log( resp.producto );
+
+          this.producto = resp.producto;
+
+        });
   }
 
 }

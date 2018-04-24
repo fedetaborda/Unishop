@@ -9,16 +9,14 @@ import { Router } from '@angular/router';
 import { Producto } from '../../../models/producto';
 import { Categoria } from '../../../models/categoria';
 
-// Declaramos las variables para jQuery
-declare var jQuery: any;
-declare var $: any;
+
+//declare function init_plugins();
+
 
 // Servicios
 import { CategoriaService, ProductoService } from '../../../service/service.index';
 import { element } from 'protractor';
 
-
-declare function init_plugins();
 
 @Component({
   selector: 'app-nuevo',
@@ -43,8 +41,6 @@ export class NuevoComponent implements OnInit {
               public _productoService: ProductoService) {}
 
   ngOnInit() {
-
-    init_plugins();
 
     this.form = new FormGroup({
       categoria: new FormControl({value: 'Seleccione categoria'}, [Validators.required]),
