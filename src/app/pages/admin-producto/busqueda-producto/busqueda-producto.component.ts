@@ -50,7 +50,6 @@ export class BusquedaProductoComponent implements OnInit {
 
         });
 
-        this.productos = [];
   }
 
 

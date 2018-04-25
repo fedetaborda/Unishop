@@ -1,0 +1,15 @@
+<div class="shop-toolbar padding-bottom-1x mb-2">
+    <div class="column">
+        <div class="form-group">
+            <form class="input-group form-group">
+                <span class="input-group-btn">
+                  <button (click)="this.cargarTodos();"><i class="icon-search"></i></button>
+              </span>
+                <input #input (keyup)="buscar( input.value )" class="form-control" type="text" placeholder="Que queres comprar..">
+            </form>
+        </div>
+    </div>
+    <div class="column">
+        <div class="shop-view"><a class="grid-view" href="shop-grid-ls.html"><span></span><span></span><span></span></a><a class="list-view active" href="shop-list-ls.html"><span></span><span></span><span></span></a></div>
+    </div>
+</div>

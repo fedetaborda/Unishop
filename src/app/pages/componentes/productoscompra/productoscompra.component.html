@@ -1,0 +1,46 @@
+<!-- Product-->
+<div *ngFor="let producto of productos" class="product-card product-list">
+    <!-- Prod con descuento -->
+    <div *ngIf="producto.descuento">
+        <a class="product-thumb" href="">
+
+            <div class="product-badge text-danger">
+                {{producto.descuento}}% Off
+            </div>
+            <img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}">
+        </a>
+
+        <div class="product-info">
+            <h3 class="product-title"><a href="shop-single.html">{{producto.nombre}}</a></h3>
+            <h4 *ngIf="producto.precio_desc" class="product-price">
+                <del>${{producto.precio}}</del>${{producto.precio_desc}}
+            </h4>
+            <p class="hidden-xs-down">{{producto.descripcion}}</p>
+            <div class="product-buttons">
+                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="fas fa-shopping-cart"></i> Comprar </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Prod sin descuento -->
+    <div *ngIf="!producto.descuento">
+        <a class="product-thumb" href="">
+            <img [src]="producto.imagen | imagen:'producto'" alt="Product">
+        </a>
+
+        <div class="product-info">
+            <h3 class="product-title"><a href="shop-single.html">{{producto.nombre}}</a></h3>
+            <h4 *ngIf="producto.precio_desc" class="product-price">
+                ${{producto.precio}}
+            </h4>
+            <p class="hidden-xs-down">{{producto.descripcion}}</p>
+            <div class="product-buttons">
+                <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
+                <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="fas fa-shopping-cart"></i> Comprar </button>
+            </div>
+        </div>
+    </div>
+
+
+</div>

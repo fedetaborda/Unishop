@@ -15,7 +15,6 @@ import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo.component';
 import { RecuperoComponent } from './recupero-login/recupero/recupero.component';
 
 
-
 // Module
 import { CompartidaModule } from './compartidas/compartida.module';
 
@@ -28,9 +27,11 @@ import { ServicesModule } from '../service/services.module';
 
 import { Buscadorview2Component } from './admin-producto/busqueda-producto/buscadorview2.component';
 import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/busqueda-producto.component';
-import { BarraLateralComponent } from '../componentes/barra-lateral/barra-lateral.component';
 import { PaginadorComponent } from './componentes/paginador/paginador.component';
 import { FiltroComponent } from './componentes/filtro/filtro.component';
+import { BarraLateralComponent } from '../componentes/barra-lateral/barra-lateral.component';
+import { ProductoscompraComponent } from './componentes/productoscompra/productoscompra.component';
+import { BuscardorProdComponent } from '../componentes/buscardor-prod/buscardor-prod.component';
 
 
 
@@ -46,10 +47,12 @@ import { FiltroComponent } from './componentes/filtro/filtro.component';
         NuevoComponent,
         Buscadorview2Component,
         BusquedaProductoComponent,
-        BarraLateralComponent,
         RecuperoComponent,
         PaginadorComponent,
-        FiltroComponent
+        FiltroComponent,
+        BarraLateralComponent,
+        ProductoscompraComponent,
+        BuscardorProdComponent
     ],
     exports: [
         ProductosComponent

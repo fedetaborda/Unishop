@@ -1,0 +1,179 @@
+<div class="row">
+    <div class="col-lg-10 col-md-10 order-md-2">
+        <h6 class="text-muted text-normal text-uppercase">Detalle del Producto</h6>
+        <hr class="margin-bottom-1x">
+
+        <form [formGroup]="form" (ngSubmit)="registrarProducto( form.value )">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+
+                        <div class="form-group ">
+                            <label class="col-form-label" for="select-input ">Categoria Asignada <a routerLink="/admin-prod/categorias" id="icon"><i class="fas fa-cog"></i></a></label>
+                            <select class="form-control" name="categoria" formControlName="categoria" required>
+                                <option disabled="disabled">Seleccione Categoria</option>
+                                <option *ngFor="let categoria of categorias " [(value)]="categoria._id">
+                                    {{ categoria.nombre }}
+                                </option>
+                                <div *ngIf="!form.controls['categoria'].valid && form.controls['categoria'].touched">
+                                    <small class="text-danger">{{mesaje_require}}</small>
+                                </div>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="normal-pill-input">Nombre del Producto</label>
+                        <input class="form-control capitalize" type="text" placeholder="Ingrese nombre del Producto.." formControlName="nombre" name="nombre">
+                        <div *ngIf="!form.controls['nombre'].valid && form.controls['nombre'].touched">
+                            <small class="text-danger">{{mesaje_require}}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group ">
+                        <label for="normal-pill-input">Marca del Producto <a routerLink="/admin-prod/categorias" id="icon"><i class="fas fa-cog"></i></a></label>
+                        <select class="form-control" name="categoria" formControlName="marca" name="marca">
+                            <option disabled="disabled">Seleccione Categoria</option>
+                            <option *ngFor="let categoria of categorias " [(value)]="categoria._id">
+                                {{ categoria.nombre }}
+                            </option>
+                            <div *ngIf="!form.controls['marca'].valid && form.controls['marca'].touched">
+                                <small class="text-danger">{{mesaje_require}}</small>
+                            </div>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group ">
+                        <label class="col-6 col-form-label " for="select-input ">Rango de Precio</label>
+                        <select class="form-control " id="capitalize" name="rango" formControlName="rango" name="rango">
+                        <option value="">Seleccione un rango de precio..</option>
+                        <option>$0 - $10</option>
+                        <option>$10 - $25</option>
+                        <option>$25 - $50</option>
+                        <option>$50 - $150</option>
+                        <option>$150 - $250</option>
+                        <option>$250 - $500</option>
+                        <option>mas de $500</option>
+                      </select>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="normal-pill-input">Precio de Costo</label>
+                        <input class="form-control" step="0.1" type="number" min="0" max="100000" name="costo" placeholder="0.00" formControlName="costo" name="costo">
+                        <div *ngIf="!form.controls['costo'].valid && form.controls['costo'].touched">
+                            <small class="text-danger">{{mesaje_require}}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group ">
+                        <label for="normal-pill-input ">Precio de Venta</label>
+                        <input class="form-control" type="number" step="0.1" min="0" max="100000" name="precio" placeholder="0.00" formControlName="precio" name="precio">
+                        <div *ngIf="!form.controls['precio'].valid && form.controls['precio'].touched">
+                            <small class="text-danger">{{mesaje_require}}</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group ">
+                        <label for="normal-pill-input">Imagen del Producto</label>
+                        <div class="custom-file">
+                            <input class="custom-file-input" type="file" id="file-input">
+                            <label class="custom-file-label" for="file-input">imagen del Producto</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <h6 class="text-muted text-normal text-uppercase padding-top-2x mt-2">Caracteristicas del Producto</h6>
+                    <hr class="margin-bottom-1x">
+                    <ul class="nav nav-pills" role="tablist">
+                        <li class="nav-item"><a class="nav-link active show" href="#1" data-toggle="tab" role="tab" aria-selected="false"><i class="far fa-money-bill-alt"></i> Promocionar</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#2" data-toggle="tab" role="tab" aria-selected="false">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#3" data-toggle="tab" role="tab" aria-selected="true">Settings</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="1" role="tabpanel">
+                            <div class="col-md-5">
+                                <div class="form-group ">
+                                    <label for="normal-pill-input "> (%)Descuento en Promociónl</label>
+                                    <input class="form-control " type="number" min="0" max="99" name="descuento " id="normal-pill-input" placeholder="0" formControlName="descuento" name="descuento">
+                                </div>
+
+                                <div class="form-group ">
+                                    <label for="normal-pill-input ">Precio Promocional</label>
+                                    <input class="form-control " type="number" step="0.1" min="0" max="100000" name="precio_desc " id="normal-pill-input" placeholder="0.00" formControlName="precio_desc" name="precio_desc">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="tab-pane fade" id="2" role="tabpanel">
+                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
+                                photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna
+                                velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui
+                                sapiente accusamus tattooed echo park.</p>
+                        </div>
+                        <div class="tab-pane fade" id="3" role="tabpanel">
+                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore
+                                carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog.
+                                Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-12">
+                    <h6 class="text-muted text-normal text-uppercase padding-top-2x mt-2">Descripción del Producto</h6>
+                    <hr class="margin-bottom-1x">
+                    <textarea class="form-control " id="textarea-input" name="descripcion" rows="4" formControlName="descripcion" name="descripcion"></textarea>
+                    <div *ngIf="!form.controls['descripcion'].valid && form.controls['descripcion'].touched">
+                        <small class="text-danger">Este campo es requerido, con un  minimo de caracteres 15 maximo 50</small>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <h6 class="text-muted text-normal text-uppercase padding-top-2x mt-2">Estado del Producto</h6>
+                    <hr class="margin-bottom-1x">
+                    <div class="text-right text-muted">
+                        <small><i>Estdo del producto para la venta</i></small>
+                    </div>
+
+                    <div class="col-sm-6 form-group">
+
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" id="ex-radio-1" name="estado" [value]="true" formControlName="estado" name="estado">
+                            <label class="custom-control-label" for="ex-radio-1">Producto Activo</label>
+                        </div>
+                        <div class="custom-control custom-radio">
+                            <input class="custom-control-input" type="radio" id="ex-radio-2" name="estado" [value]="false" formControlName="estado" name="estado">
+                            <label class="custom-control-label" for="ex-radio-2">Producto Desactivado</label>
+                        </div>
+	
+                    </div>
+
+                </div>
+
+                <div class="col-md-12">
+                    <hr class="margin-bottom-1x ">
+                    <div class="d-flex flex-wrap justify-content-between align-items-center ">
+                        <div class="custom-control custom-checkbox d-block ">
+                        </div>
+                        <button [disabled]="!form.valid" class="btn btn-primary margin-right-none " type="submit"> Guardar </button>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+
+    </div>
+    <!-- col -->
+
+    <div>
+        <!-- row -->

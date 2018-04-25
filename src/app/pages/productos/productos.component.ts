@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Producto } from '../../../../Unishop/src/app/models/producto';
+import { ProductoService } from '../../service/service.index';
 
 
 @Component({
@@ -8,13 +11,10 @@ import { Component, OnInit } from '@angular/core';
 export class ProductosComponent implements OnInit {
 
 
+  constructor(public _productoService: ProductoService)
+    {}
 
-  constructor() { }
+  ngOnInit() {  }
 
-  ngOnInit() {
-
-
-
-  }
 
 }

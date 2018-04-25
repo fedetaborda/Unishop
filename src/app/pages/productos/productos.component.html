@@ -2,7 +2,7 @@
 <div class="page-title">
     <div class="container">
         <div class="column">
-            <h1>Productos</h1>
+            <h1>Comprar</h1>
         </div>
         <div class="column">
             <ul class="breadcrumbs">
@@ -20,42 +20,27 @@
     <div class="row">
         <!-- Products-->
         <div class="col-xl-9 col-lg-8 order-lg-2">
-            <!-- Shop Toolbar-->
+
+            <app-buscardor-prod (buscardorProd)="productos = $event"></app-buscardor-prod>
+            <!-- Shop Toolbar
             <div class="shop-toolbar padding-bottom-1x mb-2">
                 <div class="column">
-                    <div class="shop-sorting">
-                        <label for="sorting">Sort by:</label>
-                        <select class="form-control" id="sorting">
-          <option>Popularity</option>
-          <option>Low - High Price</option>
-          <option>High - Low Price</option>
-          <option>Avarage Rating</option>
-          <option>A - Z Order</option>
-          <option>Z - A Order</option>
-        </select><span class="text-muted">Showing:&nbsp;</span><span>1 - 12 items</span>
+                    <div class="form-group">
+                        <form class="input-group form-group">
+                            <span class="input-group-btn">
+                                <button (click)="this.cargarTodos();"><i class="icon-search"></i></button>
+                            </span>
+                            <input #input (keyup)="buscar( input.value )" class="form-control" type="text" placeholder="Que queres comprar..">
+                        </form>
                     </div>
                 </div>
                 <div class="column">
                     <div class="shop-view"><a class="grid-view" href="shop-grid-ls.html"><span></span><span></span><span></span></a><a class="list-view active" href="shop-list-ls.html"><span></span><span></span><span></span></a></div>
                 </div>
-            </div>
-            <!-- Product-->
-            <div class="product-card product-list">
-                <a class="product-thumb" href="shop-single.html">
-                    <div class="product-badge text-danger">50% Off</div><img src="img/shop/products/01.jpg" alt="Product"></a>
-                <div class="product-info">
-                    <h3 class="product-title"><a href="shop-single.html">Unionbay Park</a></h3>
-                    <h4 class="product-price">
-                        <del>$99.99</del>$49.99
-                    </h4>
-                    <p class="hidden-xs-down">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore odit officiis illo perferendis deserunt, ipsam dolor ad dolorem eaque veritatis harum facilis aliquid id doloribus incidunt quam beatae, soluta magni alori sedum quanto.
-                    </p>
-                    <div class="product-buttons">
-                        <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                        <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
+            </div> -->
+
+            <!-- Productos -->
+            <app-productoscompra [productos]="productos"></app-productoscompra>
 
             <div class="pt-2">
                 <app-paginador></app-paginador>
