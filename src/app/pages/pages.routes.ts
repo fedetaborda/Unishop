@@ -12,6 +12,9 @@ import { DetalleCategoriaComponent } from './admin-producto/detalle-categoria/de
 import { DetalleMarcaComponent } from './admin-producto/detalle-marca/detalle-marca.component';
 import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/busqueda-producto.component';
 import { Buscadorview2Component } from './admin-producto/busqueda-producto/buscadorview2.component';
+import { ProductosViewComponent } from './productos/productos-view.component';
+
+
 
 
 
@@ -23,6 +26,7 @@ const PagesRoutes: Routes = [
 
      children: [
         { path: 'productos', component: ProductosComponent },
+        { path: 'viewproductos', component: ProductosViewComponent },
         { path: 'busqueda/:id', component: BusquedaProductoComponent },
         { path: 'list/:id', component: Buscadorview2Component },
 

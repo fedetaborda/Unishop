@@ -7,9 +7,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
     imports: [
          ],
-    declarations: [
-
-    ],
+    declarations: [],
     exports: [
 
     ]

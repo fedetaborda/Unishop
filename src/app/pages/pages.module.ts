@@ -32,7 +32,9 @@ import { FiltroComponent } from './componentes/filtro/filtro.component';
 import { BarraLateralComponent } from '../componentes/barra-lateral/barra-lateral.component';
 import { ProductoscompraComponent } from './componentes/productoscompra/productoscompra.component';
 import { BuscardorProdComponent } from '../componentes/buscardor-prod/buscardor-prod.component';
-
+import { LinkVistasComponent } from '../componentes/buscardor-prod/link-vistas.component';
+import { ProductosViewComponent } from './productos/productos-view.component';
+import { Productoscompra2Component } from './componentes/productoscompra/productoscompra2.component';
 
 
 @NgModule({
@@ -52,7 +54,10 @@ import { BuscardorProdComponent } from '../componentes/buscardor-prod/buscardor-
         FiltroComponent,
         BarraLateralComponent,
         ProductoscompraComponent,
-        BuscardorProdComponent
+        BuscardorProdComponent,
+        LinkVistasComponent,
+        ProductosViewComponent,
+        Productoscompra2Component
     ],
     exports: [
         ProductosComponent

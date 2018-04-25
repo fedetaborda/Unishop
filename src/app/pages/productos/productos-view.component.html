@@ -20,20 +20,22 @@
     <div class="row">
         <!-- Products-->
         <div class="col-xl-9 col-lg-8 order-lg-2">
+            <!-- Shop Toolbar-->
 
             <app-buscardor-prod (buscardorProd)="productos = $event"></app-buscardor-prod>
 
-            <!-- Productos -->
-            <app-productoscompra [productos]="productos"></app-productoscompra>
 
-            <div class="pt-2">
-                <app-paginador></app-paginador>
-            </div>
+
+            <app-productoscompra2 [productos]="productos"></app-productoscompra2>
+
+
+
+            <!-- Pagination-->
+            <app-paginador></app-paginador>
         </div>
-
         <!-- Sidebar          -->
         <div class="col-xl-3 col-lg-4 order-lg-1">
             <app-barra-lateral></app-barra-lateral>
         </div>
-
     </div>
+</div>
