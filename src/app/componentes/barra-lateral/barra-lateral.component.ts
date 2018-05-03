@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Producto } from '../../models/producto';
 
 declare function init_plugin();
 
@@ -11,11 +12,14 @@ declare function init_plugin();
 
 export class BarraLateralComponent implements OnInit {
 
+@Input() productos: Producto;
+
 
   constructor() { }
 
   ngOnInit() {
     init_plugin();
   }
+  
 
 }

@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Producto } from '../../../../Unishop/src/app/models/producto';
 import { ProductoService } from '../../service/service.index';
+import { Productoscompra2Component } from '../componentes/productoscompra/productoscompra2.component';
+import { Producto } from '../../models/producto';
 
 
 @Component({

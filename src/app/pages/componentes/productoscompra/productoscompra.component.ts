@@ -11,14 +11,11 @@ export class ProductoscompraComponent implements OnInit {
 
   @Input() productos: Producto;
 
-  totalProductos: number = 0;
 
   constructor(public _productoService: ProductoService) { }
 
   ngOnInit() { }
 
-
- 
 
 
 }

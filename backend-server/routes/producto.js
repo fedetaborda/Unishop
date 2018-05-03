@@ -59,6 +59,39 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 });
 
 // ==========================================
+//  Obtener Producto por ID
+// ==========================================
+app.get('/:id', (req, res) => {
+
+    var id = req.params.id;
+
+    Producto.findById(id)
+        .populate('usuario', 'nombre img email')
+        .exec((err, producto) => {
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    mensaje: 'Error al buscar el Producto',
+                    errors: err
+                });
+            }
+
+            if (!producto) {
+                return res.status(400).json({
+                    ok: false,
+                    mensaje: 'El producto con el id ' + id + 'no existe',
+                    errors: { message: 'No existe un producto con ese ID' }
+                });
+            }
+            res.status(200).json({
+                ok: true,
+                producto: producto
+            });
+        })
+})
+
+
+// ==========================================
 // Obtener todos los productos
 // ==========================================
 app.get('/', (req, res, next) => {
@@ -69,7 +102,7 @@ app.get('/', (req, res, next) => {
     Producto.find({})
         .skip(desde)
         .limit(1000)
-        .populate('producto')
+        .populate('categoria')
         .exec(
             (err, productos) => {
 
@@ -82,17 +115,20 @@ app.get('/', (req, res, next) => {
                 }
 
                 Producto.count({}, (err, conteo) => {
+
                     res.status(200).json({
                         ok: true,
                         productos: productos,
-                        total: conteo
+                        total: conteo,
                     });
 
                 })
 
+
             });
 
 });
+
 
 
 module.exports = app;

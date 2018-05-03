@@ -19,6 +19,7 @@ import { RecuperoComponent } from './recupero-login/recupero/recupero.component'
 import { CompartidaModule } from './compartidas/compartida.module';
 
 
+
 // Pipe Module
 import { PipesModule } from '../pipes/pipes.module';
 
@@ -35,6 +36,7 @@ import { BuscardorProdComponent } from '../componentes/buscardor-prod/buscardor-
 import { LinkVistasComponent } from '../componentes/buscardor-prod/link-vistas.component';
 import { ProductosViewComponent } from './productos/productos-view.component';
 import { Productoscompra2Component } from './componentes/productoscompra/productoscompra2.component';
+
 
 
 @NgModule({
@@ -57,10 +59,12 @@ import { Productoscompra2Component } from './componentes/productoscompra/product
         BuscardorProdComponent,
         LinkVistasComponent,
         ProductosViewComponent,
-        Productoscompra2Component
+        Productoscompra2Component,
+        
     ],
     exports: [
-        ProductosComponent
+        ProductosComponent,
+        Productoscompra2Component
     ],
     imports: [
         CompartidaModule,
