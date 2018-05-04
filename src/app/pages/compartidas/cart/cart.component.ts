@@ -1,4 +1,10 @@
+
 import { Component, OnInit, Input } from '@angular/core';
+import { ProductoService } from '../../../service/producto/producto.service';
+import { Producto } from '../../../models/producto';
+import { Subscription } from 'rxjs/Subscription';
+
+
 
 @Component({
   selector: 'app-cart',
@@ -6,11 +12,24 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  @Input() public productoId: String;
+  subscription: Subscription;
 
-  constructor() { }
+  // producto: Producto[] = [];
 
-  ngOnInit() {
+  constructor( public _producto: ProductoService) {
+
+    this.subscription = this._producto.productoObservable()
+      .subscribe( producto => console.log( 'Subs', producto ));
+
   }
 
+  ngOnInit() {}
+
+
+
 }
+
+
+
+
+

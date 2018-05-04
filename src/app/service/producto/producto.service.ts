@@ -16,10 +16,11 @@ import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 import { Usuario } from '../../models/usuario';
 
 
+
 @Injectable()
 export class ProductoService {
 
-  producto: Producto;
+  producto: Producto[] = [];
 
   archivo: File;
 
@@ -27,7 +28,34 @@ export class ProductoService {
     public http: HttpClient,
     public _usuarioService: UsuarioService,
     public _subirArchivoService: SubirArchivoService
-  ) { }
+  ) {}
+
+
+  productoObservable () {
+
+    return new Observable( observer => {
+
+        observer.next( this.producto );
+  
+    });
+
+  }
+
+  cargarProducto( id: string ) {
+
+    let url = URL_SERVICIOS + '/producto/' + id;
+    return this.http.get( url )
+                .map( (resp: any) => this.producto = resp.producto,
+
+                this.productoObservable().subscribe() );
+
+  }
+
+
+
+  productoCart () {
+      return this.producto;
+  }
 
 
   crearProducto( producto: Producto , imagen: File ) {

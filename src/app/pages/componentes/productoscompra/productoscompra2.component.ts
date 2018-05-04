@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Producto } from '../../../models/producto';
+import { ProductoService } from '../../../service/service.index';
 
 @Component({
   selector: 'app-productoscompra2',
@@ -7,19 +8,26 @@ import { Producto } from '../../../models/producto';
 })
 export class Productoscompra2Component implements OnInit {
 
+ // producto: Producto[] = [];
+ 
   @Input() productos: Producto;
 
-  @Output('productoId') public productoId: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(public _productoService: ProductoService) { }
 
-  ngOnInit() {
+
+  ngOnInit() {}
+
+  obtenerProducto (id: string) {
+
+    if ( id.length <= 0 ) {
+      return false;
+    } else {
+
+     return this._productoService.cargarProducto( id )
+    .subscribe();
+  
   }
-
-  prodId ( id: string) {
-
-   this.productoId.emit( id );
-
 
   }
 

@@ -23,11 +23,10 @@
 
 
             <!-- Shop Toolbar-->
+
             <app-buscardor-prod (buscardorProd)="productos = $event"></app-buscardor-prod>
 
-            {{productoId}}
-
-            <app-productoscompra2 [productos]="productos" (productoId)="productoId = $event"></app-productoscompra2>
+            <app-productoscompra2 [productos]="productos"></app-productoscompra2>
 
             <!-- Pagination-->
             <app-paginador></app-paginador>
