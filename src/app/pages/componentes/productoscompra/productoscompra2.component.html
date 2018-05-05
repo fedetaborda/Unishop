@@ -1,5 +1,3 @@
-{{ producto | json }}
-
 <!-- Products Grid-->
 <div class="isotope-grid cols-3 mb-2">
 
@@ -19,7 +17,7 @@
                 </h4>
                 <div class="product-buttons">
                     <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Deseo"><i class="icon-heart"></i></button>
-                    <button (click)="obtenerProducto(producto._id)" class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-title="Correcto" data-toast-message="Producto Agregado!">
+                    <button (click)="obtenerProducto(producto._id, producto.precio )" class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-title="Correcto" data-toast-message="Producto Agregado!">
                         <i class="fas fa-shopping-cart"></i> Agregar 
                     </button>
                 </div>
@@ -33,7 +31,7 @@
                 <h4 class="product-price">${{ producto.precio }}</h4>
                 <div class="product-buttons">
                     <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Deseo"><i class="icon-heart"></i></button>
-                    <button (click)="obtenerProducto(producto._id)" class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-title="Correcto" data-toast-message="Producto Agregado!">
+                    <button (click)="obtenerProducto(producto._id, producto.precio_desc)" class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-title="Correcto" data-toast-message="Producto Agregado!">
                             <i class="fas fa-shopping-cart"></i> Agregar 
                         </button>
                 </div>

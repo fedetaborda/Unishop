@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output  } from '@angular/core';
 import { Producto } from '../../../models/producto';
 import { ProductoService } from '../../../service/service.index';
+
+declare function init_plugin();
 
 @Component({
   selector: 'app-productoscompra2',
@@ -16,19 +18,22 @@ export class Productoscompra2Component implements OnInit {
   constructor(public _productoService: ProductoService) { }
 
 
-  ngOnInit() {}
+  ngOnInit() {
 
-  obtenerProducto (id: string) {
+    init_plugin();
+  }
 
-    if ( id.length <= 0 ) {
-      return false;
-    } else {
+  obtenerProducto (id: string, precio: number) {
 
-     return this._productoService.cargarProducto( id )
+    if ( id.length > 0 ) {
+
+     return this._productoService.cargarProducto( id, precio )
     .subscribe();
-  
-  }
+
+    }
 
   }
+
 
 }
+

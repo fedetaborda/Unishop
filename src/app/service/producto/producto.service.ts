@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Producto } from '../../models/producto';
 
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { URL_SERVICIOS } from '../../config/config';
+import { DOCUMENT } from '@angular/platform-browser';
 
 import { UsuarioService } from '../usuario/usuario.service';
 
@@ -20,34 +21,38 @@ import { Usuario } from '../../models/usuario';
 @Injectable()
 export class ProductoService {
 
-  producto: Producto[] = [];
+producto: Producto[] = [];
 
-  archivo: File;
+archivo: File;
+
+number = 0;
+
+subtotal = 0;
 
   constructor(
     public http: HttpClient,
     public _usuarioService: UsuarioService,
-    public _subirArchivoService: SubirArchivoService
+    public _subirArchivoService: SubirArchivoService,
+    @Inject(DOCUMENT) private _document
   ) {}
 
-
-  productoObservable () {
-
-    return new Observable( observer => {
-
-        observer.next( this.producto );
-  
-    });
-
-  }
-
-  cargarProducto( id: string ) {
+  cargarProducto( id: string, precio: number ) {
+    console.log('paso');
 
     let url = URL_SERVICIOS + '/producto/' + id;
     return this.http.get( url )
                 .map( (resp: any) => this.producto = resp.producto,
+                this.increment( precio ) );
 
-                this.productoObservable().subscribe() );
+  }
+
+  increment ( precio: number) {
+
+    this.number ++;
+    this.subtotal = this.subtotal + precio;
+
+    this._document.getElementById('cart').innerHTML = this.number;
+    this._document.getElementById('subtotal').innerHTML = '$' + this.subtotal;
 
   }
 

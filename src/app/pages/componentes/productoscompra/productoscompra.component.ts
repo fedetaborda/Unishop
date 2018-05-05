@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Producto } from '../../../models/producto';
 import { ProductoService } from '../../../service/service.index';
 
@@ -12,23 +12,22 @@ export class ProductoscompraComponent implements OnInit {
 
   @Input() productos: Producto;
 
+
+
  // producto: Producto[] = [];
 
   constructor(public _productoService: ProductoService) { }
 
-  ngOnInit() { }
+  ngOnInit() {  }
 
-  obtenerProducto (id: string) {
+  obtenerProducto (id: string, precio: number) {
 
-    if ( id.length <= 0 ) {
-      return false;
-    } else {
+    if ( id.length > 0 ) {
 
-     return this._productoService.cargarProducto(id)
+     return this._productoService.cargarProducto( id, precio )
     .subscribe();
 
-    }
-
+  }
 
   }
 

@@ -37,6 +37,13 @@ import { LinkVistasComponent } from '../componentes/buscardor-prod/link-vistas.c
 import { ProductosViewComponent } from './productos/productos-view.component';
 import { Productoscompra2Component } from './componentes/productoscompra/productoscompra2.component';
 
+import { CartComponent } from './compartidas/cart/cart.component';
+import { HeaderComponent } from './compartidas/header/header.component';
+import { BuscadorComponent } from '../componentes/buscador/buscador.component';
+import { FooterComponent } from './compartidas/footer/footer.component';
+
+
+FooterComponent
 
 
 @NgModule({
@@ -60,11 +67,17 @@ import { Productoscompra2Component } from './componentes/productoscompra/product
         LinkVistasComponent,
         ProductosViewComponent,
         Productoscompra2Component,
-        
+        CartComponent,
+        HeaderComponent,
+        BuscadorComponent,
+        FooterComponent
+
     ],
     exports: [
         ProductosComponent,
-        Productoscompra2Component
+        Productoscompra2Component,
+        ProductosViewComponent,
+        ProductosComponent
     ],
     imports: [
         CompartidaModule,

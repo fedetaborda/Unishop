@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UsuarioService } from '../../../service/service.index';
 
 import { Usuario } from '../../../models/usuario';
@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     init_plugin();
     this.usuario = this._usuarioService.usuario;
+    
   }
 
 }

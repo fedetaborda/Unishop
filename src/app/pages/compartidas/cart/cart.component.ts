@@ -12,14 +12,12 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class CartComponent implements OnInit {
 
-  subscription: Subscription;
+  @Input() productoId: String;
 
-  // producto: Producto[] = [];
+  //producto: Producto[] = [];
 
-  constructor( public _producto: ProductoService) {
-
-    this.subscription = this._producto.productoObservable()
-      .subscribe( producto => console.log( 'Subs', producto ));
+  constructor() {
+  console.log('cart', this.productoId);
 
   }
 
