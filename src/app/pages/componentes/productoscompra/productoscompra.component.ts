@@ -21,7 +21,7 @@ export class ProductoscompraComponent implements OnInit {
   ngOnInit() {  }
 
   obtenerProducto (id: string, precio: number) {
-
+  
     if ( id.length > 0 ) {
 
      return this._productoService.cargarProducto( id, precio )

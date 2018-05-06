@@ -3,6 +3,7 @@ export class Producto {
     constructor(
         public nombre: string,
         public costo: Number,
+        public cantidad: Number,
         public precio: Number,
         public descripcion: String,
         public categoria: string,

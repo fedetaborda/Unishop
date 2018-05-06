@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 
 var productoSchema = new Schema({
     nombre: { type: String, required: [true, 'El nombre del producto es necesario'] },
+    cantidad: { type: Number, required: false },
     costo: { type: Number, required: [true, 'El precio de costo es necesario'] },
     precio: { type: Number, required: [true, 'El precio es necesario'] },
     rango: { type: String, required: [true, 'El valor de rango de precio es requerido'] },

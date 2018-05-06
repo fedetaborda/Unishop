@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output  } from '@angular/core';
 import { Producto } from '../../../models/producto';
 import { ProductoService } from '../../../service/service.index';
 
-declare function init_plugin();
 
 @Component({
   selector: 'app-productoscompra2',
@@ -18,10 +17,7 @@ export class Productoscompra2Component implements OnInit {
   constructor(public _productoService: ProductoService) { }
 
 
-  ngOnInit() {
-
-    init_plugin();
-  }
+  ngOnInit() {}
 
   obtenerProducto (id: string, precio: number) {
 

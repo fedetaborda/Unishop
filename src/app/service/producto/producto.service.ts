@@ -15,19 +15,22 @@ import { NgForm } from '@angular/forms';
 
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
 import { Usuario } from '../../models/usuario';
+import { element } from 'protractor';
 
 
 
 @Injectable()
 export class ProductoService {
 
-producto: Producto[] = [];
+productos: Producto[] = [];
 
 archivo: File;
 
-number = 0;
+cantidad = 0;
 
-subtotal = 0;
+subtotal: = 0;
+
+precio = 0;
 
   constructor(
     public http: HttpClient,
@@ -36,31 +39,34 @@ subtotal = 0;
     @Inject(DOCUMENT) private _document
   ) {}
 
-  cargarProducto( id: string, precio: number ) {
-    console.log('paso');
+  cargarProducto( id: string, precio: Number ) {
 
     let url = URL_SERVICIOS + '/producto/' + id;
     return this.http.get( url )
-                .map( (resp: any) => this.producto = resp.producto,
-                this.increment( precio ) );
+                .map( (resp: any) => this.productos.push( resp.producto),
+                this.increment( this.cantidad, precio ) );
 
   }
 
-  increment ( precio: number) {
+  increment ( cantidad: number, precio: number) {
+  
+    this.cantidad ++;
 
-    this.number ++;
-    this.subtotal = this.subtotal + precio;
+    this.subtotal = (this.subtotal + precio);
 
-    this._document.getElementById('cart').innerHTML = this.number;
+    this._document.getElementById('cart').innerHTML = this.cantidad;
     this._document.getElementById('subtotal').innerHTML = '$' + this.subtotal;
 
+    console.log( this.subtotal, precio );
+
   }
 
 
+  producinCart () {
 
-  productoCart () {
-      return this.producto;
+    return this.productos;
   }
+
 
 
   crearProducto( producto: Producto , imagen: File ) {
@@ -89,10 +95,9 @@ subtotal = 0;
           .catch( resp => {
             console.log( resp );
           }) ;
-
   }
 
-
+  
   cargarProductos( desde: number = 0 ) {
 
     let url = URL_SERVICIOS + '/producto?desde=' + desde;
