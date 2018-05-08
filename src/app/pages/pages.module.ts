@@ -36,14 +36,15 @@ import { BuscardorProdComponent } from '../componentes/buscardor-prod/buscardor-
 import { LinkVistasComponent } from '../componentes/buscardor-prod/link-vistas.component';
 import { ProductosViewComponent } from './productos/productos-view.component';
 import { Productoscompra2Component } from './componentes/productoscompra/productoscompra2.component';
+import { CartListComponent } from './cartList/cartList.component';
 
-import { CartComponent } from './compartidas/cart/cart.component';
+
 import { HeaderComponent } from './compartidas/header/header.component';
 import { BuscadorComponent } from '../componentes/buscador/buscador.component';
 import { FooterComponent } from './compartidas/footer/footer.component';
 
 
-FooterComponent
+
 
 
 @NgModule({
@@ -67,7 +68,7 @@ FooterComponent
         LinkVistasComponent,
         ProductosViewComponent,
         Productoscompra2Component,
-        CartComponent,
+        CartListComponent,
         HeaderComponent,
         BuscadorComponent,
         FooterComponent

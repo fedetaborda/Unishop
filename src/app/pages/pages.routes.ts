@@ -13,6 +13,7 @@ import { DetalleMarcaComponent } from './admin-producto/detalle-marca/detalle-ma
 import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/busqueda-producto.component';
 import { Buscadorview2Component } from './admin-producto/busqueda-producto/buscadorview2.component';
 import { ProductosViewComponent } from './productos/productos-view.component';
+import { CartListComponent } from './cartList/cartList.component';
 
 
 
@@ -29,7 +30,9 @@ const PagesRoutes: Routes = [
         { path: 'viewproductos', component: ProductosViewComponent },
         { path: 'busqueda/:id', component: BusquedaProductoComponent },
         { path: 'list/:id', component: Buscadorview2Component },
+        { path: 'cartList', component: CartListComponent },
 
+        // VerificaTokenGuard - Verifica Loguin
         { path: 'perfil',
         component: PerfilComponent, canActivate: [ VerificaTokenGuard ] },
 

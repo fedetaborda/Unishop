@@ -28,7 +28,7 @@ archivo: File;
 
 cantidad = 0;
 
-subtotal: = 0;
+subtotal = 0;
 
 precio = 0;
 
@@ -39,25 +39,25 @@ precio = 0;
     @Inject(DOCUMENT) private _document
   ) {}
 
-  cargarProducto( id: string, precio: Number ) {
+  cargarProducto( id: string, precio: number ) {
+
+    console.log(precio);
 
     let url = URL_SERVICIOS + '/producto/' + id;
     return this.http.get( url )
                 .map( (resp: any) => this.productos.push( resp.producto),
-                this.increment( this.cantidad, precio ) );
+                this.increment(  precio ) );
 
   }
 
-  increment ( cantidad: number, precio: number) {
-  
+  increment ( precio: number) {
+
     this.cantidad ++;
 
     this.subtotal = (this.subtotal + precio);
 
     this._document.getElementById('cart').innerHTML = this.cantidad;
-    this._document.getElementById('subtotal').innerHTML = '$' + this.subtotal;
-
-    console.log( this.subtotal, precio );
+    this._document.getElementById('subtotal').innerHTML = '$' + this.subtotal.toFixed(2);
 
   }
 
