@@ -43,7 +43,7 @@
                             <div class="product-info">
                                 <h4 class="product-title"><a href="shop-single.html">{{ producto.nombre }}</a></h4>
                                 <span *ngIf="producto.descuento" class="text-danger"><em></em> Descuento %{{ producto.descuento }} </span>
-                                <span><em></em>  {{ producto.descripcion }} </span>
+                                <span><em></em>  ${{ producto.descripcion }} </span>
                             </div>
                         </div>
                     </td>
@@ -61,7 +61,7 @@
                     </td>
                     <td *ngIf="producto.descuento" class="text-center text-lg text-medium">{{ producto.precio_desc }}</td>
 
-                    <td *ngIf="!producto.descuento" class="text-center text-lg text-medium">{{ producto.precio }}</td>
+                    <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio }}</td>
 
                     <td (click)="eleminarCart(producto[i])" class="text-center"><a class="remove-from-cart" data-toggle="tooltip" title="Eliminar"><i class="icon-cross"></i></a></td>
                 </tr>
@@ -73,7 +73,7 @@
     <div *ngIf="productos.length" class="shopping-cart-footer">
         <div class="column"><a class="btn btn-outline-secondary" routerLink="/productos"><i class="icon-arrow-left"></i>&nbsp;Volver</a></div>
         <div class="column">
-            <a class="btn btn-success" href="checkout-address.html">
+            <a class="btn btn-success" routerLink="/checkout-address">
                Confirmar y Pagar
             </a>
         </div>

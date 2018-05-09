@@ -14,6 +14,10 @@ import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/bu
 import { Buscadorview2Component } from './admin-producto/busqueda-producto/buscadorview2.component';
 import { ProductosViewComponent } from './productos/productos-view.component';
 import { CartListComponent } from './cartList/cartList.component';
+import { DireccionpagoComponent } from './direccionpago/direccionpago.component';
+import { MediopagoComponent } from './mediopago/mediopago.component';
+import { ConfirmpagoComponent } from './confirmpago/confirmpago.component';
+import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
 
 
 
@@ -31,6 +35,10 @@ const PagesRoutes: Routes = [
         { path: 'busqueda/:id', component: BusquedaProductoComponent },
         { path: 'list/:id', component: Buscadorview2Component },
         { path: 'cartList', component: CartListComponent },
+        { path: 'checkout-address', component: DireccionpagoComponent },
+        { path: 'checkout-pago', component: MediopagoComponent },
+        { path: 'confirm-pago', component: ConfirmpagoComponent },
+        { path: 'pago-finalizado', component: PagocompletoComponent },
 
         // VerificaTokenGuard - Verifica Loguin
         { path: 'perfil',

@@ -42,6 +42,10 @@ import { CartListComponent } from './cartList/cartList.component';
 import { HeaderComponent } from './compartidas/header/header.component';
 import { BuscadorComponent } from '../componentes/buscador/buscador.component';
 import { FooterComponent } from './compartidas/footer/footer.component';
+import { DireccionpagoComponent } from './direccionpago/direccionpago.component';
+import { MediopagoComponent } from './mediopago/mediopago.component';
+import { ConfirmpagoComponent } from './confirmpago/confirmpago.component';
+import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
 
 
 
@@ -71,7 +75,11 @@ import { FooterComponent } from './compartidas/footer/footer.component';
         CartListComponent,
         HeaderComponent,
         BuscadorComponent,
-        FooterComponent
+        FooterComponent,
+        DireccionpagoComponent,
+        MediopagoComponent,
+        ConfirmpagoComponent,
+        PagocompletoComponent
 
     ],
     exports: [

@@ -1,0 +1,175 @@
+<!-- Page Title-->
+<div class="page-title">
+    <div class="container">
+        <div class="column">
+            <h1>Dirección de Envio</h1>
+        </div>
+        <div class="column">
+            <ul class="breadcrumbs">
+                <li><a routerLink="/productos">Home</a>
+                </li>
+                <li class="separator">&nbsp;</li>
+                <li>Dirección de Envio</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Page Content-->
+<div class="container padding-bottom-3x mb-2">
+    <div class="row">
+        <!-- Checkout Adress-->
+        <div class="col-xl-9 col-lg-8">
+            <div class="checkout-steps">
+                <a routerLink="checkout-review.html">3. Confirmar Pago</a>
+                <a routerLink="/checkout-pago">
+                    <span class="angle"></span>2. Forma de Pago</a>
+                <a class="active" routerLink="/checkout-address">
+                    <span class="angle"></span>1. Envio</a>
+            </div>
+
+            <h4>Donde te lo enviamos?</h4>
+            <hr class="padding-bottom-1x">
+            <div class="row">
+
+                <ul class="post-meta">
+                    <li>
+                        <i class="icon-head"></i>&nbsp;
+                        <span>&nbsp; {{usuario.nombre}} {{usuario.apellido}}</span>
+                        <span>&nbsp; {{usuario.email}}</span>
+                        <span>&nbsp; {{usuario.telefono}}</span>
+                    </li>
+                </ul>
+
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="thead-default">
+                            <tr>
+                                <th>Direcciones ingresadas</th>
+                                <th></th>
+                                <th>Delivery time</th>
+                                <th>Handling fee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="align-middle">
+                                    <div class="custom-control custom-radio mb-0">
+                                        <input class="custom-control-input" type="radio" id="courier" name="shipping-method" checked="">
+                                        <label class="custom-control-label" for="courier"></label>
+                                    </div>
+                                </td>
+                                <td class="align-middle"><span class="text-medium">Courier</span><br><span class="text-muted text-sm">All Addresses(default zone), United States &amp; Canada</span></td>
+                                <td class="align-middle">2 - 4 days</td>
+                                <td class="align-middle">$22.50</td>
+                            </tr>
+                            <tr>
+                                <td class="align-middle">
+                                    <div class="custom-control custom-radio mb-0">
+                                        <input class="custom-control-input" type="radio" id="local" name="shipping-method">
+                                        <label class="custom-control-label" for="local"></label>
+                                    </div>
+                                </td>
+                                <td class="align-middle"><span class="text-medium">Retiro por Comercio</span><br><span class="text-muted text-sm">Alen 1358 (Local 1 Galeria II) &amp; Tandil</span></td>
+                                <td class="align-middle text-danger">en 15 minutos</td>
+                                <td class="align-middle text-danger">$00.00</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><br>
+                                    <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
+                                </td>
+
+                                <td><br>
+                                    <button class="btn btn-outline-primary btn-sm"><i class="fas fa-map-marker-alt"></i></button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <hr class="padding-bottom-2x">
+
+            <div class="checkout-footer">
+                <div class="column"><a class="btn btn-outline-secondary" routerLink="/cartList"><i class="icon-arrow-left"></i><span class="hidden-xs-down">&nbsp;Volvar atras</span></a></div>
+                <div class="column"><a class="btn btn-primary" routerLink="/checkout-pago"><span class="hidden-xs-down">Continuar&nbsp;</span><i class="icon-arrow-right"></i></a></div>
+            </div>
+        </div>
+        <!-- Sidebar          -->
+        <div class="col-xl-3 col-lg-4">
+            <aside class="sidebar">
+                <div class="padding-top-2x hidden-lg-up"></div>
+                <!-- Order Summary Widget-->
+                <section class="widget widget-order-summary">
+                    <h3 class="widget-title">Order Summary</h3>
+                    <table class="table">
+                        <tr>
+                            <td>Cart Subtotal:</td>
+                            <td class="text-medium">$289.68</td>
+                        </tr>
+                        <tr>
+                            <td>Shipping:</td>
+                            <td class="text-medium">$22.50</td>
+                        </tr>
+                        <tr>
+                            <td>Estimated tax:</td>
+                            <td class="text-medium">$3.42</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="text-lg text-medium">$315.60</td>
+                        </tr>
+                    </table>
+                </section>
+                <!-- Featured Products Widget-->
+                <section class="widget widget-featured-products">
+                    <h3 class="widget-title">Recently Viewed</h3>
+                    <!-- Entry-->
+                    <div class="entry">
+                        <div class="entry-thumb">
+                            <a href="shop-single.html"><img src="img/shop/widget/01.jpg" alt="Product"></a>
+                        </div>
+                        <div class="entry-content">
+                            <h4 class="entry-title"><a href="shop-single.html">Oakley Kickback</a></h4><span class="entry-meta">$155.00</span>
+                        </div>
+                    </div>
+                    <!-- Entry-->
+                    <div class="entry">
+                        <div class="entry-thumb">
+                            <a href="shop-single.html"><img src="img/shop/widget/02.jpg" alt="Product"></a>
+                        </div>
+                        <div class="entry-content">
+                            <h4 class="entry-title"><a href="shop-single.html">Top-Sider Fathom</a></h4><span class="entry-meta">$90.00</span>
+                        </div>
+                    </div>
+                    <!-- Entry-->
+                    <div class="entry">
+                        <div class="entry-thumb">
+                            <a href="shop-single.html"><img src="img/shop/widget/03.jpg" alt="Product"></a>
+                        </div>
+                        <div class="entry-content">
+                            <h4 class="entry-title"><a href="shop-single.html">Vented Straw Fedora</a></h4><span class="entry-meta">$49.50</span>
+                        </div>
+                    </div>
+                    <!-- Entry-->
+                    <div class="entry">
+                        <div class="entry-thumb">
+                            <a href="shop-single.html"><img src="img/shop/widget/04.jpg" alt="Product"></a>
+                        </div>
+                        <div class="entry-content">
+                            <h4 class="entry-title"><a href="shop-single.html">Big Wordmark Tote</a></h4><span class="entry-meta">$29.99</span>
+                        </div>
+                    </div>
+                </section>
+                <!-- Promo Banner-->
+                <section class="promo-box" style="background-image: url(img/banners/02.jpg);"><span class="overlay-dark" style="opacity: .4;"></span>
+                    <div class="promo-box-content text-center padding-top-2x padding-bottom-2x">
+                        <h4 class="text-light text-thin text-shadow">New Collection of</h4>
+                        <h3 class="text-bold text-light text-shadow">Sunglasses</h3><a class="btn btn-outline-white btn-sm" href="shop-grid-ls.html">Shop Now</a>
+                    </div>
+                </section>
+            </aside>
+        </div>
+    </div>
+</div>
