@@ -12,22 +12,25 @@ export class ProductoscompraComponent implements OnInit {
 
   @Input() productos: Producto;
 
-
-
- // producto: Producto[] = [];
+  producto: Producto[] = [];
 
   constructor(public _productoService: ProductoService) { }
 
   ngOnInit() {  }
 
-  obtenerProducto (id: string, precio: number) {
-  
+  obtenerProducto (id: string) {
+
     if ( id.length > 0 ) {
 
-     return this._productoService.cargarProducto( id, precio )
-    .subscribe();
+    this._productoService.cargarProducto( id )
+    .subscribe( producto => {
+      this.producto.push( producto );
 
-  }
+      this._productoService.calcularCart(this.producto);
+    });
+    
+    
+    }
 
   }
 

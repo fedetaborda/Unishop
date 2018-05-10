@@ -9,7 +9,7 @@ import { ProductoService } from '../../../service/service.index';
 })
 export class Productoscompra2Component implements OnInit {
 
- // producto: Producto[] = [];
+ producto: Producto[] = [];
  
   @Input() productos: Producto;
 
@@ -17,14 +17,21 @@ export class Productoscompra2Component implements OnInit {
   constructor(public _productoService: ProductoService) { }
 
 
-  ngOnInit() {}
+  ngOnInit() {
 
-  obtenerProducto (id: string, precio: number) {
+  }
+
+  obtenerProducto (id: string) {
 
     if ( id.length > 0 ) {
 
-     return this._productoService.cargarProducto( id, precio )
-    .subscribe();
+    this._productoService.cargarProducto( id )
+    .subscribe( producto => {
+      this.producto.push( producto );
+
+      this._productoService.calcularCart(this.producto);
+    });
+
 
     }
 

@@ -24,6 +24,7 @@ export class ProductoService {
 
 productos: Producto[] = [];
 
+
 archivo: File;
 
 cantidad = 0;
@@ -39,31 +40,86 @@ precio = 0;
     @Inject(DOCUMENT) private _document
   ) {}
 
-  cargarProducto( id: string, precio: number ) {
-
-    console.log(precio);
+  cargarProducto( id: string ) {
 
     let url = URL_SERVICIOS + '/producto/' + id;
     return this.http.get( url )
-                .map( (resp: any) => this.productos.push( resp.producto),
-                this.increment(  precio ) );
-
+    .map( (resp: any) => resp.producto );
   }
 
-  increment ( precio: number) {
+  calcularCart(producto) {
 
-    this.cantidad ++;
+    this.productos = producto;
 
-    this.subtotal = (this.subtotal + precio);
+    console.log(this.productos);
 
-    this._document.getElementById('cart').innerHTML = this.cantidad;
-    this._document.getElementById('subtotal').innerHTML = '$' + this.subtotal.toFixed(2);
+    let precio = 0;
+    let cantidad = 0;
 
+    for (let i = 0; i < this.productos.length; i++) {
+
+      const element = this.productos[i];
+
+      // Precio con descuento
+      if (element['precio_desc']) {
+
+        precio += element['precio_desc'];
+        cantidad = (cantidad + element['cantidad']);
+   
+      } else if (element['precio']) {
+
+      // Precio sin descuento
+      precio += element['precio'];
+      cantidad = (cantidad + element['cantidad']);
+
+      }
+
+    }
+
+    this._document.getElementById('cart').innerHTML = cantidad;
+    this._document.getElementById('subtotal').innerHTML = '$' + precio;
+  }
+
+  calcularCart2(producto) {
+
+    this.productos = producto;
+
+    console.log(this.productos);
+
+    let precio = 0;
+    let total = 0;
+    let cantidad = 0;
+   
+    for (let i = 0; i < this.productos.length; i++) {
+
+      const element = this.productos[i];
+
+      // Precio con descuento
+      if (element['precio_desc']) {
+      cantidad = element['cantidad']
+      precio = element['precio_desc'] * element['cantidad'];
+
+      } else if (element['precio']) {
+
+      // Precio sin descuento
+      cantidad = element['cantidad']
+      precio = element['precio'] * element['cantidad'];
+      }
+      
+      cantidad += cantidad;
+
+      total += precio;
+
+    }
+
+    console.log( cantidad );
+
+    this._document.getElementById('cart').innerHTML = '0';
+    this._document.getElementById('subtotal').innerHTML = '$' + total;
   }
 
 
   producinCart () {
-
     return this.productos;
   }
 

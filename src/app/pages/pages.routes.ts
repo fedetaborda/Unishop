@@ -34,11 +34,14 @@ const PagesRoutes: Routes = [
         { path: 'viewproductos', component: ProductosViewComponent },
         { path: 'busqueda/:id', component: BusquedaProductoComponent },
         { path: 'list/:id', component: Buscadorview2Component },
-        { path: 'cartList', component: CartListComponent },
-        { path: 'checkout-address', component: DireccionpagoComponent },
-        { path: 'checkout-pago', component: MediopagoComponent },
-        { path: 'confirm-pago', component: ConfirmpagoComponent },
-        { path: 'pago-finalizado', component: PagocompletoComponent },
+
+
+        { path: 'cartList', component: CartListComponent, canActivate: [ VerificaTokenGuard ]},
+        { path: 'checkout-address', component: DireccionpagoComponent, canActivate: [ VerificaTokenGuard ]},
+        { path: 'checkout-pago', component: MediopagoComponent, canActivate: [ VerificaTokenGuard ]},
+        { path: 'confirm-pago', component: ConfirmpagoComponent, canActivate: [ VerificaTokenGuard ]},
+        { path: 'pago-finalizado', component: PagocompletoComponent, canActivate: [ VerificaTokenGuard ]},
+
 
         // VerificaTokenGuard - Verifica Loguin
         { path: 'perfil',

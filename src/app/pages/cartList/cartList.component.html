@@ -28,8 +28,10 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th>#</th>
                     <th>Producto Seleccionado</th>
                     <th class="text-center">Cantidad</th>
+                    <th class="text-center">Precio</th>
                     <th class="text-center">Subtotal</th>
                     <th class="text-center"><button (click)="eliminartodo()" class="btn btn-sm btn-outline-danger" href="#">Eliminar Todo</button></th>
                 </tr>
@@ -37,6 +39,7 @@
             <tbody>
 
                 <tr *ngFor="let producto of productos; let i=index">
+                    <td>{{i+1}}</td>
                     <td>
                         <div class="product-item">
                             <a class="product-thumb" href="shop-single.html"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}"></a>
@@ -49,25 +52,34 @@
                     </td>
                     <td class="text-center">
                         <div class="count-input">
-                            <select class="form-control">
-                                <option>{{ producto.cantidad }}</option>
+                            <select (change)="cambioCantidad()" [(ngModel)]="producto.cantidad" name="cantidad" class="form-control" required>
                                 <option>1</option>
                                 <option>2</option>
                                 <option>3</option>
                                 <option>4</option>
-                                <option>4</option>
+                                <option>5</option>
                             </select>
                         </div>
                     </td>
-                    <td *ngIf="producto.descuento" class="text-center text-lg text-medium">{{ producto.precio_desc }}</td>
+                    <td *ngIf="producto.descuento" class="text-center text-lg text-medium">${{ producto.precio_desc }}</td>
 
                     <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio }}</td>
 
-                    <td (click)="eleminarCart(producto[i])" class="text-center"><a class="remove-from-cart" data-toggle="tooltip" title="Eliminar"><i class="icon-cross"></i></a></td>
+                    <td *ngIf="producto.descuento" class="text-center text-lg text-medium">${{ producto.precio_desc * producto.cantidad }}</td>
+
+                    <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio * producto.cantidad }}</td>
+
+                    <td class="text-center"><a (click)="eleminarCart(i)" class="remove-from-cart" data-toggle="tooltip" title="Eliminar"><i class="icon-cross"></i></a></td>
                 </tr>
 
             </tbody>
         </table>
+        <div class="shopping-cart-footer">
+            <div class="column">
+
+            </div>
+            <div class="column text-lg">Subtotal: <span class="text-medium">Total</span></div>
+        </div>
     </div>
 
     <div *ngIf="productos.length" class="shopping-cart-footer">
