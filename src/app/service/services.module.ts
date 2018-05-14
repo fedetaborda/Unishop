@@ -8,7 +8,8 @@ import {
   SubirArchivoService,
   ProductoService,
   CategoriaService,
-  VerificaTokenGuard
+  VerificaTokenGuard,
+  AdminGuard
 } from './service.index';
 
 
@@ -24,7 +25,8 @@ import {
     SubirArchivoService,
     CategoriaService,
     ProductoService,
-    VerificaTokenGuard
+    VerificaTokenGuard,
+    AdminGuard
   ],
   declarations: []
 })

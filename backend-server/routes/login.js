@@ -231,6 +231,4 @@ function obtenerMenu(ROLE) {
 
 }
 
-
-
 module.exports = app;

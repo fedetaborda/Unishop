@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Producto } from '../../../models/producto';
-import { ProductoService } from '../../../service/service.index';
+import { ProductoService, VerificaTokenGuard } from '../../../service/service.index';
 
 
 
@@ -14,22 +14,24 @@ export class ProductoscompraComponent implements OnInit {
 
   producto: Producto[] = [];
 
-  constructor(public _productoService: ProductoService) { }
+  constructor(public _productoService: ProductoService,
+              public _verificaTokenGuard: VerificaTokenGuard) { }
 
   ngOnInit() {  }
 
   obtenerProducto (id: string) {
 
-    if ( id.length > 0 ) {
+    // verificar Login
 
-    this._productoService.cargarProducto( id )
+    if ( this._verificaTokenGuard.canActivate() ) {
+
+      this._productoService.cargarProducto( id )
     .subscribe( producto => {
       this.producto.push( producto );
 
       this._productoService.calcularCart(this.producto);
     });
-    
-    
+
     }
 
   }

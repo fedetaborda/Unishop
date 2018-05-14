@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { PagesComponent } from './pages.component';
 import { ProductosComponent } from './productos/productos.component';
 import { LoginComponent } from './login/login.component';
-import { LoginGuardGuard, VerificaTokenGuard } from '../service/service.index';
+import { LoginGuardGuard, VerificaTokenGuard, AdminGuard } from '../service/service.index';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AdminProductoComponent } from './admin-producto/admin-producto.component';
 import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo.component';
@@ -20,48 +20,43 @@ import { ConfirmpagoComponent } from './confirmpago/confirmpago.component';
 import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
 
 
-
-
-
 const PagesRoutes: Routes = [
 
     { path: '',
-     component: PagesComponent,
-     canActivate: [ LoginGuardGuard ],
+    component: PagesComponent,
+    canActivate: [ LoginGuardGuard ],
 
-     children: [
+    children: [
+
         { path: 'productos', component: ProductosComponent },
         { path: 'viewproductos', component: ProductosViewComponent },
         { path: 'busqueda/:id', component: BusquedaProductoComponent },
         { path: 'list/:id', component: Buscadorview2Component },
 
 
-        { path: 'cartList', component: CartListComponent, canActivate: [ VerificaTokenGuard ]},
-        { path: 'checkout-address', component: DireccionpagoComponent, canActivate: [ VerificaTokenGuard ]},
-        { path: 'checkout-pago', component: MediopagoComponent, canActivate: [ VerificaTokenGuard ]},
-        { path: 'confirm-pago', component: ConfirmpagoComponent, canActivate: [ VerificaTokenGuard ]},
-        { path: 'pago-finalizado', component: PagocompletoComponent, canActivate: [ VerificaTokenGuard ]},
-
+        { path: 'cartList', component: CartListComponent },
+        { path: 'checkout-address', component: DireccionpagoComponent },
+        { path: 'checkout-pago', component: MediopagoComponent },
+        { path: 'confirm-pago', component: ConfirmpagoComponent },
+        { path: 'pago-finalizado', component: PagocompletoComponent },
+        { path: 'perfil', component: PerfilComponent },
 
         // VerificaTokenGuard - Verifica Loguin
-        { path: 'perfil',
-        component: PerfilComponent, canActivate: [ VerificaTokenGuard ] },
-
         { path: 'admin-prod',
-        component: AdminProductoComponent, canActivate: [ VerificaTokenGuard ],
+        component: AdminProductoComponent, canActivate: [ AdminGuard ],
 
         children: [
             { path: '', component: ProducListComponent },
             { path: 'nuevo', component: NuevoComponent },
             { path: 'categorias', component: DetalleCategoriaComponent },
             { path: 'marcas', component: DetalleMarcaComponent },
-            { path: '', redirectTo: '/produc-list', pathMatch: 'full' }
-            ]
+            { path: '', redirectTo: '/produc-list', pathMatch: 'full' }]
          },
 
-        { path: '', redirectTo: '/productos', pathMatch: 'full' }
-     ],
+         { path: '', redirectTo: '/productos', pathMatch: 'full' }
 
-     }
-];
-export const PAGES_ROUTES = RouterModule.forChild(PagesRoutes);
+         ]
+
+     ];
+
+export const PAGES_ROUTES = RouterModule.forChild( PagesRoutes );

@@ -69,7 +69,7 @@ export class VerificaTokenGuard implements CanActivate {
 
     if ( fechaExp < ahora ) {
       return true;
-    }else {
+    } else {
       return false;
     }
 

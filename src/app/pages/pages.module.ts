@@ -48,9 +48,6 @@ import { ConfirmpagoComponent } from './confirmpago/confirmpago.component';
 import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
 
 
-
-
-
 @NgModule({
     declarations: [
         ProductosComponent,
@@ -85,8 +82,7 @@ import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
     exports: [
         ProductosComponent,
         Productoscompra2Component,
-        ProductosViewComponent,
-        ProductosComponent
+        ProductosViewComponent
     ],
     imports: [
         CompartidaModule,
@@ -99,4 +95,5 @@ import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
         ServicesModule
     ]
 })
-  export class PagesModule {}
+
+export class PagesModule { }
