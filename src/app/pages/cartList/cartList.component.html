@@ -63,9 +63,11 @@
                     </td>
                     <td *ngIf="producto.descuento" class="text-center text-lg text-medium">${{ producto.precio_desc }}</td>
 
-                    <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio }}</td>
-
                     <td *ngIf="producto.descuento" class="text-center text-lg text-medium">${{ producto.precio_desc * producto.cantidad }}</td>
+
+
+
+                    <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio }}</td>
 
                     <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio * producto.cantidad }}</td>
 
@@ -78,7 +80,7 @@
             <div class="column">
 
             </div>
-            <div class="column text-lg">Subtotal: <span class="text-medium">Total</span></div>
+            <div class="column text-lg">Subtotal: <span class="text-medium"> {{_productoService.subTotal}} </span></div>
         </div>
     </div>
 

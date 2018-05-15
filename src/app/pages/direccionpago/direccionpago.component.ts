@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
+
 import { Usuario } from '../../models/usuario';
-import { UsuarioService } from '../../service/service.index';
+import { Ubicacion } from '../../models/ubicacion';
+
+import { UsuarioService, ProductoService } from '../../service/service.index';
+
 
 @Component({
   selector: 'app-direccionpago',
@@ -10,12 +15,22 @@ export class DireccionpagoComponent implements OnInit {
 
   usuario: Usuario;
 
-  constructor(public _usuarioService: UsuarioService) { }
+  subTotal: string;
+
+  constructor(public _usuarioService: UsuarioService,
+    public _productoService: ProductoService) { }
 
   ngOnInit() {
 
     this.usuario = this._usuarioService.usuario;
+    this.subTotal = this._productoService.subTotal;
 
   }
+
+
+  registrarDireccion() {
+    
+  }
+
 
 }

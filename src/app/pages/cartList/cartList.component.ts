@@ -12,26 +12,28 @@ export class CartListComponent implements OnInit {
 
   productos: Producto[] = [];
 
+  subTotal: string;
+
   @ViewChild('cboCant') cboCant: ElementRef;
 
-  constructor(private _productoService: ProductoService,
-          @Inject(DOCUMENT) private _document ) { }
+  constructor(public _productoService: ProductoService,
+          @Inject(DOCUMENT) private _document ) {}
 
   ngOnInit() {
 
     this.productos = this._productoService.producinCart();
+
   }
 
   cambioCantidad() {
-    
+
    this._productoService.calcularCart2(this.productos);
 
   }
-  
 
   resetCart() {
     this._document.getElementById('cart').innerHTML = 0;
-    this._document.getElementById('subtotal').innerHTML = '0.00';
+    this.subTotal = this._document.getElementById('subtotal').innerHTML = '0.00';
   }
 
 
@@ -40,7 +42,7 @@ export class CartListComponent implements OnInit {
     this.productos.splice( i , 1 );
 
   if ( this.productos.length > 0) {
-    this._productoService.calcularCart(this.productos);
+    this._productoService.calcularCart2(this.productos);
     }
 
     if (!this.productos.length) {

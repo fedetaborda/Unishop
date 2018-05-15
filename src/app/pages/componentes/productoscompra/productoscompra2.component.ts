@@ -23,17 +23,12 @@ export class Productoscompra2Component implements OnInit {
 
   obtenerProducto (id: string) {
 
-    if ( id.length > 0 ) {
-
     this._productoService.cargarProducto( id )
     .subscribe( producto => {
       this.producto.push( producto );
 
       this._productoService.calcularCart(this.producto);
     });
-
-
-    }
 
   }
 

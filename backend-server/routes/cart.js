@@ -21,7 +21,6 @@ app.get('/', (req, res, next) => {
     Cart.find({})
         .skip(desde)
         .limit(50)
-        .populate('usuario')
         .populate('producto')
         .populate('usuario', 'nombre apellido email telefono')
         .exec(

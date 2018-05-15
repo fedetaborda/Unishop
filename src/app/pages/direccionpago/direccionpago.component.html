@@ -6,7 +6,7 @@
         </div>
         <div class="column">
             <ul class="breadcrumbs">
-                <li><a routerLink="/productos">Home</a>
+                <li><a routerLink="/productos">Inicio</a>
                 </li>
                 <li class="separator">&nbsp;</li>
                 <li>Dirección de Envio</li>
@@ -30,24 +30,24 @@
             <h4>Donde te lo enviamos?</h4>
             <hr class="padding-bottom-1x">
             <div class="row">
-
-                <ul class="post-meta">
-                    <li>
-                        <i class="icon-head"></i>&nbsp;
-                        <span>&nbsp; {{usuario.nombre}} {{usuario.apellido}}</span>
-                        <span>&nbsp; {{usuario.email}}</span>
-                        <span>&nbsp; {{usuario.telefono}}</span>
-                    </li>
-                </ul>
-
+                <div class="col-md-12">
+                    <ul class="post-meta">
+                        <li>
+                            <i class="icon-head"></i>&nbsp;
+                            <span>&nbsp; usuario: {{usuario.nombre}} {{usuario.apellido}}</span>
+                            <span>&nbsp; email: {{usuario.email}}</span>
+                            <span>&nbsp; Tel: {{usuario.telefono}}</span>
+                        </li>
+                    </ul>
+                </div>
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead class="thead-default">
                             <tr>
-                                <th>Direcciones ingresadas</th>
+                                <th>Direcciones</th>
                                 <th></th>
-                                <th>Delivery time</th>
-                                <th>Handling fee</th>
+                                <th>Tiempo Estimado</th>
+                                <th>Costo de Envio / Retiro</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,27 +69,59 @@
                                         <label class="custom-control-label" for="local"></label>
                                     </div>
                                 </td>
-                                <td class="align-middle"><span class="text-medium">Retiro por Comercio</span><br><span class="text-muted text-sm">Alen 1358 (Local 1 Galeria II) &amp; Tandil</span></td>
+                                <td class="align-middle"><span class="text-medium">Retiro por el Comercio</span><br><span class="text-muted text-sm">Alen 1358 (Local 1 Galeria II) &amp; Tandil</span></td>
                                 <td class="align-middle text-danger">en 15 minutos</td>
                                 <td class="align-middle text-danger">$00.00</td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td><br>
-                                    <input class="form-control form-control-sm" type="text" placeholder="Coupon code" required="">
-                                </td>
-
-                                <td><br>
-                                    <button class="btn btn-outline-primary btn-sm"><i class="fas fa-map-marker-alt"></i></button>
-                                </td>
-                            </tr>
-
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <hr class="padding-bottom-2x">
+            <div class="accordion" id="accordion" role="tablist">
+                <div class="card">
+                    <div class="card-header" role="tab">
+                        <h6><a href="#card" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" class="collapsed"><i class="far fa-compass"></i> Agregar Ubicación</a></h6>
+                    </div>
+                    <div class="collapse" id="card" role="tabpanel">
+                        <div class="card-body">
+
+                            <form [formGroup]="form" (ngSubmit)="registrarDireccion( form.value )" class="interactive-credit-card row">
+                                <div class="form-group col-sm-6">
+                                    <input class="form-control" type="text" name="direccion" placeholder="Dirección" required>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <input class="form-control" type="number" name="altura" placeholder="Número" required>
+                                </div>
+                                <div class="form-group col-sm-3">
+                                    <input class="form-control" type="text" name="piso" placeholder="Piso / Dpto">
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <select class="form-control" id="select-input">
+                                                <option>Casa</option>
+                                                <option>Edificio</option>
+                                                <option>Banco</option>
+                                                <option>Institución</option>
+                                                
+                                    </select>
+                                </div>
+                                <div class="form-group col-sm-6">
+                                    <input class="form-control" type="text" name="telefono" placeholder="Teléfono">
+                                </div>
+                                <div class="form-group col-sm-12">
+                                    <input class="form-control" type="text" name="calles" placeholder="Entre calles">
+                                </div>
+
+                                <div class="col-sm-12 text-right">
+                                    <button class="btn btn-outline-primary" type="submit">Agrgar Ubicación</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="padding-bottom-1x">
 
             <div class="checkout-footer">
                 <div class="column"><a class="btn btn-outline-secondary" routerLink="/cartList"><i class="icon-arrow-left"></i><span class="hidden-xs-down">&nbsp;Volvar atras</span></a></div>
@@ -102,19 +134,15 @@
                 <div class="padding-top-2x hidden-lg-up"></div>
                 <!-- Order Summary Widget-->
                 <section class="widget widget-order-summary">
-                    <h3 class="widget-title">Order Summary</h3>
+                    <h3 class="widget-title">Total del Pedido</h3>
                     <table class="table">
                         <tr>
-                            <td>Cart Subtotal:</td>
-                            <td class="text-medium">$289.68</td>
+                            <td>Productos Subtotal:</td>
+                            <td class="text-medium">${{ subTotal }}</td>
                         </tr>
                         <tr>
-                            <td>Shipping:</td>
-                            <td class="text-medium">$22.50</td>
-                        </tr>
-                        <tr>
-                            <td>Estimated tax:</td>
-                            <td class="text-medium">$3.42</td>
+                            <td>Costo Envio/Retiro</td>
+                            <td class="text-medium">$0.00</td>
                         </tr>
                         <tr>
                             <td></td>

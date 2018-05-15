@@ -29,7 +29,7 @@ archivo: File;
 
 cantidad = 0;
 
-subtotal = 0;
+subTotal: string;
 
 precio = 0;
 
@@ -77,7 +77,7 @@ precio = 0;
     }
 
     this._document.getElementById('cart').innerHTML = cantidad;
-    this._document.getElementById('subtotal').innerHTML = '$' + precio;
+    this.subTotal = this._document.getElementById('subtotal').innerHTML = '$' + precio.toFixed(2);
   }
 
   calcularCart2(producto) {
@@ -87,35 +87,38 @@ precio = 0;
     console.log(this.productos);
 
     let precio = 0;
-    let total = 0;
     let cantidad = 0;
-   
+
     for (let i = 0; i < this.productos.length; i++) {
 
       const element = this.productos[i];
 
+      
+
       // Precio con descuento
       if (element['precio_desc']) {
-      cantidad = element['cantidad']
+
+        cantidad += parseFloat( element['cantidad'].toString() );
+
       precio = element['precio_desc'] * element['cantidad'];
 
       } else if (element['precio']) {
 
       // Precio sin descuento
-      cantidad = element['cantidad']
+
+      cantidad += parseFloat( element['cantidad'].toString() );
+
       precio = element['precio'] * element['cantidad'];
       }
-      
-      cantidad += cantidad;
 
-      total += precio;
+      precio += precio;
 
     }
 
-    console.log( cantidad );
+    // console.log('cant-total:', cantidad);
 
-    this._document.getElementById('cart').innerHTML = '0';
-    this._document.getElementById('subtotal').innerHTML = '$' + total;
+    this._document.getElementById('cart').innerHTML = cantidad;
+    this.subTotal = this._document.getElementById('subtotal').innerHTML = '$' + precio.toFixed(2);
   }
 
 
@@ -123,8 +126,7 @@ precio = 0;
     return this.productos;
   }
 
-
-
+ 
   crearProducto( producto: Producto , imagen: File ) {
 
     let url = URL_SERVICIOS + '/producto';

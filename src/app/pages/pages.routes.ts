@@ -55,7 +55,7 @@ const PagesRoutes: Routes = [
 
          { path: '', redirectTo: '/productos', pathMatch: 'full' }
 
-         ]
+        ]}
 
      ];
 

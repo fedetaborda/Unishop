@@ -21,18 +21,12 @@ export class ProductoscompraComponent implements OnInit {
 
   obtenerProducto (id: string) {
 
-    // verificar Login
-
-    if ( this._verificaTokenGuard.canActivate() ) {
-
-      this._productoService.cargarProducto( id )
+    this._productoService.cargarProducto( id )
     .subscribe( producto => {
       this.producto.push( producto );
 
       this._productoService.calcularCart(this.producto);
     });
-
-    }
 
   }
 
