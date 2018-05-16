@@ -9,7 +9,8 @@ import {
   ProductoService,
   CategoriaService,
   VerificaTokenGuard,
-  AdminGuard
+  AdminGuard,
+  UbicacionService
 } from './service.index';
 
 
@@ -26,7 +27,9 @@ import {
     CategoriaService,
     ProductoService,
     VerificaTokenGuard,
-    AdminGuard
+    AdminGuard,
+   UbicacionService
+    
   ],
   declarations: []
 })

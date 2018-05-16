@@ -33,6 +33,7 @@ var categoriaRoutes = require('./routes/categoria');
 var marcaRoutes = require('./routes/marca');
 var busquedaRoutes = require('./routes/busqueda');
 var cartRoutes = require('./routes/cart');
+var ubicacionRoutes = require('./routes/ubicacion');
 
 
 // Conexión a la base de datos
@@ -43,12 +44,6 @@ mongoose.connection.openUri('mongodb://localhost:27017/VentasKcity', (err, res) 
     console.log('Base de datos: \x1b[32m%s\x1b[0m', 'online');
 
 });
-
-// Server index config
-// var serveIndex = require('serve-index');
-// app.use(express.static(__dirname + '/'))
-// app.use('/uploads', serveIndex(__dirname + '/uploads'));
-
 
 
 // Rutas
@@ -61,7 +56,7 @@ app.use('/categoria', categoriaRoutes);
 app.use('/marca', marcaRoutes);
 app.use('/busqueda', busquedaRoutes);
 app.use('/cart', cartRoutes);
-
+app.use('/ubicacion', ubicacionRoutes);
 
 app.use('/', appRoutes);
 

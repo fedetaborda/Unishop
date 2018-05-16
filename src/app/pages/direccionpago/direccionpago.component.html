@@ -44,23 +44,31 @@
                     <table class="table table-hover">
                         <thead class="thead-default">
                             <tr>
-                                <th>Direcciones</th>
                                 <th></th>
+                                <th>Direcciones</th>
                                 <th>Tiempo Estimado</th>
-                                <th>Costo de Envio / Retiro</th>
+                                <th>Envio/Retiro</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let ubicacion of ubicaciones; let i = index">
                                 <td class="align-middle">
                                     <div class="custom-control custom-radio mb-0">
-                                        <input class="custom-control-input" type="radio" id="courier" name="shipping-method" checked="">
-                                        <label class="custom-control-label" for="courier"></label>
+                                        <input class="custom-control-input" type="radio" id="{{i}}" name="shipping-method">
+                                        <label class="custom-control-label" for="{{i}}"></label>
                                     </div>
                                 </td>
-                                <td class="align-middle"><span class="text-medium">Courier</span><br><span class="text-muted text-sm">All Addresses(default zone), United States &amp; Canada</span></td>
-                                <td class="align-middle">2 - 4 days</td>
-                                <td class="align-middle">$22.50</td>
+                                <td class="align-middle"><span class="text-medium">{{ ubicacion.direccion }} {{ ubicacion.altura }} </span><br><span class="text-muted text-sm">All Addresses(default zone), United States &amp; Canada</span></td>
+                                <td class="align-middle">Demora 45 minutos aprox.</td>
+                                <td class="align-middle">$10.00</td>
+                                <td class="text-center">
+                                    <a class="remove-from-cart text-danger" [href]="" (click)="_ubicacion.eliminarUbicacion( ubicacion._id )" data-toggle="tooltip" title="Borrar">
+                                        <i class="icon-cross"></i>
+                                    </a>
+                                </td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td class="align-middle">
@@ -72,6 +80,8 @@
                                 <td class="align-middle"><span class="text-medium">Retiro por el Comercio</span><br><span class="text-muted text-sm">Alen 1358 (Local 1 Galeria II) &amp; Tandil</span></td>
                                 <td class="align-middle text-danger">en 15 minutos</td>
                                 <td class="align-middle text-danger">$00.00</td>
+                                <td></td>
+                                <td></td>
                             </tr>
                         </tbody>
                     </table>
@@ -88,16 +98,16 @@
 
                             <form [formGroup]="form" (ngSubmit)="registrarDireccion( form.value )" class="interactive-credit-card row">
                                 <div class="form-group col-sm-6">
-                                    <input class="form-control" type="text" name="direccion" placeholder="Dirección" required>
+                                    <input class="form-control" type="text" name="direccion" formControlName="direccion" placeholder="Direccion" required>
                                 </div>
                                 <div class="form-group col-sm-3">
-                                    <input class="form-control" type="number" name="altura" placeholder="Número" required>
+                                    <input class="form-control" type="number" name="altura" formControlName="altura" placeholder="Número" required>
                                 </div>
                                 <div class="form-group col-sm-3">
-                                    <input class="form-control" type="text" name="piso" placeholder="Piso / Dpto">
+                                    <input class="form-control" type="text" name="piso" formControlName="piso" placeholder="Piso / Dpto">
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <select class="form-control" id="select-input">
+                                    <select class="form-control" formControlName="ubicacion_tipo" id="select-input">
                                                 <option>Casa</option>
                                                 <option>Edificio</option>
                                                 <option>Banco</option>
@@ -106,14 +116,14 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-sm-6">
-                                    <input class="form-control" type="text" name="telefono" placeholder="Teléfono">
+                                    <input class="form-control" type="text" name="telefono" formControlName="telefono" placeholder="Teléfono">
                                 </div>
                                 <div class="form-group col-sm-12">
-                                    <input class="form-control" type="text" name="calles" placeholder="Entre calles">
+                                    <input class="form-control" type="text" name="entre_calles" formControlName="entre_calles" placeholder="Entre calles">
                                 </div>
 
                                 <div class="col-sm-12 text-right">
-                                    <button class="btn btn-outline-primary" type="submit">Agrgar Ubicación</button>
+                                    <button [disabled]="!form.valid" class="btn btn-outline-primary" type="submit">Agrgar Ubicación</button>
                                 </div>
                             </form>
                         </div>

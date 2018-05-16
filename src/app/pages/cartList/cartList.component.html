@@ -71,7 +71,7 @@
 
                     <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio * producto.cantidad }}</td>
 
-                    <td class="text-center"><a (click)="eleminarCart(i)" class="remove-from-cart" data-toggle="tooltip" title="Eliminar"><i class="icon-cross"></i></a></td>
+                    <td class="text-center"><a (click)="eleminarCart(i)" class="remove-from-cart" [href]="" data-toggle="tooltip" title="Borrar"><i class="icon-cross"></i></a></td>
                 </tr>
 
             </tbody>

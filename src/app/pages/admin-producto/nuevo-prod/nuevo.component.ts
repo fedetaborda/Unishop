@@ -48,7 +48,7 @@ export class NuevoComponent implements OnInit {
       nombre: new FormControl(null, [ Validators.required, Validators.minLength(3), Validators.maxLength(25) ]),
       precio: new FormControl(null, [ Validators.required]),
       precio_desc: new FormControl(null),
-      descripcion: new FormControl(null,[ Validators.required, Validators.minLength(15), , Validators.maxLength(50)]),
+      descripcion: new FormControl(null, [ Validators.required, Validators.minLength(15), , Validators.maxLength(50)]),
       descuento: new FormControl(null),
       costo: new FormControl(null, [ Validators.required]),
       rango: new FormControl(null, [ Validators.required]),
