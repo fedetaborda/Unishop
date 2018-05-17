@@ -24,6 +24,7 @@ export class ProductoService {
 
 productos: Producto[] = [];
 
+location: any;
 
 archivo: File;
 
@@ -84,8 +85,6 @@ precio = 0;
 
     this.productos = producto;
 
-    console.log(this.productos);
-
     let precio = 0;
     let cantidad = 0;
 
@@ -126,9 +125,12 @@ precio = 0;
     return this.productos;
   }
 
-  dirrecionCart( direccion: any ) {
+  addLocation ( location: any) {
 
-
+    this.location = location;
+    
+    console.log(this.productos);
+    console.log(this.location);
   }
 
  

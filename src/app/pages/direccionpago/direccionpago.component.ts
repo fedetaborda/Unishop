@@ -5,6 +5,7 @@ import { Usuario } from '../../models/usuario';
 import { Ubicacion } from '../../models/ubicacion';
 
 import { UsuarioService, ProductoService, UbicacionService } from '../../service/service.index';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class DireccionpagoComponent implements OnInit {
 
   constructor(public _usuarioService: UsuarioService,
               public _productoService: ProductoService,
-              public _ubicacion: UbicacionService ) { }
+              public _ubicacion: UbicacionService, 
+              public router: Router ) { }
 
   ngOnInit() {
 
@@ -47,20 +49,16 @@ export class DireccionpagoComponent implements OnInit {
 
   }
 
-    dirrecionCart(direccion: string) {
+  dirrecionCart(direccion: string) {
 
       this.location = {
         ubicacion: direccion
       };
-
-      console.log(direccion);
   }
 
   addCart() {
-
-     this._productoService.productos.push( this.location );
-
-    console.log(this._productoService.productos);
+    this._productoService.addLocation(this.location);
+    this.router.navigate(['/checkout-pago']);
   }
 
   cargarUbicaciones() {
@@ -91,8 +89,6 @@ export class DireccionpagoComponent implements OnInit {
 
   this._ubicacion.crearUbicacion( ubicacion )
           .subscribe( () => this.cargarUbicaciones() );
-
-          
 
           this.form.reset();
 
