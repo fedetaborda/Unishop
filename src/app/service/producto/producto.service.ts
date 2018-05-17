@@ -126,6 +126,11 @@ precio = 0;
     return this.productos;
   }
 
+  dirrecionCart( direccion: any ) {
+
+
+  }
+
  
   crearProducto( producto: Producto , imagen: File ) {
 

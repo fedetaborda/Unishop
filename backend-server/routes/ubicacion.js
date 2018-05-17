@@ -90,7 +90,7 @@ app.get('/', (req, res, next) => {
     var desde = req.query.desde || 0;
     desde = Number(desde);
 
-    Ubicacion.find({})
+    Ubicacion.find({ })
         .skip(desde)
         .limit(10)
         .populate('ubicacion')
@@ -125,8 +125,9 @@ app.get('/:id', (req, res) => {
 
     var id = req.params.id;
 
-    Ubicacion.findById(id)
+    Ubicacion.find({ usuario: id })
         .populate('ubicacion')
+        .populate('usuario', '_id')
         .exec((err, ubicacion) => {
 
             if (err) {

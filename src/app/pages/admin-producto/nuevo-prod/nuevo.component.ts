@@ -84,10 +84,9 @@ export class NuevoComponent implements OnInit {
   }
 
 
-
   registrarProducto( forma: NgForm ) {
 
-    let producto = new Producto(
+     let producto = new Producto(
       this.form.value.nombre,
       this.form.value.costo,
       this.form.value.precio,
@@ -100,13 +99,15 @@ export class NuevoComponent implements OnInit {
       this.form.value.precio_dsc
     );
 
+    console.log(producto);
+
     if ( forma.invalid  ) {
       return;
     }
 
     this._productoService.crearProducto( producto , this.imagenSubir )
-            .subscribe();
-
+            .subscribe( ()=> forma.reset() );
+          
   }
 
   

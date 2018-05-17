@@ -17,6 +17,8 @@ var Producto = require('../models/producto');
 // ==========================================
 app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
+    
+
     var body = req.body;
 
     if (body.imagen) {
@@ -26,6 +28,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
     var producto = new Producto({
         nombre: body.nombre,
         costo: body.costo,
+        cantidad: 1,
         precio: body.precio,
         precio_desc: body.precio_desc,
         descuento: body.descuento,
@@ -37,6 +40,8 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
         descripcion: body.descripcion,
         fecha: moment().format('L')
     });
+
+    
 
     producto.save((err, productoGuardado) => {
 
@@ -101,7 +106,7 @@ app.get('/', (req, res, next) => {
 
     Producto.find({})
         .skip(desde)
-        .limit(1000)
+        .limit(100)
         .populate('categoria')
         .exec(
             (err, productos) => {

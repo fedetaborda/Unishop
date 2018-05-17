@@ -56,7 +56,7 @@
                             <tr *ngFor="let ubicacion of ubicaciones; let i = index">
                                 <td class="align-middle">
                                     <div class="custom-control custom-radio mb-0">
-                                        <input class="custom-control-input" type="radio" id="{{i}}" name="shipping-method">
+                                        <input class="custom-control-input" type="radio" id="{{i}}" name="ubicacion" (change)="dirrecionCart(ubicacion._id)">
                                         <label class="custom-control-label" for="{{i}}"></label>
                                     </div>
                                 </td>
@@ -64,7 +64,7 @@
                                 <td class="align-middle">Demora 45 minutos aprox.</td>
                                 <td class="align-middle">$10.00</td>
                                 <td class="text-center">
-                                    <a class="remove-from-cart text-danger" [href]="" (click)="_ubicacion.eliminarUbicacion( ubicacion._id )" data-toggle="tooltip" title="Borrar">
+                                    <a class="remove-from-cart text-danger" [href]="" (click)="_ubicacion.eliminarUbicacion( )" data-toggle="tooltip" title="Borrar">
                                         <i class="icon-cross"></i>
                                     </a>
                                 </td>
@@ -73,7 +73,7 @@
                             <tr>
                                 <td class="align-middle">
                                     <div class="custom-control custom-radio mb-0">
-                                        <input class="custom-control-input" type="radio" id="local" name="shipping-method">
+                                        <input class="custom-control-input" type="radio" id="local" name="ubicacion" (change)="dirrecionCart('local')">
                                         <label class="custom-control-label" for="local"></label>
                                     </div>
                                 </td>
@@ -135,7 +135,7 @@
 
             <div class="checkout-footer">
                 <div class="column"><a class="btn btn-outline-secondary" routerLink="/cartList"><i class="icon-arrow-left"></i><span class="hidden-xs-down">&nbsp;Volvar atras</span></a></div>
-                <div class="column"><a class="btn btn-primary" routerLink="/checkout-pago"><span class="hidden-xs-down">Continuar&nbsp;</span><i class="icon-arrow-right"></i></a></div>
+                <div class="column"><a class="btn btn-primary" (click)="addCart( )"><span class="hidden-xs-down">Continuar&nbsp;</span><i class="icon-arrow-right"></i></a></div>
             </div>
         </div>
         <!-- Sidebar          -->

@@ -15,11 +15,11 @@ export class DireccionpagoComponent implements OnInit {
 
   usuario: Usuario;
 
+  location: any;
+
   subTotal: string;
 
   form: FormGroup;
-
-  Ubicacion: Ubicacion;
 
   ubicaciones: Ubicacion[] = [];
 
@@ -44,11 +44,28 @@ export class DireccionpagoComponent implements OnInit {
     });
 
     this.cargarUbicaciones();
+
+  }
+
+    dirrecionCart(direccion: string) {
+
+      this.location = {
+        ubicacion: direccion
+      };
+
+      console.log(direccion);
+  }
+
+  addCart() {
+
+     this._productoService.productos.push( this.location );
+
+    console.log(this._productoService.productos);
   }
 
   cargarUbicaciones() {
 
-   this._ubicacion.cargarUbicaciones()
+   this._ubicacion.cargarUbicaciones( this.usuario._id )
               .subscribe( (resp: any) => {
                 this.ubicaciones = resp.ubicacion;
                });
