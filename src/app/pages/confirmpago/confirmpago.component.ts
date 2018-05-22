@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Producto } from '../../models/producto';
+import { ProductoService } from '../../service/service.index';
 
 @Component({
   selector: 'app-confirmpago',
@@ -6,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfirmpagoComponent implements OnInit {
 
-  constructor() { }
+  productos: Producto[] = [];
+
+  constructor(public _productoService: ProductoService) { }
 
   ngOnInit() {
+
+    this.productos = this._productoService.producinCart();
   }
 
 }

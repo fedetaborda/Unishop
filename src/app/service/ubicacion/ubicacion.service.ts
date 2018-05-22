@@ -35,15 +35,13 @@ export class UbicacionService {
 
   eliminarUbicacion( id: String ) {
 
- /*  let url = URL_SERVICIOS + '/hospital/' + ubicacion._id;
+ let url = URL_SERVICIOS + '/ubicacion/' + id;
     url += '?token=' + this._usuarioService.token;
 
-    return this.http.put( url, ubicacion )
+    return this.http.put( url, id )
               .map( (resp: any) => {
                 return resp.ubicacion;
-              });*/
-
-              console.log(id);
+              });
 
   }
 

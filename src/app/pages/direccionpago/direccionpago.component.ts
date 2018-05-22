@@ -49,6 +49,13 @@ export class DireccionpagoComponent implements OnInit {
 
   }
 
+  eliminarUbicacion( id: String) {
+
+
+     this._ubicacion.eliminarUbicacion( id)
+              .subscribe( () => this.cargarUbicaciones() );
+  }
+
   dirrecionCart(direccion: string) {
 
       this.location = {

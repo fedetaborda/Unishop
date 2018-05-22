@@ -82,41 +82,6 @@ app.delete('/:id', mdAutenticacion.verificaToken, (req, res) => {
 
 });
 
-// ==========================================
-// Obtener todas las ubicaciones
-// ==========================================
-app.get('/', (req, res, next) => {
-
-    var desde = req.query.desde || 0;
-    desde = Number(desde);
-
-    Ubicacion.find({ })
-        .skip(desde)
-        .limit(10)
-        .populate('ubicacion')
-        .exec(
-            (err, ubicacion) => {
-
-                if (err) {
-                    return res.status(500).json({
-                        ok: false,
-                        mensaje: 'Error cargando ubicacion',
-                        errors: err
-                    });
-                }
-
-                Ubicacion.count({}, (err, conteo) => {
-                    res.status(200).json({
-                        ok: true,
-                        ubicacion: ubicacion,
-                        total: conteo
-                    });
-
-                })
-
-            });
-
-});
 
 // ==========================================
 // Obtener ubicacion
@@ -125,7 +90,7 @@ app.get('/:id', (req, res) => {
 
     var id = req.params.id;
 
-    Ubicacion.find({ usuario: id })
+    Ubicacion.find({ usuario: id, estado: true })
         .populate('ubicacion')
         .populate('usuario', '_id')
         .exec((err, ubicacion) => {
@@ -155,40 +120,37 @@ app.get('/:id', (req, res) => {
 
 });
 
-/*
 // ==========================================
-// Actualizar Categoria
+// Desactivar Ubicación
 // ==========================================
 app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
 
     var id = req.params.id;
     var body = req.body;
 
-    Categoria.findById(id, (err, categoria) => {
+    Ubicacion.findById(id, (err, ubicacion) => {
 
 
         if (err) {
             return res.status(500).json({
                 ok: false,
-                mensaje: 'Error al buscar categoria',
+                mensaje: 'Error al buscar la ubicacion',
                 errors: err
             });
         }
 
-        if (!categoria) {
+        if (!ubicacion) {
             return res.status(400).json({
                 ok: false,
-                mensaje: 'La categoria con el id ' + id + ' no existe',
-                errors: { message: 'No existe la categoria con ese ID' }
+                mensaje: 'La ubicacion con el id ' + id + ' no existe',
+                errors: { message: 'No existe la ubicacion con ese ID' }
             });
         }
 
 
-        categoria.nombre = body.nombre;
-        categoria.estado = body.estado;
+        ubicacion.estado = false;
 
-
-        categoria.save((err, categoriaGuardada) => {
+        ubicacion.save((err, ubicacionGuardada) => {
 
             if (err) {
                 return res.status(400).json({
@@ -200,7 +162,7 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
 
             res.status(200).json({
                 ok: true,
-                categoria: categoriaGuardada
+                ubicacion: ubicacionGuardada
             });
 
         });
@@ -209,7 +171,5 @@ app.put('/:id', mdAutenticacion.verificaToken, (req, res) => {
 
 });
 
-
-*/
 
 module.exports = app;

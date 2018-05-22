@@ -12,6 +12,7 @@ var ubicacionSchema = new Schema({
     ubicacion_tipo: { type: String, required: [true, 'Debe ingresar un tipo de Ubicacion'] },
     entre_calles: { type: String, required: false },
     piso: { type: String, required: false },
+    estado: { type: Boolean, required: true, default: true },
     fecha: { type: Date, required: true }
 });
 

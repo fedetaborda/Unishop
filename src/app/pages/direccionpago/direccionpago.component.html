@@ -64,7 +64,7 @@
                                 <td class="align-middle">Demora 45 minutos aprox.</td>
                                 <td class="align-middle">$10.00</td>
                                 <td class="text-center">
-                                    <a class="remove-from-cart text-danger" [href]="" (click)="_ubicacion.eliminarUbicacion( )" data-toggle="tooltip" title="Borrar">
+                                    <a class="remove-from-cart text-danger" [href]="" (click)="eliminarUbicacion( ubicacion._id )" data-toggle="tooltip" title="Borrar">
                                         <i class="icon-cross"></i>
                                     </a>
                                 </td>
@@ -88,7 +88,8 @@
                 </div>
             </div>
 
-            <div class="accordion" id="accordion" role="tablist">
+            <!-- Solo se Podran ingresar 4 ubicacionn por usuario-->
+            <div *ngIf="ubicaciones.length < 4" class="accordion" id="accordion" role="tablist">
                 <div class="card">
                     <div class="card-header" role="tab">
                         <h6><a href="#card" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" class="collapsed"><i class="far fa-compass"></i> Agregar Ubicación</a></h6>
