@@ -24,6 +24,7 @@ export class DireccionpagoComponent implements OnInit {
 
   ubicaciones: Ubicacion[] = [];
 
+
   constructor(public _usuarioService: UsuarioService,
               public _productoService: ProductoService,
               public _ubicacion: UbicacionService, 
@@ -68,8 +69,8 @@ export class DireccionpagoComponent implements OnInit {
     this.router.navigate(['/checkout-pago']);
   }
 
-  cargarUbicaciones() {
 
+  cargarUbicaciones() {
    this._ubicacion.cargarUbicaciones( this.usuario._id )
               .subscribe( (resp: any) => {
                 this.ubicaciones = resp.ubicacion;

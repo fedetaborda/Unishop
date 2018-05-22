@@ -26,6 +26,15 @@ export class UbicacionService {
 
   }
 
+  cargarUbicacion( id: String ) {
+
+    let url = URL_SERVICIOS + '/ubicacion/location/' + id;
+
+    return this.http.get( url );
+
+
+  }
+
   cargarUbicaciones( id: String ) {
 
     let url = URL_SERVICIOS + '/ubicacion/' + id;

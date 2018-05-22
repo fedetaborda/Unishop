@@ -82,9 +82,46 @@ app.delete('/:id', mdAutenticacion.verificaToken, (req, res) => {
 
 });
 
+// ==========================================
+// Obtener ubicacion por ID
+// ==========================================
+app.get('/location/:id', (req, res) => {
+
+    var id = req.params.id;
+
+    Ubicacion.findById(id)
+        .populate('usuario', 'nombre apellido')
+        .exec((err, ubicacion) => {
+
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    mensaje: 'Error al buscar la ubicacion',
+                    errors: err
+                });
+            }
+
+            if (!ubicacion) {
+                return res.status(400).json({
+                    ok: false,
+                    mensaje: 'La ubicacion con el id ' + id + ' no existe',
+                    errors: { message: 'No existe la ubicacion con ese ID' }
+                });
+            }
+
+            res.status(200).json({
+                ok: true,
+                ubicacion: ubicacion
+            });
+
+        })
+
+
+});
+
 
 // ==========================================
-// Obtener ubicacion
+// Obtener ubicacion por usuario
 // ==========================================
 app.get('/:id', (req, res) => {
 

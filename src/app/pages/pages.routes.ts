@@ -24,7 +24,7 @@ const PagesRoutes: Routes = [
 
     { path: '',
     component: PagesComponent,
-    canActivate: [ LoginGuardGuard ],
+    canActivate: [ LoginGuardGuard, VerificaTokenGuard ],
 
     children: [
 

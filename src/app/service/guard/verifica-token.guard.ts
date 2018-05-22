@@ -39,7 +39,7 @@ export class VerificaTokenGuard implements CanActivate {
       let ahora = new Date();
 
       // (1 * 60 * 60 * 1000) tiempo en milisegundos una hora antes renueva el token
-      ahora.setTime( ahora.getTime() + ( 1 * 60 * 60 * 1000 ) ); 
+      ahora.setTime( ahora.getTime() + ( 1 * 60 * 60 * 1000 ) );
 
       //console.log( "expira:" + tokenExp );
       //console.log( "hora actual" + ahora );
