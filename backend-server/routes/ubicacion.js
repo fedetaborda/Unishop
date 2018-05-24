@@ -22,6 +22,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
         usuario: req.usuario._id,
         direccion: body.direccion,
         altura: body.altura,
+        telefono:body.telefono,
         ubicacion_tipo: body.ubicacion_tipo,
         entre_calles: body.entre_calles,
         piso: body.piso,

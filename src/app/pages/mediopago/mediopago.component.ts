@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductoService } from '../../service/service.index';
 
 @Component({
   selector: 'app-mediopago',
@@ -6,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MediopagoComponent implements OnInit {
 
-  constructor() { }
+  constructor(public _productoService: ProductoService) { }
 
   ngOnInit() {
   }
+
+
+  formaPago( pago: string ) {
+
+    let fpago = {
+      formaPago: pago
+    };
+
+    this._productoService.addfPago( fpago );
+}
 
 }

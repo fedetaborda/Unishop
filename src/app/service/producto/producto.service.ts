@@ -32,6 +32,8 @@ cantidad = 0;
 
 subTotal: string;
 
+fPago: any;
+
 precio = 0;
 
   constructor(
@@ -125,12 +127,20 @@ precio = 0;
     return this.productos;
   }
 
+  pagoCart () {
+    return this.fPago;
+  }
+
   addLocation ( location: any) {
 
     this.location = location;
-    
-    console.log(this.productos);
-    console.log(this.location);
+
+  }
+
+  addfPago ( pago: any) {
+ 
+    this.fPago = pago;
+
   }
 
  

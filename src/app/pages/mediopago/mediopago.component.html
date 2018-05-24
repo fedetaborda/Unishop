@@ -38,7 +38,7 @@
                         <div class="card-body">
                             <p class="text-primary">Seleccionando esta opción el pago total de la compra se realizara al momento de recibir tu pedido.</p>
                             <div class="custom-control custom-checkbox d-block">
-                                <input class="custom-control-input" type="checkbox" id="use_points">
+                                <input class="custom-control-input" type="checkbox" id="use_points" (change)="formaPago('Pago en Efectivo')">
                                 <label class="custom-control-label" for="use_points">Eligo pagar en efectivo.</label>
                             </div>
                         </div>
