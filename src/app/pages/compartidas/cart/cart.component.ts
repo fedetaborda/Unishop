@@ -1,4 +1,3 @@
-
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductoService } from '../../../service/producto/producto.service';
 import { Producto } from '../../../models/producto';

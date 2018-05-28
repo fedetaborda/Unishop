@@ -7,9 +7,13 @@ import { ProductoService } from '../../service/service.index';
 })
 export class MediopagoComponent implements OnInit {
 
+  chekPago: Boolean;
+
   constructor(public _productoService: ProductoService) { }
 
   ngOnInit() {
+
+    console.log(this.chekPago);
   }
 
 
@@ -20,6 +24,11 @@ export class MediopagoComponent implements OnInit {
     };
 
     this._productoService.addfPago( fpago );
+
+    this.chekPago = true;
+
+
+    console.log(this.chekPago);
 }
 
 }

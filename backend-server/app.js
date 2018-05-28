@@ -40,8 +40,10 @@ var ubicacionRoutes = require('./routes/ubicacion');
 
 // mongodb://localhost:27017/VentasKcity
 
+// mongodb://fede:fede4303@ds233970.mlab.com:33970/unishop
 
-mongoose.connection.openUri('mongodb://fede:fede4303@ds233970.mlab.com:33970/unishop', (err, res) => {
+
+mongoose.connection.openUri('mongodb://localhost:27017/VentasKcity', (err, res) => {
 
     if (err) throw err;
 

@@ -11,9 +11,9 @@ import { Producto } from '../../models/producto';
 })
 export class ProductosComponent implements OnInit {
 
+  productos: Producto[];
 
-  constructor(public _productoService: ProductoService)
-    {}
+  constructor(public _productoService: ProductoService){}
 
   ngOnInit() {  }
 

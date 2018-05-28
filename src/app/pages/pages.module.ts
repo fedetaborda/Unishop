@@ -11,9 +11,7 @@ import { AdminProductoComponent } from './admin-producto/admin-producto.componen
 import { ProducListComponent } from './admin-producto/produc-list/produc-list.component';
 import { DetalleMarcaComponent } from './admin-producto/detalle-marca/detalle-marca.component';
 import { DetalleCategoriaComponent } from './admin-producto/detalle-categoria/detalle-categoria.component';
-import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo.component';
 import { RecuperoComponent } from './recupero-login/recupero/recupero.component';
-
 
 // Module
 import { CompartidaModule } from './compartidas/compartida.module';
@@ -30,7 +28,6 @@ import { Buscadorview2Component } from './admin-producto/busqueda-producto/busca
 import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/busqueda-producto.component';
 import { PaginadorComponent } from './componentes/paginador/paginador.component';
 import { FiltroComponent } from './componentes/filtro/filtro.component';
-import { BarraLateralComponent } from '../componentes/barra-lateral/barra-lateral.component';
 import { ProductoscompraComponent } from './componentes/productoscompra/productoscompra.component';
 import { BuscardorProdComponent } from '../componentes/buscardor-prod/buscardor-prod.component';
 import { LinkVistasComponent } from '../componentes/buscardor-prod/link-vistas.component';
@@ -46,6 +43,10 @@ import { DireccionpagoComponent } from './direccionpago/direccionpago.component'
 import { MediopagoComponent } from './mediopago/mediopago.component';
 import { ConfirmpagoComponent } from './confirmpago/confirmpago.component';
 import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
+import { CartComponent } from './compartidas/cart/cart.component';
+import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo/nuevo.component';
+
+// import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral.component';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
         RecuperoComponent,
         PaginadorComponent,
         FiltroComponent,
-        BarraLateralComponent,
+       // BarraLateralComponent,
         ProductoscompraComponent,
         BuscardorProdComponent,
         LinkVistasComponent,
@@ -76,7 +77,8 @@ import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
         DireccionpagoComponent,
         MediopagoComponent,
         ConfirmpagoComponent,
-        PagocompletoComponent
+        PagocompletoComponent,
+        CartComponent
 
     ],
     exports: [
@@ -85,7 +87,6 @@ import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
         ProductosViewComponent
     ],
     imports: [
-        CompartidaModule,
         CommonModule,
         PAGES_ROUTES,
         FormsModule,

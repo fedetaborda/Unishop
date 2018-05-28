@@ -27,7 +27,7 @@ export class PerfilComponent implements OnInit {
   }
 
   guardar( usuario: Usuario ){
-  
+
     this.usuario.nombre = usuario.nombre;
     this.usuario.apellido = usuario.apellido;
     this.usuario.telefono = usuario.telefono;

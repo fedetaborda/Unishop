@@ -6,7 +6,6 @@ import { LoginComponent } from './login/login.component';
 import { LoginGuardGuard, VerificaTokenGuard, AdminGuard } from '../service/service.index';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AdminProductoComponent } from './admin-producto/admin-producto.component';
-import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo.component';
 import { ProducListComponent } from './admin-producto/produc-list/produc-list.component';
 import { DetalleCategoriaComponent } from './admin-producto/detalle-categoria/detalle-categoria.component';
 import { DetalleMarcaComponent } from './admin-producto/detalle-marca/detalle-marca.component';
@@ -18,6 +17,7 @@ import { DireccionpagoComponent } from './direccionpago/direccionpago.component'
 import { MediopagoComponent } from './mediopago/mediopago.component';
 import { ConfirmpagoComponent } from './confirmpago/confirmpago.component';
 import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
+import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo/nuevo.component';
 
 
 const PagesRoutes: Routes = [

@@ -22,14 +22,13 @@ import {
   ],
   providers: [
     UsuarioService,
-    LoginGuardGuard,
-    SubirArchivoService,
-    CategoriaService,
-    ProductoService,
-    VerificaTokenGuard,
-    AdminGuard,
-   UbicacionService
-    
+  LoginGuardGuard,
+  SubirArchivoService,
+  ProductoService,
+  CategoriaService,
+  VerificaTokenGuard,
+  AdminGuard,
+  UbicacionService
   ],
   declarations: []
 })

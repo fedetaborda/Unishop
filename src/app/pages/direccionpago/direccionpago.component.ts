@@ -14,6 +14,10 @@ import { Router } from '@angular/router';
 })
 export class DireccionpagoComponent implements OnInit {
 
+  cheked: Boolean;
+
+  direccionCheked: Boolean = false;
+
   usuario: Usuario;
 
   location: any;
@@ -27,13 +31,14 @@ export class DireccionpagoComponent implements OnInit {
 
   constructor(public _usuarioService: UsuarioService,
               public _productoService: ProductoService,
-              public _ubicacion: UbicacionService, 
+              public _ubicacion: UbicacionService,
               public router: Router ) { }
 
   ngOnInit() {
 
     this.usuario = this._usuarioService.usuario;
     this.subTotal = this._productoService.subTotal;
+
 
     this.form = new FormGroup({
 
@@ -57,11 +62,16 @@ export class DireccionpagoComponent implements OnInit {
               .subscribe( () => this.cargarUbicaciones() );
   }
 
-  dirrecionCart(direccion: string) {
+  dirrecionCart( direccion: string, i: number ) {
 
       this.location = {
         ubicacion: direccion
       };
+
+      console.log(i);
+
+      this.cheked = true;
+
   }
 
   addCart() {
