@@ -94,14 +94,12 @@ precio = 0;
 
       const element = this.productos[i];
 
-      
-
       // Precio con descuento
       if (element['precio_desc']) {
 
         cantidad += parseFloat( element['cantidad'].toString() );
 
-      precio = element['precio_desc'] * element['cantidad'];
+      precio += element['precio_desc'] * element['cantidad'];
 
       } else if (element['precio']) {
 
@@ -109,14 +107,12 @@ precio = 0;
 
       cantidad += parseFloat( element['cantidad'].toString() );
 
-      precio = element['precio'] * element['cantidad'];
+      precio += element['precio'] * element['cantidad'];
       }
 
-      precio += precio;
 
     }
 
-    // console.log('cant-total:', cantidad);
 
     this._document.getElementById('cart').innerHTML = cantidad;
     this.subTotal = this._document.getElementById('subtotal').innerHTML = '$' + precio.toFixed(2);

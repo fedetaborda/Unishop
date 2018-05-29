@@ -77,9 +77,9 @@
                 <div class="col-sm-6">
                     <h5>Forma de Entrega:</h5>
                     <ul class="list-unstyled">
-                        <li><span class="text-muted">Cliente: </span>{{ ubicacion.usuario.nombre }} {{ ubicacion.usuario.apellido }}</li>
-                        <li><span class="text-muted">Direccion: </span>{{ ubicacion.direccion }} {{ ubicacion.altura }}</li>
-                        <li><span class="text-muted">Telefono: </span>{{ ubicacion.telefono }}</li>
+                        <li><span class="text-muted">Cliente: </span> {{ user['nombre'] }} {{ user['apellido'] }}</li>
+                        <li><span class="text-muted">Direccion: </span>{{ ubicacion['direccion'] }} {{ ubicacion['altura']}}</li>
+                        <li><span class="text-muted">Telefono: </span>{{ ubicacion['telefono'] }}</li>
                     </ul>
                 </div>
                 <div class="col-sm-6">

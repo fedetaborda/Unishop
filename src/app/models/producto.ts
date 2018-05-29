@@ -12,6 +12,7 @@ export class Producto {
         public descuento?: String,
         public precio_desc?: number,
         public imagen?: File,
+        public cantidad?: number,
         public _id?: String
     ) { }
 

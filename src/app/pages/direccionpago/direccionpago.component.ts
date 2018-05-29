@@ -3,6 +3,7 @@ import { FormGroup, FormControl, NgForm, Validators } from '@angular/forms';
 
 import { Usuario } from '../../models/usuario';
 import { Ubicacion } from '../../models/ubicacion';
+import { Cart } from '../../models/cart';
 
 import { UsuarioService, ProductoService, UbicacionService } from '../../service/service.index';
 import { Router } from '@angular/router';
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
   templateUrl: './direccionpago.component.html'
 })
 export class DireccionpagoComponent implements OnInit {
+
 
   cheked: Boolean;
 
@@ -62,15 +64,11 @@ export class DireccionpagoComponent implements OnInit {
               .subscribe( () => this.cargarUbicaciones() );
   }
 
-  dirrecionCart( direccion: string, i: number ) {
+  dirrecionCart( direccion: string ) {
 
       this.location = {
         ubicacion: direccion
       };
-
-      console.log(i);
-
-      this.cheked = true;
 
   }
 

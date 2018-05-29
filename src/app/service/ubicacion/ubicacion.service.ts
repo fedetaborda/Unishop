@@ -30,7 +30,8 @@ export class UbicacionService {
 
     let url = URL_SERVICIOS + '/ubicacion/location/' + id;
 
-    return this.http.get( url );
+    return this.http.get( url )
+                .map( (resp: any) => resp.ubicacion );
 
 
   }

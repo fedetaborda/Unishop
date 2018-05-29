@@ -3,6 +3,7 @@ import { Producto } from '../../models/producto';
 import { ProductoService, UbicacionService } from '../../service/service.index';
 import { Ubicacion } from '../../models/ubicacion';
 import { Router } from '@angular/router';
+import { Usuario } from '../../models/usuario';
 
 @Component({
   selector: 'app-confirmpago',
@@ -15,6 +16,8 @@ export class ConfirmpagoComponent implements OnInit {
   ubicacion: Ubicacion[] = [];
 
   fPago: any[] = [];
+
+  user: any[] = [];
 
   constructor(public _productoService: ProductoService,
               public __ubicacionService: UbicacionService,
@@ -30,15 +33,15 @@ export class ConfirmpagoComponent implements OnInit {
      let id = this._productoService.location['ubicacion'];
 
      this.__ubicacionService.cargarUbicacion( id )
-                .subscribe( (resp: any) => {
-                  this.ubicacion = resp.ubicacion;
+                .subscribe( ubicacion => {
+                  this.ubicacion = ubicacion;
+                  this.user = ubicacion.usuario;
                  });
  
      // Forma de Pago
      this.fPago = this._productoService.pagoCart();
      console.log(this.fPago);
 
-    
   }
 
 

@@ -7,7 +7,8 @@ export class Ubicacion {
         public entre_calles: string,
         public telefono: string,
         public piso?: string,
-        public _id?: string
+        public _id?: string,
+        public usuario?: any
     ) { }
 
 }
