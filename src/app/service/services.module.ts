@@ -10,7 +10,9 @@ import {
   CategoriaService,
   VerificaTokenGuard,
   AdminGuard,
-  UbicacionService
+  UbicacionService,
+  CartService,
+  MercadopagoService
 } from './service.index';
 
 
@@ -21,14 +23,16 @@ import {
     HttpClientModule
   ],
   providers: [
-    UsuarioService,
+  UsuarioService,
   LoginGuardGuard,
   SubirArchivoService,
   ProductoService,
   CategoriaService,
   VerificaTokenGuard,
   AdminGuard,
-  UbicacionService
+  UbicacionService,
+  CartService,
+  MercadopagoService
   ],
   declarations: []
 })

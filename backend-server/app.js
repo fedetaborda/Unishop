@@ -34,6 +34,7 @@ var marcaRoutes = require('./routes/marca');
 var busquedaRoutes = require('./routes/busqueda');
 var cartRoutes = require('./routes/cart');
 var ubicacionRoutes = require('./routes/ubicacion');
+var mercadopagoRoutes = require('./routes/mercadopago');
 
 
 // Conexión a la base de datos
@@ -63,6 +64,7 @@ app.use('/marca', marcaRoutes);
 app.use('/busqueda', busquedaRoutes);
 app.use('/cart', cartRoutes);
 app.use('/ubicacion', ubicacionRoutes);
+app.use('/mercadopago', mercadopagoRoutes);
 
 app.use('/', appRoutes);
 

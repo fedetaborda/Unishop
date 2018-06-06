@@ -1,8 +1,14 @@
+import { Producto } from "./producto";
+
+Producto
+
 export class Cart {
 
     constructor(
-        public direccion?: string,
-        public pago?: string
+        public productos: Producto[],
+        public direccion: string,
+        public pago: string,
+        public idCompra: string
     ) { }
 
 }

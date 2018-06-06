@@ -23,6 +23,7 @@
         "@angular/router": "^5.2.0",
         "core-js": "^2.4.1",
         "jshint": "^2.9.5",
+        "mercadopago": "^1.0.16",
         "rxjs": "^5.5.6",
         "sweetalert": "^2.1.0",
         "zone.js": "^0.8.19"

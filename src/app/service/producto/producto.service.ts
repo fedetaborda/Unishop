@@ -32,7 +32,7 @@ cantidad = 0;
 
 subTotal: string;
 
-fPago: any;
+fPago: string;
 
 precio = 0;
 
@@ -133,12 +133,11 @@ precio = 0;
 
   }
 
-  addfPago ( pago: any) {
+  addfPago ( pago: string) {
  
     this.fPago = pago;
-
+    
   }
-
  
   crearProducto( producto: Producto , imagen: File ) {
 

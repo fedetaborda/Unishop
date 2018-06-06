@@ -85,13 +85,15 @@
                 <div class="col-sm-6">
                     <h5>Forma de Pago:</h5>
                     <ul class="list-unstyled">
-                        <li><span class="text-muted">Pago: </span>{{ fPago.formaPago }}</li>
+                        <li><span class="text-muted">Pago: </span>{{ fPago }}</li>
                     </ul>
                 </div>
             </div>
             <div class="checkout-footer margin-top-1x">
                 <div class="column hidden-xs-down"><a class="btn btn-outline-secondary" routerLink="/checkout-pago"><i class="icon-arrow-left"></i>&nbsp;Atras</a></div>
-                <div class="column"><a class="btn btn-primary" routerLink="/pago-finalizado">Comprletar Orden</a></div>
+
+                <div class="column"><a class="btn btn-primary" (click)="finalizarPago()">Comprletar Orden</a></div>
+
             </div>
         </div>
 

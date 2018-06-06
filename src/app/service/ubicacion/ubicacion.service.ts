@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { URL_SERVICIOS } from '../../config/config';
 import { Ubicacion } from '../../models/ubicacion';
 import { UsuarioService } from '../service.index';

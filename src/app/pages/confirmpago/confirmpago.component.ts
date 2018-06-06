@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../models/producto';
-import { ProductoService, UbicacionService } from '../../service/service.index';
+import { ProductoService, UbicacionService, CartService, MercadopagoService } from '../../service/service.index';
 import { Ubicacion } from '../../models/ubicacion';
 import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario';
+import { Cart } from '../../models/cart';
 
 @Component({
   selector: 'app-confirmpago',
@@ -15,12 +16,16 @@ export class ConfirmpagoComponent implements OnInit {
 
   ubicacion: Ubicacion[] = [];
 
-  fPago: any[] = [];
+  fPago: string;
 
   user: any[] = [];
 
+  cart: Cart;
+
   constructor(public _productoService: ProductoService,
-              public __ubicacionService: UbicacionService,
+              public _ubicacionService: UbicacionService,
+              public _cartService: CartService,
+              public _mercadopagoService: MercadopagoService,
               public router: Router) { }
 
   ngOnInit() {
@@ -32,7 +37,7 @@ export class ConfirmpagoComponent implements OnInit {
      // Ubicacion de Entrega
      let id = this._productoService.location['ubicacion'];
 
-     this.__ubicacionService.cargarUbicacion( id )
+     this._ubicacionService.cargarUbicacion( id )
                 .subscribe( ubicacion => {
                   this.ubicacion = ubicacion;
                   this.user = ubicacion.usuario;
@@ -40,10 +45,39 @@ export class ConfirmpagoComponent implements OnInit {
  
      // Forma de Pago
      this.fPago = this._productoService.pagoCart();
-     console.log(this.fPago);
-
   }
 
+  reset(){
 
+    
+  }
+
+  finalizarPago() {
+
+
+    if ( this.fPago === 'Mercado Pago') {
+
+ 
+       this._mercadopagoService.crearpago( )
+                   .subscribe( (resp: any) => {
+                    console.log(resp);
+                    });
+
+    } else if (this.fPago === 'Pago en Efectivo') {
+
+      // Nombre de archivo personalizado
+      // 12312312312-123.png
+      let idCompra = `${ new Date().getFullYear()}${ new Date().getMonth() }-${ new Date().getMilliseconds()}`;
+
+      this.cart = new Cart( this.productos, this.ubicacion['_id'], this.fPago, idCompra );
+
+      this._cartService.crearCart( this.cart )
+                  .subscribe( () => {
+                  this.router.navigate(['/pago-finalizado']);
+              });
+
+      }
+
+    }
 
 }

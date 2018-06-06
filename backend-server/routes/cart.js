@@ -11,39 +11,37 @@ var moment = require('moment');
 var Cart = require('../models/cart');
 
 // ==========================================
-// Obtener todas las compras
+// Obtener compras por usuario
 // ==========================================
-app.get('/', (req, res, next) => {
+app.get('/:id', (req, res) => {
 
-    var desde = req.query.desde || 0;
-    desde = Number(desde);
+    var id = req.params.id;
 
-    Cart.find({})
-        .skip(desde)
-        .limit(50)
-        .populate('producto')
-        .populate('usuario', 'nombre apellido email telefono')
-        .exec(
-            (err, compras) => {
+    Cart.find({ usuario: id, estado: 'Pendiente' })
+        .exec((err, cart) => {
 
-                if (err) {
-                    return res.status(500).json({
-                        ok: false,
-                        mensaje: 'Error cargando compras',
-                        errors: err
-                    });
-                }
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    mensaje: 'Error al buscar el pedido',
+                    errors: err
+                });
+            }
 
-                Cart.count({}, (err, conteo) => {
-                    res.status(200).json({
-                        ok: true,
-                        compras: compras,
-                        total: conteo
-                    });
+            if (!cart) {
+                return res.status(400).json({
+                    ok: false,
+                    mensaje: 'el usuario con el id ' + id + ' no existe'
+                });
+            }
 
-                })
-
+            res.status(200).json({
+                ok: true,
+                cart: cart
             });
+
+        })
+
 
 });
 
@@ -56,7 +54,10 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
     var cart = new Cart({
         usuario: req.usuario._id,
-        producto: body.producto,
+        direccion: body.direccion,
+        pago: body.pago,
+        idCompra: body.idCompra,
+        productos: body.productos,
         estado: body.estado,
         fecha: moment().format('L')
     });
@@ -73,7 +74,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
         res.status(200).json({
             ok: true,
-            carrito: cartGuardado
+            cart: cartGuardado
         });
 
 

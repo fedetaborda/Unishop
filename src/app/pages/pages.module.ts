@@ -13,10 +13,6 @@ import { DetalleMarcaComponent } from './admin-producto/detalle-marca/detalle-ma
 import { DetalleCategoriaComponent } from './admin-producto/detalle-categoria/detalle-categoria.component';
 import { RecuperoComponent } from './recupero-login/recupero/recupero.component';
 
-// Module
-import { CompartidaModule } from './compartidas/compartida.module';
-
-
 
 // Pipe Module
 import { PipesModule } from '../pipes/pipes.module';
@@ -45,6 +41,9 @@ import { ConfirmpagoComponent } from './confirmpago/confirmpago.component';
 import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
 import { CartComponent } from './compartidas/cart/cart.component';
 import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo/nuevo.component';
+import { EstadoComponent } from './orden/estado.component';
+import { InteresComponent } from '../componentes/interes/interes.component';
+
 
 // import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral.component';
 
@@ -78,7 +77,9 @@ import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo/nuevo.componen
         MediopagoComponent,
         ConfirmpagoComponent,
         PagocompletoComponent,
-        CartComponent
+        CartComponent,
+        EstadoComponent,
+        InteresComponent
 
     ],
     exports: [

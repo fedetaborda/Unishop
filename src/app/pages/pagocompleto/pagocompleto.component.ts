@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cart } from '../../models/cart';
+import { CartService, UsuarioService } from '../../service/service.index';
 
 @Component({
   selector: 'app-pagocompleto',
@@ -6,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagocompletoComponent implements OnInit {
 
-  constructor() { }
+  idCompra: string;
+
+  constructor(public _cartService: CartService,
+              public _usuarioService: UsuarioService) { }
 
   ngOnInit() {
+
+    let user = this._usuarioService.usuario._id;
+
+    this._cartService.carUser(user)
+                     .subscribe( (resp) => this.idCompra = resp.idCompra );
   }
+  
 
 }

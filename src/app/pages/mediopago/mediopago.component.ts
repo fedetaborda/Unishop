@@ -18,11 +18,7 @@ export class MediopagoComponent implements OnInit {
 
   formaPago( pago: string ) {
 
-    let fpago = {
-      formaPago: pago
-    };
-
-    this._productoService.addfPago( fpago );
+   this._productoService.addfPago( pago );
 
 }
 
