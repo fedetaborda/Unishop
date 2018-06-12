@@ -4,35 +4,43 @@ var jwt = require('jsonwebtoken');
 
 var mdAutenticacion = require('../middlewares/autenticacion');
 
+// var Mercadopago = require('../models/mercadopago');
+
 var app = express();
 
 var mercadopago = require('mercadopago');
 
-mercadopago.configure({
-    client_id: '3640873518284384',
-    client_secret: 'rCZUFGASCQgdT4faYuyMJdq5ClFGDnsB'
-});
+
+
 
 
 // ==========================================
 // Crear preference
 // ==========================================
 
-app.get('/', (req, res, next) => {
+app.post('/', (req, res) => {
+
+    mercadopago.configure({
+        client_id: '3640873518284384',
+        client_secret: 'rCZUFGASCQgdT4faYuyMJdq5ClFGDnsB'
+    });
+
+    var body = req.body;
+
 
     // Create a preference structure
-    var preference = {
+    preference = {
         items: [
             item = {
-                id: '1234',
-                title: 'Ergonomic Aluminum Shirt',
-                quantity: 6,
+                id: '8d5dffd8hsgd9fsf7',
+                title: 'Compra ONLINE NEGOCIO(1)',
+                quantity: 1,
                 currency_id: 'ARS',
-                unit_price: 69.86
+                unit_price: body.total
             }
         ],
         payer: {
-            email: 'federicomartin2003@hotmail.com'
+            email: body.email
         }
     };
 
@@ -56,5 +64,7 @@ app.get('/', (req, res, next) => {
         });
 
 });
+
+
 
 module.exports = app;

@@ -17,8 +17,6 @@ var Producto = require('../models/producto');
 // ==========================================
 app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
-    
-
     var body = req.body;
 
     if (body.imagen) {
@@ -41,7 +39,6 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
         fecha: moment().format('L')
     });
 
-    
 
     producto.save((err, productoGuardado) => {
 

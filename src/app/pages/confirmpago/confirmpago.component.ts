@@ -5,12 +5,15 @@ import { Ubicacion } from '../../models/ubicacion';
 import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario';
 import { Cart } from '../../models/cart';
+import { MercadoPago } from '../../models/mercadopago';
 
 @Component({
   selector: 'app-confirmpago',
   templateUrl: './confirmpago.component.html'
 })
 export class ConfirmpagoComponent implements OnInit {
+
+  pago: MercadoPago[] = [];
 
   productos: Producto[] = [];
 
@@ -20,12 +23,14 @@ export class ConfirmpagoComponent implements OnInit {
 
   user: any[] = [];
 
+  url: string;
+
   cart: Cart;
 
   constructor(public _productoService: ProductoService,
               public _ubicacionService: UbicacionService,
-              public _cartService: CartService,
               public _mercadopagoService: MercadopagoService,
+              public _cartService: CartService,
               public router: Router) { }
 
   ngOnInit() {
@@ -33,7 +38,6 @@ export class ConfirmpagoComponent implements OnInit {
     // Productos
     this.productos = this._productoService.producinCart();
 
-    
      // Ubicacion de Entrega
      let id = this._productoService.location['ubicacion'];
 
@@ -45,23 +49,28 @@ export class ConfirmpagoComponent implements OnInit {
  
      // Forma de Pago
      this.fPago = this._productoService.pagoCart();
+
   }
 
-  reset(){
-
-    
-  }
 
   finalizarPago() {
 
+if ( this.fPago === 'Mercado Pago') {
 
-    if ( this.fPago === 'Mercado Pago') {
+    let pago = {
 
- 
-       this._mercadopagoService.crearpago( )
+      id: `${ new Date().getMilliseconds()}`,
+      email: 'federicomartin2003@hotmail.com',
+      total: 1000
+    }
+    console.log( pago.id);
+
+    this._mercadopagoService.crearMPago( pago )
                    .subscribe( (resp: any) => {
-                    console.log(resp);
-                    });
+                      this._mercadopagoService.linkUrl( resp );
+          });
+
+      this.router.navigate(['/mercadopago']);
 
     } else if (this.fPago === 'Pago en Efectivo') {
 
@@ -79,5 +88,7 @@ export class ConfirmpagoComponent implements OnInit {
       }
 
     }
+
+    
 
 }

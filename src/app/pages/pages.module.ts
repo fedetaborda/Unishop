@@ -17,6 +17,7 @@ import { RecuperoComponent } from './recupero-login/recupero/recupero.component'
 // Pipe Module
 import { PipesModule } from '../pipes/pipes.module';
 
+
 import { PAGES_ROUTES } from './pages.routes';
 import { ServicesModule } from '../service/services.module';
 
@@ -43,6 +44,8 @@ import { CartComponent } from './compartidas/cart/cart.component';
 import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo/nuevo.component';
 import { EstadoComponent } from './orden/estado.component';
 import { InteresComponent } from '../componentes/interes/interes.component';
+import { MercadopagoComponent } from './mercadopago/mercadopago.component';
+
 
 
 // import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral.component';
@@ -79,7 +82,8 @@ import { InteresComponent } from '../componentes/interes/interes.component';
         PagocompletoComponent,
         CartComponent,
         EstadoComponent,
-        InteresComponent
+        InteresComponent,
+        MercadopagoComponent
 
     ],
     exports: [

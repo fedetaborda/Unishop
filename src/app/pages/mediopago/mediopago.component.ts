@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoService } from '../../service/service.index';
+import { ProductoService, MercadopagoService } from '../../service/service.index';
 
 
 @Component({
@@ -7,7 +7,8 @@ import { ProductoService } from '../../service/service.index';
   templateUrl: './mediopago.component.html'
 })
 export class MediopagoComponent implements OnInit {
-
+  
+  url: string;
 
   constructor(public _productoService: ProductoService) { }
 

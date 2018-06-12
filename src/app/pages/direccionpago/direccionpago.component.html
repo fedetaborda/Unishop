@@ -27,7 +27,7 @@
                     <span class="angle"></span>1. Envio</a>
             </div>
 
-            <h4>Donde te lo enviamos?</h4>
+            <h4>Forma de entrega</h4>
             <hr class="padding-bottom-1x">
             <div class="row">
                 <div class="col-md-12">
@@ -48,7 +48,7 @@
                                 <th></th>
                                 <th>Direcciones</th>
                                 <th>Tiempo Estimado</th>
-                                <th>Envio/Retiro</th>
+                                <th>Retiro</th>
                                 <th></th>
                                 <th></th>
                             </tr>
@@ -57,31 +57,32 @@
 
                         <tbody>
 
-                            <tr *ngFor="let ubicacion of ubicaciones; let i = index">
-                                <td class="align-middle">
-                                    <div class="custom-control custom-radio mb-0">
-                                        <input class="custom-control-input" type="radio" id="{{i}}" name="ubicacion" (change)="dirrecionCart( ubicacion._id, i )">
-                                        <label class="custom-control-label" for="{{i}}"></label>
-                                    </div>
-                                </td>
-                                <td class="align-middle"><span class="text-medium">{{ ubicacion.direccion }} {{ ubicacion.altura }} </span><br><span class="text-muted text-sm">All Addresses(default zone), United States &amp; Canada</span></td>
-                                <td class="align-middle">Demora 45 minutos aprox.</td>
-                                <td class="align-middle">$10.00</td>
+                            <!--    <tr *ngFor="let ubicacion of ubicaciones; let i = index">
+                                        <td class="align-middle">
+                                            <div class="custom-control custom-radio mb-0">
+                                                <input class="custom-control-input" type="radio" id="{{i}}" name="ubicacion" (change)="dirrecionCart( ubicacion._id, i )">
+                                                <label class="custom-control-label" for="{{i}}"></label>
+                                            </div>
+                                        </td>
+                                        <td class="align-middle"><span class="text-medium">{{ ubicacion.direccion }} {{ ubicacion.altura }} </span><br><span class="text-muted text-sm">All Addresses(default zone), United States &amp; Canada</span></td>
+                                        <td class="align-middle">Demora 45 minutos aprox.</td>
+                                        <td class="align-middle">$10.00</td>
+        
+        
+                                        <td class="text-center">
+                                            <a class="remove-from-cart text-danger" name="ubicacion" (click)="eliminarUbicacion( ubicacion._id )" data-toggle="tooltip" title="Borrar">
+                                                <i class="icon-cross"></i>
+                                            </a>
+                                        </td>
+        
+        
+                                        <td></td>
+                                    </tr> -->
 
-
-                                <td class="text-center">
-                                    <a class="remove-from-cart text-danger" name="ubicacion" (click)="eliminarUbicacion( ubicacion._id )" data-toggle="tooltip" title="Borrar">
-                                        <i class="icon-cross"></i>
-                                    </a>
-                                </td>
-
-
-                                <td></td>
-                            </tr>
                             <tr>
                                 <td class="align-middle">
                                     <div class="custom-control custom-radio mb-0">
-                                        <input class="custom-control-input" type="radio" id="local" name="ubicacion" (change)="dirrecionCart('local')">
+                                        <input class="custom-control-input" type="radio" id="local" name="ubicacion" checked="true">
                                         <label class="custom-control-label" for="local"></label>
                                     </div>
                                 </td>
@@ -101,7 +102,7 @@
 
             </div>
 
-            <!-- Solo se Podran ingresar 2 ubicacionn por usuario-->
+            <!-- Solo se Podran ingresar 2 ubicacionn por usuario
             <div *ngIf="ubicaciones && ubicaciones.length < 2" class="accordion" id="accordion" role="tablist">
                 <div class="card">
                     <div class="card-header" role="tab">
@@ -144,7 +145,7 @@
                     </div>
                 </div>
             </div>
-
+            -->
             <hr class="padding-bottom-1x">
 
             <div class="checkout-footer">
@@ -165,12 +166,12 @@
                             <td class="text-medium">${{ subTotal }}</td>
                         </tr>
                         <tr>
-                            <td>Costo Envio/Retiro</td>
+                            <td>Costo de Retiro</td>
                             <td class="text-medium">$0.00</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td class="text-lg text-medium">$315.60</td>
+                            <td class="text-lg text-medium">${{ subTotal }}</td>
                         </tr>
                     </table>
                 </section>

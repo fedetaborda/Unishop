@@ -99,8 +99,7 @@ export class NuevoComponent implements OnInit {
       this.form.value.precio_dsc
     );
 
-    console.log(producto);
-
+ 
     if ( forma.invalid  ) {
       return;
     }

@@ -57,8 +57,6 @@
 
                             <td *ngIf="producto.descuento" class="text-center text-lg text-medium">${{ producto.precio_desc * producto.cantidad }}</td>
 
-
-
                             <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio }} <small class="text-danger">x{{ producto.cantidad }}</small></td>
 
                             <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio * producto.cantidad }}</td>
@@ -91,9 +89,7 @@
             </div>
             <div class="checkout-footer margin-top-1x">
                 <div class="column hidden-xs-down"><a class="btn btn-outline-secondary" routerLink="/checkout-pago"><i class="icon-arrow-left"></i>&nbsp;Atras</a></div>
-
                 <div class="column"><a class="btn btn-primary" (click)="finalizarPago()">Comprletar Orden</a></div>
-
             </div>
         </div>
 

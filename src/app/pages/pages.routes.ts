@@ -19,6 +19,7 @@ import { ConfirmpagoComponent } from './confirmpago/confirmpago.component';
 import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
 import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo/nuevo.component';
 import { EstadoComponent } from './orden/estado.component';
+import { MercadopagoComponent } from './mercadopago/mercadopago.component';
 
 
 const PagesRoutes: Routes = [
@@ -42,6 +43,7 @@ const PagesRoutes: Routes = [
         { path: 'pago-finalizado', component: PagocompletoComponent },
         { path: 'orden-estados', component: EstadoComponent },
         { path: 'perfil', component: PerfilComponent },
+        { path: 'mercadopago', component: MercadopagoComponent },
 
         // VerificaTokenGuard - Verifica Loguin
         { path: 'admin-prod',

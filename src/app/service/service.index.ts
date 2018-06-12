@@ -1,3 +1,5 @@
+export { MercadopagoService } from './mercadopago/mercadopago.service';
+
 export { CategoriaService } from './categoria/categoria.service';
 
 export { ProductoService } from './producto/producto.service';
@@ -16,4 +18,4 @@ export { UbicacionService } from './ubicacion/ubicacion.service';
 
 export { CartService } from './cart/cart.service';
 
-export { MercadopagoService } from './mercadopago/mercadopago.service';
+

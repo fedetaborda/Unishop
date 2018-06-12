@@ -53,7 +53,11 @@ export class DireccionpagoComponent implements OnInit {
 
     });
 
-    this.cargarUbicaciones();
+   // this.cargarUbicaciones();
+
+   this.location = {
+    ubicacion: 'Retiro por el Local'
+  };
 
   }
 
@@ -64,13 +68,7 @@ export class DireccionpagoComponent implements OnInit {
               .subscribe( () => this.cargarUbicaciones() );
   }
 
-  dirrecionCart( direccion: string ) {
 
-      this.location = {
-        ubicacion: direccion
-      };
-
-  }
 
   addCart() {
     this._productoService.addLocation(this.location);
