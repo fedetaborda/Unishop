@@ -80,7 +80,7 @@ precio = 0;
     }
 
     this._document.getElementById('cart').innerHTML = cantidad;
-    this.subTotal = this._document.getElementById('subtotal').innerHTML = '$' + precio.toFixed(2);
+    this.subTotal = this._document.getElementById('subtotal').innerHTML = precio.toFixed(2);
   }
 
   calcularCart2(producto) {
@@ -115,7 +115,7 @@ precio = 0;
 
 
     this._document.getElementById('cart').innerHTML = cantidad;
-    this.subTotal = this._document.getElementById('subtotal').innerHTML = '$' + precio.toFixed(2);
+    this.subTotal = this._document.getElementById('subtotal').innerHTML = precio.toFixed(2);
   }
 
 

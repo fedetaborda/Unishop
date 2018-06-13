@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MercadopagoService } from '../../service/service.index';
+import { MercadopagoService, ProductoService } from '../../service/service.index';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../../service/usuario/usuario.service';
 
 @Component({
   selector: 'app-mercadopago',
@@ -13,14 +14,27 @@ export class MercadopagoComponent implements OnInit {
   loading: Boolean = false;
 
   constructor(public _mercadopagoService: MercadopagoService,
-              public router: Router) {
+              public _usuarioService: UsuarioService,
+              public _productoService: ProductoService,
+              public router: Router) {  }
 
-                this.url = this._mercadopagoService.fucreturn();
-                this.loading = true;
+  ngOnInit() {
+  
+    let pago = {
+      id: `${ new Date().getMilliseconds() }`,
+      email: this._usuarioService.usuario.email,
+      total: this._productoService.subTotal
+    };
 
-              }
+    this._mercadopagoService.crearMPago( pago )
+                               .subscribe( (resp: any) => {
+                                  this.url = resp;
+                                  this.loading = true;
+                      });
 
-  ngOnInit() {}
+    }
+
+
 
 }
 

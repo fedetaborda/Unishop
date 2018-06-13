@@ -57,19 +57,6 @@ export class ConfirmpagoComponent implements OnInit {
 
 if ( this.fPago === 'Mercado Pago') {
 
-    let pago = {
-
-      id: `${ new Date().getMilliseconds()}`,
-      email: 'federicomartin2003@hotmail.com',
-      total: 1000
-    }
-    console.log( pago.id);
-
-    this._mercadopagoService.crearMPago( pago )
-                   .subscribe( (resp: any) => {
-                      this._mercadopagoService.linkUrl( resp );
-          });
-
       this.router.navigate(['/mercadopago']);
 
     } else if (this.fPago === 'Pago en Efectivo') {

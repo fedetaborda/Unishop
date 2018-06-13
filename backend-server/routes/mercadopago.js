@@ -13,36 +13,42 @@ var mercadopago = require('mercadopago');
 
 
 
-
 // ==========================================
 // Crear preference
 // ==========================================
 
 app.post('/', (req, res) => {
 
-    mercadopago.configure({
-        client_id: '3640873518284384',
-        client_secret: 'rCZUFGASCQgdT4faYuyMJdq5ClFGDnsB'
-    });
 
     var body = req.body;
 
 
+
     // Create a preference structure
+
     preference = {
         items: [
             item = {
-                id: '8d5dffd8hsgd9fsf7',
+                id: body.id,
                 title: 'Compra ONLINE NEGOCIO(1)',
                 quantity: 1,
                 currency_id: 'ARS',
-                unit_price: body.total
+                unit_price: parseFloat(body.total)
             }
         ],
         payer: {
             email: body.email
         }
     };
+
+
+    console.log(preference);
+
+
+    mercadopago.configure({
+        client_id: '3640873518284384',
+        client_secret: 'rCZUFGASCQgdT4faYuyMJdq5ClFGDnsB'
+    });
 
 
     mercadopago.preferences.create(preference)
@@ -59,7 +65,8 @@ app.post('/', (req, res) => {
             // If an error has occurred
             res.status(500).json({
                 ok: false,
-                estado: error
+                mensaje: 'Error al generar Mercado Pago',
+                error: error
             });
         });
 
