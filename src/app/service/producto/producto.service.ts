@@ -175,4 +175,18 @@ precio = 0;
 
   }
 
+
+  vaciarProductos() {
+    
+    let total = 0.00;
+
+    this._document.getElementById('cart').innerHTML = 0;
+
+    this._document.getElementById('subtotal').innerHTML = total.toFixed(2);
+
+    this.productos = [];
+
+    this.fPago = '';
+  }
+
 }

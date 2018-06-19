@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario';
 import { Cart } from '../../models/cart';
 import { MercadoPago } from '../../models/mercadopago';
+import { UsuarioService } from '../../service/usuario/usuario.service';
 
 @Component({
   selector: 'app-confirmpago',
@@ -14,6 +15,8 @@ import { MercadoPago } from '../../models/mercadopago';
 export class ConfirmpagoComponent implements OnInit {
 
   pago: MercadoPago[] = [];
+
+  usuario: Usuario;
 
   productos: Producto[] = [];
 
@@ -31,6 +34,7 @@ export class ConfirmpagoComponent implements OnInit {
               public _ubicacionService: UbicacionService,
               public _mercadopagoService: MercadopagoService,
               public _cartService: CartService,
+              public _usuarioService: UsuarioService,
               public router: Router) { }
 
   ngOnInit() {
@@ -39,13 +43,16 @@ export class ConfirmpagoComponent implements OnInit {
     this.productos = this._productoService.producinCart();
 
      // Ubicacion de Entrega
-     let id = this._productoService.location['ubicacion'];
+    /* let id = this._productoService.location['ubicacion'];
 
      this._ubicacionService.cargarUbicacion( id )
                 .subscribe( ubicacion => {
                   this.ubicacion = ubicacion;
                   this.user = ubicacion.usuario;
-                 });
+                 }); */
+
+     // Usuario
+     this.usuario = this._usuarioService.usuario;
  
      // Forma de Pago
      this.fPago = this._productoService.pagoCart();
@@ -67,8 +74,10 @@ if ( this.fPago === 'Mercado Pago') {
 
       this.cart = new Cart( this.productos, this.ubicacion['_id'], this.fPago, idCompra );
 
+
       this._cartService.crearCart( this.cart )
                   .subscribe( () => {
+                  this._productoService.vaciarProductos();
                   this.router.navigate(['/pago-finalizado']);
               });
 

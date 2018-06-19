@@ -16,12 +16,32 @@
 </div>
 <!-- Page Content-->
 <div class="container padding-bottom-3x mb-1">
+
     <div class="row">
-        <div *ngIf="!loading" class="card-body">
-            Ingresando a mercado pago..
+
+        <div class="container padding-bottom-1x mb-2">
+            <div class="card text-center">
+                <div class="card-body padding-top-2x">
+                    <h3 class="card-title">Gracias por tu compra!</h3>
+                    <p class="card-text">Su pedido se ha realizado y se procesará lo antes posible</p>
+                    <p class="card-text">su número de pedido es el: <span class="text-medium"> {{ idCompra }} </span></p>
+                    <p class="card-text">Este es el detalle de tu ultima compra:
+                        <a routerLink="">Mi Compra</a>
+                    </p>
+
+                    <div *ngIf="!loading" class="card-body">
+                        Ingresando a mercado pago..
+                    </div>
+                    <div *ngIf="loading" class="card-body">
+                        <iframe [src]="url | safeUrl" width="100%" height="600" frameborder="0"></iframe>
+                    </div>
+
+
+                    <div class="padding-top-1x padding-bottom-1x"><a class="btn btn-outline-secondary" routerLink="/productos">Volver a Productos</a><a class="btn btn-outline-primary" href="order-tracking.html"><i class="icon-location"></i>&nbsp;Seguir Pedido</a></div>
+                </div>
+            </div>
         </div>
-        <div *ngIf="loading" class="card-body">
-            <iframe [src]="url | safeUrl" width="100%" height="600" frameborder="0"></iframe>
-        </div>
+
+
     </div>
 </div>
