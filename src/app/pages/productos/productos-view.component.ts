@@ -8,7 +8,6 @@ import { Producto } from '../../models/producto';
 })
 export class ProductosViewComponent implements OnInit {
 
-  productos: Producto[];
 
   constructor() {}
 

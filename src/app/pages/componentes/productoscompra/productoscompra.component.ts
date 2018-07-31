@@ -14,10 +14,10 @@ export class ProductoscompraComponent implements OnInit {
 
   producto: Producto[] = [];
 
-  constructor(public _productoService: ProductoService,
+    constructor(public _productoService: ProductoService,
               public _verificaTokenGuard: VerificaTokenGuard) { }
 
-  ngOnInit() {  }
+  ngOnInit() { }
 
   obtenerProducto (id: string) {
 

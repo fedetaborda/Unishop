@@ -16,6 +16,8 @@ export class BuscardorProdComponent implements OnInit {
 
   productos: Producto[] = [];
 
+  cargando: boolean = true;
+
   constructor(public http: HttpClient, public _productoService: ProductoService) {}
 
   ngOnInit() {
@@ -29,6 +31,7 @@ export class BuscardorProdComponent implements OnInit {
       .subscribe( (resp: any) => {
         this.productos = resp.productos;
         this.buscardorProd.emit( this.productos );
+        this.cargando = false;
       });
 
   }

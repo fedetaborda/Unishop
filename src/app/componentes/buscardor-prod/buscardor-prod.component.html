@@ -1,4 +1,4 @@
-<div class="shop-toolbar padding-bottom-1x mb-2">
+<div class="shop-toolbar padding-bottom-1x mb-2" *ngIf="!cargando">
     <div class="column">
         <div class="form-group">
             <form class="input-group form-group">
@@ -10,5 +10,20 @@
         </div>
     </div>
     <app-link-vistas></app-link-vistas>
+
+</div>
+
+<div class="row" *ngIf="cargando">
+
+    <div class="col-md-12">
+
+        <div class="alert alert-danger text-center">
+            <strong>Cargando...</strong>
+            <br>
+            <i class="fa fa-refresh fa-spin fa-2x"></i>
+            <br>
+            <span>Espere por favor!</span>
+        </div>
+    </div>
 
 </div>

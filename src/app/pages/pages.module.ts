@@ -45,6 +45,7 @@ import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo/nuevo.componen
 import { EstadoComponent } from './orden/estado.component';
 import { InteresComponent } from '../componentes/interes/interes.component';
 import { MercadopagoComponent } from './mercadopago/mercadopago.component';
+import { InicioCategoriasComponent } from './inicio-categorias/inicio-categorias.component';
 
 
 
@@ -83,7 +84,8 @@ import { MercadopagoComponent } from './mercadopago/mercadopago.component';
         CartComponent,
         EstadoComponent,
         InteresComponent,
-        MercadopagoComponent
+        MercadopagoComponent,
+        InicioCategoriasComponent
 
     ],
     exports: [

@@ -10,7 +10,7 @@ import { ProductoService } from '../../../service/service.index';
 export class Productoscompra2Component implements OnInit {
 
  producto: Producto[] = [];
- 
+
   @Input() productos: Producto;
 
 

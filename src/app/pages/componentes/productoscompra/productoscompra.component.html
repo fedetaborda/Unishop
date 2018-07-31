@@ -1,5 +1,9 @@
 <!-- Product Lsit-->
-<div *ngFor="let producto of productos" class="product-card product-list">
+
+
+
+<div *ngFor="let producto of productos" class="product-card product-list">.
+
     <!-- Prod con descuento -->
     <div *ngIf="producto.descuento">
         <a class="product-thumb" href="">
@@ -19,8 +23,8 @@
             <div class="product-buttons">
                 <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Deseo"><i class="icon-heart"></i></button>
                 <button (click)="obtenerProducto(producto._id, producto.precio_desc)" class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-title="Correcto" data-toast-message="Producto Agregado!">
-                        <i class="fas fa-shopping-cart"></i> Agregar 
-                    </button>
+                                    <i class="fas fa-shopping-cart"></i> Agregar 
+                                </button>
             </div>
         </div>
     </div>
@@ -40,8 +44,8 @@
             <div class="product-buttons">
                 <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Deseo"><i class="icon-heart"></i></button>
                 <button (click)="obtenerProducto(producto._id, producto.precio)" class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-title="Correcto" data-toast-message="Producto Agregado!">
-                        <i class="fas fa-shopping-cart"></i> Agregar 
-                    </button>
+                                    <i class="fas fa-shopping-cart"></i> Agregar 
+                                </button>
             </div>
         </div>
     </div>

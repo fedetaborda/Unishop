@@ -20,7 +20,7 @@ import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
 import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo/nuevo.component';
 import { EstadoComponent } from './orden/estado.component';
 import { MercadopagoComponent } from './mercadopago/mercadopago.component';
-
+import { InicioCategoriasComponent } from './inicio-categorias/inicio-categorias.component';
 
 const PagesRoutes: Routes = [
 
@@ -29,7 +29,7 @@ const PagesRoutes: Routes = [
     canActivate: [ LoginGuardGuard, VerificaTokenGuard ],
 
     children: [
-
+        { path: 'index/categorias', component: InicioCategoriasComponent },
         { path: 'productos', component: ProductosComponent },
         { path: 'viewproductos', component: ProductosViewComponent },
         { path: 'busqueda/:id', component: BusquedaProductoComponent },
@@ -57,7 +57,7 @@ const PagesRoutes: Routes = [
             { path: '', redirectTo: '/produc-list', pathMatch: 'full' }]
          },
 
-         { path: '', redirectTo: '/productos', pathMatch: 'full' }
+         { path: '', redirectTo: '/index/categorias', pathMatch: 'full' }
 
         ]}
 
