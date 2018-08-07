@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Pages
 import { ProductosComponent } from './productos/productos.component';
-import { PagesComponent } from '../pages/pages.component';
+import { PagesComponent } from './pages.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AdminProductoComponent } from './admin-producto/admin-producto.component';
 import { ProducListComponent } from './admin-producto/produc-list/produc-list.component';
@@ -46,7 +46,6 @@ import { EstadoComponent } from './orden/estado.component';
 import { InteresComponent } from '../componentes/interes/interes.component';
 import { MercadopagoComponent } from './mercadopago/mercadopago.component';
 import { InicioCategoriasComponent } from './inicio-categorias/inicio-categorias.component';
-
 
 
 // import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral.component';

@@ -2,14 +2,14 @@
 <div class="page-title">
     <div class="container">
         <div class="column">
-            <h1>Busqueda de Productos</h1>
+            <h1>Todos los Productos</h1>
         </div>
         <div class="column">
             <ul class="breadcrumbs">
                 <li><a routerLink="/">Inicio</a>
                 </li>
                 <li class="separator">&nbsp;</li>
-                <li>Resultados de Busqueda V2</li>
+                <li>Listado de Productos</li>
             </ul>
         </div>
     </div>
@@ -22,7 +22,6 @@
 
             <!-- Shop Toolbar-->
             <div [hidden]="productos.length === 0" class="shop-toolbar padding-bottom-1x mb-2">
-                <app-filtro></app-filtro>
                 <div class="column">
                     <div class="shop-view"><a class="list-view" routerLink="/busqueda/{{termino}}"><span></span><span></span><span></span></a><a class="grid-view active"><span></span><span></span><span></span></a></div>
                 </div>
@@ -61,13 +60,8 @@
                 </div>
             </div>
 
-            <div class="pt-2">
-                <!-- Pagination-->
-                <app-paginador [hidden]="productos.length === 0"></app-paginador>
 
-            </div>
-
-            <div *ngIf="productos.length === 0" class="col-10">
+            <div *ngIf="productos.length === 0" class="col-12">
                 <div class="alert alert-primary alert-dismissible fade show text-center margin-bottom-1x">
                     <span class="alert-close" data-dismiss="alert"></span><i class="icon-camera"></i> &nbsp;&nbsp;
                     <strong>No Result..</strong> No existen resultados para la busqueda que intenta realizar.

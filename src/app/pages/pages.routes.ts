@@ -22,6 +22,7 @@ import { EstadoComponent } from './orden/estado.component';
 import { MercadopagoComponent } from './mercadopago/mercadopago.component';
 import { InicioCategoriasComponent } from './inicio-categorias/inicio-categorias.component';
 
+
 const PagesRoutes: Routes = [
 
     { path: '',
