@@ -41,11 +41,11 @@ var mercadopagoRoutes = require('./routes/mercadopago');
 
 // mongodb://localhost:27017/VentasKcity
 
-// mongodb://Kcity:fede4303@ds115762.mlab.com:15762/kcity
+// mongodb://user-kcity:fede4303@ds215822.mlab.com:15822/kcity
 
 const port = process.env.PORT || 3000
 
-mongoose.connection.openUri('mongodb://localhost:27017/VentasKcity', (err, res) => {
+mongoose.connection.openUri('mongodb://user-kcity:fede4303@ds215822.mlab.com:15822/kcity', (err, res) => {
 
     if (err) throw err;
 
