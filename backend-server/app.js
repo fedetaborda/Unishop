@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var app = express();
 
 
+const port = process.env.PORT || 3000;
+
+
 // CORS
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -70,6 +73,6 @@ app.use('/', appRoutes);
 
 
 // Escuchar peticiones
-app.listen(3000, () => {
-    console.log('Express server puerto 3000: \x1b[32m%s\x1b[0m', 'online');
+app.listen(port, () => {
+    console.log(`Express server puerto ${ port } : \x1b[32m%s\x1b[0m, online`);
 });
