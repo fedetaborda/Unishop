@@ -7,9 +7,6 @@ var bodyParser = require('body-parser');
 var app = express();
 
 
-const port = process.env.PORT || 3000;
-
-
 // CORS
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -44,8 +41,9 @@ var mercadopagoRoutes = require('./routes/mercadopago');
 
 // mongodb://localhost:27017/VentasKcity
 
-// mongodb://fede:fede4303@ds233970.mlab.com:33970/unishop
+// mongodb://Kcity:fede4303@ds115762.mlab.com:15762/kcity
 
+const port = process.env.PORT || 3000
 
 mongoose.connection.openUri('mongodb://localhost:27017/VentasKcity', (err, res) => {
 
@@ -74,8 +72,6 @@ app.use('/', appRoutes);
 
 // Escuchar peticiones
 app.listen(port, () => {
-    console.log(`Express server puerto ${ port }`);
-
-    /*: \x1b[32m%s\x1b[0m, online`);*/
-
+    console.log(`Express server puerto  ${ port } `);
+    /*: \x1b[32m%s\x1b[0m', 'online');*/
 });
