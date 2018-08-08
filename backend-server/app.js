@@ -21,8 +21,8 @@ app.use(function(req, res, next) {
 
 // Body Parser
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 
 // Importar rutas
@@ -74,5 +74,8 @@ app.use('/', appRoutes);
 
 // Escuchar peticiones
 app.listen(port, () => {
-    console.log(`Express server puerto ${ port } : \x1b[32m%s\x1b[0m, online`);
+    console.log(`Express server puerto ${ port }`);
+
+    /*: \x1b[32m%s\x1b[0m, online`);*/
+
 });
