@@ -176,6 +176,14 @@ precio = 0;
   }
 
 
+  promocionProductos() {
+
+    let url = URL_SERVICIOS + '/producto/promociones';
+    return this.http.get( url );
+
+  }
+
+
   vaciarProductos() {
     
     let total = 0.00;

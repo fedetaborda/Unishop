@@ -27,6 +27,7 @@ var productoSchema = new Schema({
     precio_desc: { type: Number, required: false },
     descuento: { type: Number, required: false },
     estado: { type: Boolean, required: true, default: true },
+    promocion: { type: Boolean, required: true, default: false },
     descripcion: { type: String, required: false },
     fecha: { type: Date, required: true }
 });

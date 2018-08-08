@@ -63,7 +63,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 // ==========================================
 //  Obtener Producto por ID
 // ==========================================
-app.get('/:id', (req, res) => {
+app.get('/id/:id', (req, res) => {
 
     var id = req.params.id;
 
@@ -89,8 +89,8 @@ app.get('/:id', (req, res) => {
                 ok: true,
                 producto: producto
             });
-        })
-})
+        });
+});
 
 
 // ==========================================
@@ -130,6 +130,37 @@ app.get('/', (req, res, next) => {
             });
 
 });
+
+
+
+// ==========================================
+// Obtener Productos en Promocion
+// ==========================================
+app.get('/promociones', (req, res, next) => {
+
+    Producto.find({ promocion: true })
+        .populate('')
+        .exec(
+            (err, productos) => {
+
+                if (err) {
+                    return res.status(500).json({
+                        ok: false,
+                        mensaje: 'Error cargando productos',
+                        errors: err
+                    });
+                }
+
+                res.status(200).json({
+                    ok: true,
+                    productos: productos
+                });
+
+
+            });
+
+});
+
 
 
 

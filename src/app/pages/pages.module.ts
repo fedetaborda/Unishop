@@ -21,7 +21,6 @@ import { PipesModule } from '../pipes/pipes.module';
 import { PAGES_ROUTES } from './pages.routes';
 import { ServicesModule } from '../service/services.module';
 
-import { Buscadorview2Component } from './admin-producto/busqueda-producto/buscadorview2.component';
 import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/busqueda-producto.component';
 import { PaginadorComponent } from './componentes/paginador/paginador.component';
 import { FiltroComponent } from './componentes/filtro/filtro.component';
@@ -47,8 +46,7 @@ import { InteresComponent } from '../componentes/interes/interes.component';
 import { MercadopagoComponent } from './mercadopago/mercadopago.component';
 import { InicioCategoriasComponent } from './inicio-categorias/inicio-categorias.component';
 
-
-// import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral.component';
+import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral.component';
 
 
 @NgModule({
@@ -61,12 +59,11 @@ import { InicioCategoriasComponent } from './inicio-categorias/inicio-categorias
         DetalleMarcaComponent,
         DetalleCategoriaComponent,
         NuevoComponent,
-        Buscadorview2Component,
         BusquedaProductoComponent,
         RecuperoComponent,
         PaginadorComponent,
         FiltroComponent,
-       // BarraLateralComponent,
+        BarraLateralComponent,
         ProductoscompraComponent,
         BuscardorProdComponent,
         LinkVistasComponent,
