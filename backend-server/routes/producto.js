@@ -36,6 +36,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
         marca: body.marca.id,
         estado: body.estado,
         descripcion: body.descripcion,
+        promocion: body.promocion,
         fecha: moment().format('L')
     });
 

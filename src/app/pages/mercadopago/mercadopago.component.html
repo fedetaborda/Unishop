@@ -29,9 +29,21 @@
                         <a routerLink="">Mi Compra</a>
                     </p>
 
-                    <div *ngIf="!loading" class="card-body">
-                        Ingresando a mercado pago..
+                    <div class="row" *ngIf="!loading">
+
+                        <div class="col-md-12">
+
+                            <div class="alert alert-warning text-center">
+                                <strong>Cargando Mecado Pago...</strong>
+                                <br>
+                                <i class="fa fa-refresh fa-spin fa-2x"></i>
+                                <br>
+                                <span>Espere por favor!</span>
+                            </div>
+                        </div>
+
                     </div>
+
                     <div *ngIf="loading" class="card-body">
                         <iframe [src]="url | safeUrl" width="100%" height="600" frameborder="0"></iframe>
                     </div>

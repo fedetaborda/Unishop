@@ -93,32 +93,29 @@
     <div class="text-center"><a class="btn btn-outline-secondary margin-top-none" href="shop-categories.html">Mas Productos</a></div>
 </section>
 
-<!-- Featured Products Carousel-->
+<!-- Productos en descuento -->
 <section class="container padding-top-3x padding-bottom-3x">
+
     <h3 class="text-center mb-30">Productos en Promoción</h3>
-    <div class="owl-carousel" data-owl-carousel="{ &quot;nav&quot;: false, &quot;dots&quot;: true, &quot;margin&quot;: 30, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;576&quot;:{&quot;items&quot;:2},&quot;768&quot;:{&quot;items&quot;:3},&quot;991&quot;:{&quot;items&quot;:4},&quot;1200&quot;:{&quot;items&quot;:4}} }">
 
-
+    <div class="row">
         <!-- Product-->
-        <div *ngFor="let producto of productos">
-
+        <div *ngFor="let producto of productos" class="col-md-4 col-sm-6">
             <div class="grid-item">
                 <div class="product-card">
-                    <div class="product-badge text-danger">{{producto.descuento}}% Off</div>
+                    <div class="product-badge text-danger">{{producto.descuento}}% OFF</div>
                     <a class="product-thumb" routerLink="/busqueda/{{producto.nombre}}"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}"></a>
                     <h3 class="product-title"><a routerLink="/busqueda/{{producto.nombre}}">{{producto.nombre}}</a></h3>
                     <h4 class="product-price">
-                        <del>$340</del>${{producto.precio}}
+                        <del>${{producto.precio_desc}}</del>${{producto.precio}}
                     </h4>
                     <div class="product-buttons">
                         <a class="btn btn-outline-primary btn-sm" routerLink="/busqueda/{{producto.nombre}}"><i class="icon-search"></i> ingresar</a>
                     </div>
                 </div>
             </div>
-
         </div>
-
-
     </div>
+
 </section>
 <br>

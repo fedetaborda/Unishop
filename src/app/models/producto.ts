@@ -10,6 +10,7 @@ export class Producto {
         public rango: string,
         public marca: string,
         public descuento?: String,
+        public promocion?: boolean,
         public precio_desc?: number,
         public imagen?: File,
         public cantidad?: number,

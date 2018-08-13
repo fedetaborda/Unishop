@@ -43,7 +43,7 @@ const PagesRoutes: Routes = [
         { path: 'perfil', component: PerfilComponent },
         { path: 'mercadopago', component: MercadopagoComponent },
 
-        // VerificaTokenGuard - Verifica Loguin
+        // VerificaTokenGuard - Verifica Login
         { path: 'admin-prod',
         component: AdminProductoComponent, canActivate: [ AdminGuard ],
 
@@ -55,7 +55,7 @@ const PagesRoutes: Routes = [
             { path: '', redirectTo: '/produc-list', pathMatch: 'full' }]
          },
 
-         { path: '', redirectTo: '/index/categorias', pathMatch: 'full' }
+         { path: '', redirectTo: 'index/categorias', pathMatch: 'full' }
 
         ]}
 

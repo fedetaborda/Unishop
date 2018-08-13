@@ -7,8 +7,7 @@ import { Producto } from '../../models/producto';
 
 @Component({
   selector: 'app-buscardor-prod',
-  templateUrl: './buscardor-prod.component.html',
-  styleUrls: []
+  templateUrl: './buscardor-prod.component.html'
 })
 export class BuscardorProdComponent implements OnInit {
 

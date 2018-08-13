@@ -45,7 +45,7 @@ precio = 0;
 
   cargarProducto( id: string ) {
 
-    let url = URL_SERVICIOS + '/producto/' + id;
+    let url = URL_SERVICIOS + '/producto/id/' + id;
     return this.http.get( url )
     .map( (resp: any) => resp.producto );
   }
