@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../../config/config';
 import { Producto } from '../../../models/producto';
+import { ProductoService } from '../../../service/service.index';
 
 declare function init_plugin();
 
@@ -15,10 +16,13 @@ export class BusquedaProductoComponent implements OnInit {
 
   productos: Producto[] = [];
 
+  producto: Producto[] = [];
+
   termino: string;
 
   constructor(
     public activatedRoute: ActivatedRoute,
+    public _productoService: ProductoService,
     public http: HttpClient)
     {
 
@@ -33,6 +37,17 @@ export class BusquedaProductoComponent implements OnInit {
   ngOnInit() {
 
     init_plugin();
+
+  }
+
+  obtenerProducto (id: string) {
+
+    this._productoService.cargarProducto( id )
+    .subscribe( producto => {
+      this.producto.push( producto );
+
+      this._productoService.calcularCart(this.producto);
+    });
 
   }
 

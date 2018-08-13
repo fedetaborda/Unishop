@@ -6,7 +6,7 @@
     <div class="grid-sizer"></div>
 
     <!-- Product con Descuento -->
-    <div *ngFor="let producto of productos">
+    <div *ngFor="let producto of productos" class="animated fadeIn">
         <div class="grid-item" *ngIf="producto.descuento">
             <div class="product-card">
                 <div class="product-badge text-danger">{{producto.descuento}}% OFF</div>
