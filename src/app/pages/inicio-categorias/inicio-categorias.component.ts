@@ -3,8 +3,6 @@ import { Producto } from '../../models/producto';
 import { ProductoService } from '../../service/service.index';
 
 declare function init_plugin_vendor();
-
-declare function init_plugin_vendor();
 declare function init_plugin();
 
 

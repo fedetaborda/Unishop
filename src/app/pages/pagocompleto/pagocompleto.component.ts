@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart } from '../../models/cart';
 import { CartService, UsuarioService } from '../../service/service.index';
 
 @Component({
@@ -20,6 +19,5 @@ export class PagocompletoComponent implements OnInit {
     this._cartService.carUser(user)
                      .subscribe( (resp) => this.idCompra = resp.idCompra );
   }
-  
 
 }

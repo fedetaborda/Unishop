@@ -16,7 +16,7 @@
 </div>
 <!-- Page Content-->
 <div class="container padding-bottom-3x mb-2">
-    <div class="row">
+    <div class="row animated fadeIn">
         <!-- Checkout Adress-->
         <div class="col-xl-9 col-lg-8">
             <div class="checkout-steps text-left">
@@ -68,7 +68,8 @@
             </div>
             <div class="checkout-footer margin-top-1x">
                 <div class="column"><a class="btn btn-outline-secondary" routerLink="/checkout-address"><i class="icon-arrow-left"></i><span class="hidden-xs-down">&nbsp;Volver</span></a></div>
-                <div class="column"><a class="btn btn-primary" routerLink="/confirm-pago"><span class="hidden-xs-down">Continuar&nbsp;</span><i class="icon-arrow-right"></i></a></div>
+                <div class="column" *ngIf="this.pago"><a class="btn btn-primary" routerLink="/confirm-pago"><span class="hidden-xs-down">Continuar&nbsp;</span><i class="icon-arrow-right"></i></a></div>
+                <div class="column" *ngIf="!this.pago"><a class="btn btn-default">Seleccione Forma de Pago&nbsp;</a></div>
             </div>
         </div>
         <!-- Sidebar          -->

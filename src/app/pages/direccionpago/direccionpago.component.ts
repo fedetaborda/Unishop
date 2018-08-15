@@ -7,6 +7,7 @@ import { Cart } from '../../models/cart';
 
 import { UsuarioService, ProductoService, UbicacionService } from '../../service/service.index';
 import { Router } from '@angular/router';
+import { Producto } from '../../models/producto';
 
 
 @Component({
@@ -17,6 +18,8 @@ export class DireccionpagoComponent implements OnInit {
 
 
   cheked: Boolean;
+
+  productos: Producto[]
 
   direccionCheked: Boolean = false;
 
@@ -38,9 +41,17 @@ export class DireccionpagoComponent implements OnInit {
 
   ngOnInit() {
 
+    
     this.usuario = this._usuarioService.usuario;
     this.subTotal = this._productoService.subTotal;
+    this.productos = this._productoService.producinCart();
 
+    if (this.productos.length === 0) {
+      console.log(this.productos);
+      this.router.navigate(['/productos']);
+
+    }
+ 
 
     this.form = new FormGroup({
 

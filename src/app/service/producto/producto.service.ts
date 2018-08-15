@@ -104,7 +104,6 @@ precio = 0;
       } else if (element['precio']) {
 
       // Precio sin descuento
-
       cantidad += parseFloat( element['cantidad'].toString() );
 
       precio += element['precio'] * element['cantidad'];
@@ -134,8 +133,12 @@ precio = 0;
   }
 
   addfPago ( pago: string) {
+
+    
  
     this.fPago = pago;
+
+    console.log('servicio', this.fPago);
     
   }
  
@@ -185,7 +188,7 @@ precio = 0;
 
 
   vaciarProductos() {
-    
+
     let total = 0.00;
 
     this._document.getElementById('cart').innerHTML = 0;
