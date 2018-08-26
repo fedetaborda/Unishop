@@ -27,8 +27,6 @@ import { FiltroComponent } from './componentes/filtro/filtro.component';
 import { ProductoscompraComponent } from './componentes/productoscompra/productoscompra.component';
 import { BuscardorProdComponent } from '../componentes/buscardor-prod/buscardor-prod.component';
 import { LinkVistasComponent } from '../componentes/buscardor-prod/link-vistas.component';
-import { ProductosViewComponent } from './productos/productos-view.component';
-import { Productoscompra2Component } from './componentes/productoscompra/productoscompra2.component';
 import { CartListComponent } from './cartList/cartList.component';
 
 
@@ -67,8 +65,6 @@ import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral
         ProductoscompraComponent,
         BuscardorProdComponent,
         LinkVistasComponent,
-        ProductosViewComponent,
-        Productoscompra2Component,
         CartListComponent,
         HeaderComponent,
         BuscadorComponent,
@@ -86,8 +82,6 @@ import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral
     ],
     exports: [
         ProductosComponent,
-        Productoscompra2Component,
-        ProductosViewComponent
     ],
     imports: [
         CommonModule,

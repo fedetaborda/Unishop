@@ -8,8 +8,10 @@ var estadosPermitidos = {
 
 var cartSchema = new Schema({
     usuario: { type: Schema.Types.ObjectId, ref: 'Usuario' },
-    producto: { type: Schema.Types.ObjectId, ref: 'Producto' },
+    productos: { type: Array, required: true },
     direccion: { type: String, required: true },
+    pago: { type: String, required: true},
+    idCompra: { type: String, required:true },
     estado: { type: String, default: 'Pendiente', enum: estadosPermitidos },
     fecha: { type: Date, required: false }
 });

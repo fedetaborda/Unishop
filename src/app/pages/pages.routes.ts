@@ -10,7 +10,6 @@ import { ProducListComponent } from './admin-producto/produc-list/produc-list.co
 import { DetalleCategoriaComponent } from './admin-producto/detalle-categoria/detalle-categoria.component';
 import { DetalleMarcaComponent } from './admin-producto/detalle-marca/detalle-marca.component';
 import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/busqueda-producto.component';
-import { ProductosViewComponent } from './productos/productos-view.component';
 import { CartListComponent } from './cartList/cartList.component';
 import { DireccionpagoComponent } from './direccionpago/direccionpago.component';
 import { MediopagoComponent } from './mediopago/mediopago.component';
@@ -31,7 +30,6 @@ const PagesRoutes: Routes = [
     children: [
         { path: 'index/categorias', component: InicioCategoriasComponent },
         { path: 'productos', component: ProductosComponent },
-        { path: 'viewproductos', component: ProductosViewComponent },
         { path: 'busqueda/:id', component: BusquedaProductoComponent },
 
         { path: 'cartList', component: CartListComponent },

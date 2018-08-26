@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+declare function init_vendor();
+declare function init_plugins();
 
 @Component({
   selector: 'app-pages',
@@ -11,6 +13,11 @@ export class PagesComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+
+    init_vendor();
+    init_plugins();
+
+  }
 
 }

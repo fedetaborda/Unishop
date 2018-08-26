@@ -48,6 +48,7 @@ precio = 0;
     let url = URL_SERVICIOS + '/producto/id/' + id;
     return this.http.get( url )
     .map( (resp: any) => resp.producto );
+    
   }
 
   calcularCart(producto) {

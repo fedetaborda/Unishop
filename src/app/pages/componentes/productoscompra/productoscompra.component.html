@@ -49,3 +49,17 @@
 
 
 </div>
+
+<div class="row" *ngIf="!productos">
+
+    <div class="col-md-12">
+
+        <div class="alert alert-danger text-center">
+
+            <span>No Existes resultados para la busqueda!!</span>
+            <strong> <a style="cursor: pointer;" (click)="cargarProductos()"> Volver a Productos </a> </strong>
+
+        </div>
+    </div>
+
+</div>

@@ -62,6 +62,8 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
         fecha: moment().format('L')
     });
 
+    console.log('cart',cart);
+
     cart.save((err, cartGuardado) => {
 
         if (err) {
