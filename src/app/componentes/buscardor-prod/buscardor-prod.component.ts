@@ -35,6 +35,8 @@ export class BuscardorProdComponent implements OnInit {
 
   }
 
+  
+
   buscar( termino: string ) {
 
     if ( termino.length === 0 ) {

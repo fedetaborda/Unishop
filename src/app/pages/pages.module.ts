@@ -8,7 +8,6 @@ import { ProductosComponent } from './productos/productos.component';
 import { PagesComponent } from './pages.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AdminProductoComponent } from './admin-producto/admin-producto.component';
-import { ProducListComponent } from './admin-producto/produc-list/produc-list.component';
 import { DetalleMarcaComponent } from './admin-producto/detalle-marca/detalle-marca.component';
 import { DetalleCategoriaComponent } from './admin-producto/detalle-categoria/detalle-categoria.component';
 import { RecuperoComponent } from './recupero-login/recupero/recupero.component';
@@ -23,10 +22,8 @@ import { ServicesModule } from '../service/services.module';
 
 import { BusquedaProductoComponent } from './admin-producto/busqueda-producto/busqueda-producto.component';
 import { PaginadorComponent } from './componentes/paginador/paginador.component';
-import { FiltroComponent } from './componentes/filtro/filtro.component';
 import { ProductoscompraComponent } from './componentes/productoscompra/productoscompra.component';
 import { BuscardorProdComponent } from '../componentes/buscardor-prod/buscardor-prod.component';
-import { LinkVistasComponent } from '../componentes/buscardor-prod/link-vistas.component';
 import { CartListComponent } from './cartList/cartList.component';
 
 
@@ -37,14 +34,13 @@ import { DireccionpagoComponent } from './direccionpago/direccionpago.component'
 import { MediopagoComponent } from './mediopago/mediopago.component';
 import { ConfirmpagoComponent } from './confirmpago/confirmpago.component';
 import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
-import { CartComponent } from './compartidas/cart/cart.component';
 import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo/nuevo.component';
-import { EstadoComponent } from './orden/estado.component';
-import { InteresComponent } from '../componentes/interes/interes.component';
 import { MercadopagoComponent } from './mercadopago/mercadopago.component';
 import { InicioCategoriasComponent } from './inicio-categorias/inicio-categorias.component';
 
 import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral.component';
+import { SidebarComponent } from './siderbar/sidebar.component';
+
 
 
 @NgModule({
@@ -53,18 +49,15 @@ import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral
         PagesComponent,
         PerfilComponent,
         AdminProductoComponent,
-        ProducListComponent,
         DetalleMarcaComponent,
         DetalleCategoriaComponent,
         NuevoComponent,
         BusquedaProductoComponent,
         RecuperoComponent,
         PaginadorComponent,
-        FiltroComponent,
         BarraLateralComponent,
         ProductoscompraComponent,
         BuscardorProdComponent,
-        LinkVistasComponent,
         CartListComponent,
         HeaderComponent,
         BuscadorComponent,
@@ -73,15 +66,14 @@ import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral
         MediopagoComponent,
         ConfirmpagoComponent,
         PagocompletoComponent,
-        CartComponent,
-        EstadoComponent,
-        InteresComponent,
         MercadopagoComponent,
-        InicioCategoriasComponent
+        InicioCategoriasComponent,
+        SidebarComponent
 
     ],
     exports: [
         ProductosComponent,
+
     ],
     imports: [
         CommonModule,

@@ -9,7 +9,7 @@
             </form>
         </div>
     </div>
-    <app-link-vistas></app-link-vistas>
+
 
 </div>
 
@@ -25,5 +25,17 @@
             <span>Espere por favor!</span>
         </div>
     </div>
+</div>
 
+
+<!-- No existe-->
+<div class="row" [hidden]="productos.length > 0 || cargando">
+    <div class="col-md-12">
+        <div *ngIf="productos.length === 0">
+            <div class="alert alert-danger alert-dismissible fade show text-center margin-bottom-2x">
+                <span class="alert-close" data-dismiss="alert"></span><i class="icon-camera"></i> &nbsp; No existen resultados para la busqueda que intenta realizar.
+                <a a style="cursor: pointer;" (click)="cargarTodos()"><strong>&nbsp; Regresar a productos..</strong></a>
+            </div>
+        </div>
+    </div>
 </div>
