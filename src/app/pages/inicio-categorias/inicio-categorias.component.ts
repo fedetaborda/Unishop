@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Producto } from '../../models/producto';
 import { ProductoService } from '../../service/service.index';
 
-declare function init_plugins();
 declare function init_vendor();
+declare function init_plugins();
 
 
 @Component({
@@ -20,9 +20,9 @@ export class InicioCategoriasComponent implements OnInit {
 
   ngOnInit() {
 
-    init_plugins();
     init_vendor();
-
+    init_plugins();
+    
     this._productoService.promocionProductos()
               .subscribe( (resp: any) => {
                 this.productos = resp.productos;

@@ -3,8 +3,6 @@ import { Categoria } from '../../../models/categoria';
 import { CategoriaService, ProductoService } from '../../../service/service.index';
 import { Producto } from '../../../models/producto';
 
-declare function init_vendor();
-
 declare function init_plugins();
 
 @Component({
@@ -35,12 +33,9 @@ export class BarraLateralComponent implements OnInit {
 
   ngOnInit() {
 
-
-    init_vendor();
-
     init_plugins();
 
-    this._productoService.cargarProductos()
+      this._productoService.cargarProductos()
       .subscribe( (resp: any) => {
         this.productosbuscardor = resp.productos;
 
