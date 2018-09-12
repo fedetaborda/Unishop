@@ -18,18 +18,15 @@ var productoSchema = new Schema({
         ref: 'Categoria',
         required: [true, 'La categoria es obligatorio']
     },
-    marca: {
-        type: Schema.Types.ObjectId,
-        ref: 'Categoria',
-        required: [false, 'La marca es obligatorio']
-    },
     imagen: { type: String, required: false },
     precio_desc: { type: Number, required: false },
     descuento: { type: Number, required: false },
-    estado: { type: Boolean, required: true, default: true },
     promocion: { type: Boolean, required: true, default: false },
+    interes: { type: Boolean, required: true, default: false },
+    destacado: { type: Boolean, required: true, default: false },
     descripcion: { type: String, required: false },
-    fecha: { type: Date, required: true }
+    fecha: { type: Date, required: true },
+    estado: { type: Boolean, required: true, default: true },
 });
 
 

@@ -59,6 +59,14 @@ export class ConfirmpagoComponent implements OnInit {
 
      this.ubicacion = 'Local';
 
+     console.log(this.fPago);
+
+     if (!this.fPago) {
+      
+      this.router.navigate(['/productos']);
+
+    }
+
   }
 
 

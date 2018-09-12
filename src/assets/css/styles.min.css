@@ -5960,7 +5960,8 @@ video {
 
 .promo-box .promo-box-content {
     position: relative;
-    z-index: 5
+    z-index: 5;
+    margin-bottom: 0.4rem
 }
 
 .fw-section,

@@ -1,33 +1,32 @@
 <button class="sidebar-toggle position-left" data-toggle="modal" data-target="#modalShopFilters"><i class="icon-layout"></i></button>
 
 <aside class="sidebar sidebar-offcanvas">
-    <!-- Widget Categories-->
+
     <section class="widget widget-categories">
-        <h3 class="widget-title">Categoria de Productos</h3>
-
-        <ul *ngFor="let categoria of filtro; let i = index">
-
-            <li class="has-children">
-                <a style="cursor: pointer;"> {{ categoria.categoria }} </a><span>({{ categoria.productos.length }})</span>
-
+            <h3 class="widget-title">Shop Categories</h3>
+            <ul *ngFor="let categoria of filtro; let i = index">
+              <li class="has-children expanded"><a href="#">{{ categoria.categoria }}</a>
+                <span>({{ categoria.productos.length }})</span>
                 <ul>
-                    <li *ngFor="let producto of filtro[i].productos">
-                        <a style="cursor: pointer;" (click)="selectProd( producto.id )">{{ producto.producto }}</a>
-                    </li>
-                </ul>
-
-            </li>
-        </ul>
+                  <li *ngFor="let producto of filtro[i].productos">
+                      <a style="cursor: pointer;" (click)="selectProd( producto.id )">
+                        {{ producto.producto }}
+                     </a>
+                  </li>
+                </ul> 
+              </li>
+            </ul>  
 
     </section>
+    
     <!-- Widget Price Range-->
     <section class="widget widget-categories">
-        <h3 class="widget-title">Price Range</h3>
+        <h3 class="widget-title">Filtro por Precio</h3>
         <form class="price-range-slider" method="post" data-start-min="250" data-start-max="650" data-min="0" data-max="1000" data-step="1">
             <div class="ui-range-slider"></div>
             <footer class="ui-range-slider-footer">
                 <div class="column">
-                    <button class="btn btn-outline-primary btn-sm" type="submit">Filter</button>
+                    <button class="btn btn-outline-primary btn-sm" type="submit">Aplicar</button>
                 </div>
                 <div class="column">
                     <div class="ui-range-values">
@@ -42,31 +41,18 @@
             </footer>
         </form>
     </section>
-    <!-- Widget Brand Filter-->
-    <section class="widget">
-        <h3 class="widget-title">Filter by Brand</h3>
-        <div class="custom-control custom-checkbox">
-            <input class="custom-control-input" type="checkbox" id="adidas">
-            <label class="custom-control-label" for="adidas">Adidas&nbsp;<span class="text-muted">(254)</span></label>
-        </div>
-        <div class="custom-control custom-checkbox">
-            <input class="custom-control-input" type="checkbox" id="bilabong">
-            <label class="custom-control-label" for="bilabong">Bilabong&nbsp;<span class="text-muted">(39)</span></label>
-        </div>
-        <div class="custom-control custom-checkbox">
-            <input class="custom-control-input" type="checkbox" id="klein">
-            <label class="custom-control-label" for="klein">Calvin Klein&nbsp;<span class="text-muted">(128)</span></label>
-        </div>
-        <div class="custom-control custom-checkbox">
-            <input class="custom-control-input" type="checkbox" id="nike">
-            <label class="custom-control-label" for="nike">Nike&nbsp;<span class="text-muted">(310)</span></label>
-        </div>
-        <div class="custom-control custom-checkbox">
-            <input class="custom-control-input" type="checkbox" id="bahama">
-            <label class="custom-control-label" for="bahama">Tommy Bahama&nbsp;<span class="text-muted">(42)</span></label>
-        </div>
+    <!-- Widget Brand Filter -->
+    <section class="widget widget-categories">
+        <h3 class="widget-title">Productos en Promoción</h3>
+        <ul>
+            <li><a href="#">promocion01</a></li>
+            <li><a href="#">promocion02</a></li>
+            <li><a href="#">promocion03</a></li>
+        </ul>        
+
+
     </section>
-    <!-- Widget Size Filter-->
+    <!-- Widget Size Filter
     <section class="widget">
         <h3 class="widget-title">Filter by Size</h3>
         <div class="custom-control custom-checkbox">
@@ -85,13 +71,13 @@
             <input class="custom-control-input" type="checkbox" id="s">
             <label class="custom-control-label" for="s">S&nbsp;<span class="text-muted">(213)</span></label>
         </div>
-    </section>
+    </section> -->
     <!-- Promo Banner-->
-    <section class="promo-box">
-        <!-- Choose between .overlay-dark (#000) or .overlay-light (#fff) with default opacity of 50%. You can overrride default color and opacity values via 'style' attribute.--><span class="overlay-dark" style="opacity: .45;"></span>
-        <div class="promo-box-content text-center padding-top-3x padding-bottom-2x">
-            <h4 class="text-light text-thin text-shadow">New Collection of</h4>
-            <h3 class="text-bold text-light text-shadow">Sunglassess</h3><a class="btn btn-sm btn-primary" href="#">Shop Now</a>
+
+    <section class="promo-box" style="background-image: url(../assets/img/categorias/03.jpg);"><span class="overlay-dark" style="opacity: .4;"></span>
+        <div class="promo-box-content text-center padding-top-2x padding-bottom-2x">
+            <h4 class="text-light text-thin text-shadow">Nuevo Triciclo</h4>
+            <h3 class="text-bold text-light text-shadow">Apache</h3><a class="btn btn-outline-white btn-sm" href="shop-grid-ls.html">Ingresar</a>
         </div>
     </section>
 </aside>

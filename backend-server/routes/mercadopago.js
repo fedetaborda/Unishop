@@ -30,7 +30,7 @@ app.post('/', (req, res) => {
         items: [
             item = {
                 id: body.id,
-                title: 'Compra ONLINE NEGOCIO(1)',
+                title: 'Compra en Kcity',
                 quantity: 1,
                 currency_id: 'ARS',
                 unit_price: parseFloat(body.total)

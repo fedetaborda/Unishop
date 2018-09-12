@@ -33,10 +33,11 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
         rango: body.rango,
         usuario: req.usuario._id,
         categoria: body.categoria,
-        marca: body.marca.id,
         estado: body.estado,
         descripcion: body.descripcion,
         promocion: body.promocion,
+        interes: body.interes,
+        destacado: body.destacado,
         fecha: moment().format('L')
     });
 
@@ -140,6 +141,62 @@ app.get('/', (req, res, next) => {
 app.get('/promociones', (req, res, next) => {
 
     Producto.find({ promocion: true })
+        .populate('')
+        .exec(
+            (err, productos) => {
+
+                if (err) {
+                    return res.status(500).json({
+                        ok: false,
+                        mensaje: 'Error cargando productos',
+                        errors: err
+                    });
+                }
+
+                res.status(200).json({
+                    ok: true,
+                    productos: productos
+                });
+
+
+            });
+
+});
+
+// ==========================================
+// Obtener Productos Destacados
+// ==========================================
+app.get('/destacado', (req, res, next) => {
+
+    Producto.find({ destacado: true })
+        .populate('')
+        .exec(
+            (err, productos) => {
+
+                if (err) {
+                    return res.status(500).json({
+                        ok: false,
+                        mensaje: 'Error cargando productos',
+                        errors: err
+                    });
+                }
+
+                res.status(200).json({
+                    ok: true,
+                    productos: productos
+                });
+
+
+            });
+
+});
+
+// ==========================================
+// Obtener Productos de interes
+// ==========================================
+app.get('/interes', (req, res, next) => {
+
+    Producto.find({ interes: true })
         .populate('')
         .exec(
             (err, productos) => {

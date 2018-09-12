@@ -47,7 +47,6 @@ export class DireccionpagoComponent implements OnInit {
     this.productos = this._productoService.producinCart();
 
     if (this.productos.length === 0) {
-      console.log(this.productos);
       this.router.navigate(['/productos']);
 
     }

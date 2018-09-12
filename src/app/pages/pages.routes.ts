@@ -15,6 +15,7 @@ import { PagocompletoComponent } from './pagocompleto/pagocompleto.component';
 import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo/nuevo.component';
 import { MercadopagoComponent } from './mercadopago/mercadopago.component';
 import { InicioCategoriasComponent } from './inicio-categorias/inicio-categorias.component';
+import { ComprasComponent } from './perfil/compras/compras.component';
 
 
 
@@ -35,6 +36,7 @@ const PagesRoutes: Routes = [
         { path: 'confirm-pago', component: ConfirmpagoComponent },
         { path: 'pago-finalizado', component: PagocompletoComponent },
         { path: 'perfil', component: PerfilComponent },
+        { path: 'compras', component: ComprasComponent },
         { path: 'mercadopago', component: MercadopagoComponent },
 
         { path: '', redirectTo: 'index/categorias', pathMatch: 'full' }

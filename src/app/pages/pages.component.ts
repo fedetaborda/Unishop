@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-declare function init_vendor();
-declare function init_plugins();
+
 
 
 @Component({
@@ -16,8 +15,7 @@ export class PagesComponent implements OnInit {
 
   ngOnInit() { 
 
-    init_vendor();
-    init_plugins();
+    
     
 
   }

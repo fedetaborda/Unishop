@@ -19,7 +19,7 @@
 </div>
 <!-- Off-Canvas Mobile Menu-->
 <div class="offcanvas-container" id="mobile-menu">
-    <a class="account-link" href="account-orders.html">
+    <a class="account-link" routerlink="/perfil">
         <div class="user-ava"><img [src]="usuario.img | imagen" alt="usuario">
         </div>
         <div class="user-info">
@@ -106,7 +106,7 @@
             <div class="tools">
                 <div class="search"><i class="icon-search"></i></div>
                 <div class="account">
-                    <a href="account-orders.html"></a><i class="icon-head"></i>
+                    <a routerlink="/perfil"></a><i class="icon-head"></i>
                     <ul class="toolbar-dropdown">
                         <li class="sub-menu-user">
                             <div class="user-ava"><img [src]="usuario.img | imagen" alt="usuario">
@@ -117,8 +117,8 @@
                             </div>
                         </li>
                         <li routerLinkActive="active"><a routerLink="/perfil">Mi Perfil</a></li>
-                        <li routerLinkActive="active"><a href="account-orders.html">Compras</a></li>
-                        <li routerLinkActive="active"><a href="account-wishlist.html">Me Gusta</a></li>
+                        <li routerLinkActive="active"><a routerLink="/compras">Compras</a></li>
+                        <li routerLinkActive="active"><a href="">Me Gusta</a></li>
                         <li class="sub-menu-separator"></li>
                         <li>
                             <a (click)="_usuarioService.logout()"> <i class="icon-unlock"></i>Salir</a>

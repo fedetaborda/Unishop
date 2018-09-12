@@ -5,7 +5,6 @@ import { RecuperoComponent } from './pages/recupero-login/recupero/recupero.comp
 import { ErrorpageComponent } from './pages/404/errorpage.component';
 
 
-
 const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'recupero_login', component: RecuperoComponent},

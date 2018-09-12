@@ -6,6 +6,8 @@ import { Usuario } from '../../models/usuario';
 import { UsuarioService } from '../../service/service.index';
 
 
+declare function init_vendor();
+declare function init_plugins();
 
 @Component({
   selector: 'app-login',
@@ -24,6 +26,10 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+  
+    init_vendor();
+    init_plugins();
 
     this.formaregistro = new FormGroup({
       nombre: new FormControl(null, Validators.required),

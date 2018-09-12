@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
-
+import { Router } from '@angular/router';
 import { Usuario } from '../../models/usuario';
 import { SubirArchivoService } from '../../service/subir-archivo/subir-archivo.service';
 import { UsuarioService } from '../../service/service.index';
@@ -19,7 +19,8 @@ export class PerfilComponent implements OnInit {
   imagenSubir: File;
 
   constructor(
-    public _usuarioService: UsuarioService
+    public _usuarioService: UsuarioService,
+    public router: Router
   ) { }
 
   ngOnInit() {
