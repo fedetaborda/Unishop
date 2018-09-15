@@ -38,6 +38,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
         promocion: body.promocion,
         interes: body.interes,
         destacado: body.destacado,
+        imagen: body.imagen,
         fecha: moment().format('L')
     });
 
@@ -131,6 +132,32 @@ app.get('/', (req, res, next) => {
 
             });
 
+});
+
+// ==========================================
+// Obtener productos por categorias
+// ==========================================
+
+app.get('/findcat/:cat', (req, res) => {
+
+    var cat = req.params.cat;
+
+    Producto.find( {categoria:cat} )
+        .populate('')
+        .exec((err, producto) => {
+            if (err) {
+                return res.status(500).json({
+                    ok: false,
+                    mensaje: 'Error al buscar el Producto',
+                    errors: err
+                });
+            }
+
+            res.status(200).json({
+                ok: true,
+                productos: producto
+            });
+        });
 });
 
 

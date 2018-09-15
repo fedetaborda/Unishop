@@ -10,14 +10,17 @@ var moment = require('moment');
 
 var Cart = require('../models/cart');
 
+moment.locale('es');
+
 // ==========================================
-// Obtener compras por usuario
+// Obtener compras por usuario (todos los estados)
 // ==========================================
 app.get('/:id', (req, res) => {
 
     var id = req.params.id;
 
-    Cart.find({ usuario: id, estado: 'Pendiente' })
+    Cart.find({ usuario: id })
+        .populate('usuario')
         .exec((err, cart) => {
 
             if (err) {
@@ -50,6 +53,8 @@ app.get('/:id', (req, res) => {
 // ==========================================
 app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
+    
+
     var body = req.body;
 
     var cart = new Cart({
@@ -59,7 +64,8 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
         idCompra: body.idCompra,
         productos: body.productos,
         estado: body.estado,
-        fecha: moment().format('L')
+        fecha: moment().format('DD-MM-YYYY'),
+        hora: moment().format('HH:mm')
     });
 
     console.log('cart',cart);

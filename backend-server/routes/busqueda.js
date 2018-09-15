@@ -51,16 +51,17 @@ var Producto = require('../models/producto');
 
 
 // ==============================
-// Busqueda general
+// Busqueda nombre del producto
 // ==============================
 app.get('/producto/:busqueda', (req, res, next) => {
 
     var busqueda = req.params.busqueda;
     var regex = new RegExp(busqueda, 'i');
 
+    console.log(regex);
 
     Promise.race([
-            buscarProducto(busqueda, regex)
+            buscarNombre(regex)
         ])
         .then(respuesta => {
 
@@ -69,16 +70,13 @@ app.get('/producto/:busqueda', (req, res, next) => {
                 producto: respuesta
             });
         });
-
-
 });
 
-
-function buscarProducto(busqueda, regex) {
+function buscarNombre(regex) {
 
     return new Promise((resolve, reject) => {
 
-        Producto.find({ nombre: regex })
+        Producto.find( { nombre: regex } )
             .populate('productos')
             .exec((err, productos) => {
 
@@ -90,6 +88,46 @@ function buscarProducto(busqueda, regex) {
             });
     });
 }
+
+
+app.get('/categoria/:busqueda', (req, res, next) => {
+
+    var busqueda = req.params.busqueda;
+
+    Promise.race([
+        buscarCategoria(busqueda)
+        ])
+        .then(respuesta => {
+
+            res.status(200).json({
+                ok: true,
+                producto: respuesta
+            });
+        });
+});
+
+
+function buscarCategoria(busqueda) {
+
+    return new Promise((resolve, reject) => {
+
+        Producto.find( { categoria: busqueda } )
+            .populate('productos')
+            .populate('categoria')
+            .exec((err, productos) => {
+
+                if (err) {
+                    reject('Error al cargar productos', err);
+                } else {
+                    resolve(productos);
+                }
+            });
+    });
+}
+
+
+
+
 
 
 

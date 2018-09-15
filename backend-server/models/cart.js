@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var estadosPermitidos = {
-    values: ['Pendiente', 'Finalizado'],
+    values: ['Pendiente de Entrega', 'Entregado / Finalizado'],
     message: '{VALUE} no es un estado de venta permitido'
 };
 
@@ -12,8 +12,9 @@ var cartSchema = new Schema({
     direccion: { type: String, required: true },
     pago: { type: String, required: true},
     idCompra: { type: String, required:true },
-    estado: { type: String, default: 'Pendiente', enum: estadosPermitidos },
-    fecha: { type: Date, required: false }
+    estado: { type: String, default: 'Pendiente de Entrega', enum: estadosPermitidos },
+    fecha: { type: String, required: true },
+    hora: { type: String, required: true }
 });
 
 module.exports = mongoose.model('Cart', cartSchema);
