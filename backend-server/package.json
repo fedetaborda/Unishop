@@ -1,7 +1,7 @@
 {
     "name": "backend-server",
     "version": "1.0.0",
-    "description": "Servidor backend del curso de Angular Avanzado",
+    "description": "Servidor backend",
     "main": "index.js",
     "scripts": {
         "start": "node app.js",
