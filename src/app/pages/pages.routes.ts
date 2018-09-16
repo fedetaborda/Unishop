@@ -16,6 +16,8 @@ import { NuevoComponent } from './admin-producto/nuevo-prod/nuevo/nuevo.componen
 import { MercadopagoComponent } from './mercadopago/mercadopago.component';
 import { InicioCategoriasComponent } from './inicio-categorias/inicio-categorias.component';
 import { ComprasComponent } from './perfil/compras/compras.component';
+import { DetallecompraComponent } from './perfil/detallecompra/detallecompra.component';
+
 
 
 
@@ -38,6 +40,7 @@ const PagesRoutes: Routes = [
         { path: 'perfil', component: PerfilComponent },
         { path: 'compras', component: ComprasComponent },
         { path: 'mercadopago', component: MercadopagoComponent },
+        { path: 'detallecompra/:id', component: DetallecompraComponent },
 
         { path: '', redirectTo: 'index/categorias', pathMatch: 'full' }
 

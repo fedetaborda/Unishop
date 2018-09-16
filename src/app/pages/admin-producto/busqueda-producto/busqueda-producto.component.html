@@ -15,67 +15,24 @@
     </div>
 </div>
 
-<!-- Page Content -->
+<!-- Page Content-->
 <div class="container padding-bottom-3x mb-1">
+    <div class="row">
+        <!-- Products-->
+        <div class="col-xl-9 col-lg-8 order-lg-2">
 
-    <div class="row animated fadeIn">
-        <!-- Product-->
-        <div class="col-xl-9 col-lg-8 order-lg-2" [hidden]="productos.length === 0">
 
-            <div *ngFor="let producto of productos">
+            <!-- Productos -->
+            <app-productoscompra [productos]="productos"></app-productoscompra>
 
-                <div *ngIf="producto.descuento" class="product-card product-list">
-                    <a class="product-thumb" href="shop-single.html"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}">
-                        <div class="product-badge text-danger">
-                            {{producto.descuento}}% Off
-                        </div>
-                    </a>
-                    <div class="product-info">
-                        <h3 class="product-title"><a href="shop-single.html">{{ producto.nombre }}</a></h3>
-                        <h4 class="product-price">
-                            <del>$340</del>${{producto.precio}}
-                        </h4>
-                        <p class="hidden-xs-down">{{ producto.descripcion }}</p>
-                        <div class="product-buttons">
-                            <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                            <button (click)="obtenerProducto(producto._id, producto.precio)" class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="fas fa-shopping-cart"></i> Agregar </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product -->
-                <div *ngIf="!producto.descuento" class="product-card product-list">
-                    <a class="product-thumb" href="shop-single.html"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}"></a>
-                    <div class="product-info">
-                        <h3 class="product-title"><a href="shop-single.html">{{ producto.nombre }}</a></h3>
-                        <h4 class="product-price">
-                            <del>$340</del>${{producto.precio}}
-                        </h4>
-                        <p class="hidden-xs-down">{{ producto.descripcion }}</p>
-                        <div class="product-buttons">
-                            <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-                            <button (click)="obtenerProducto(producto._id, producto.precio)" class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!"><i class="fas fa-shopping-cart"></i> Agregar </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- <div class="pt-2">
+                <app-paginador></app-paginador>
+            </div> -->
         </div>
-        <!-- Sidebar-->
+
+        <!-- Sidebar -->
         <div class="col-xl-3 col-lg-4 order-lg-1">
-            <app-barra-lateral></app-barra-lateral>
-        </div>
-
-        <!-- No existe-->
-        <div class="col-xl-9 col-lg-8 order-lg-2" [hidden]="productos.length > 0">
-            <div *ngIf="productos.length === 0">
-                <div class="alert alert-primary alert-dismissible fade show text-center margin-bottom-2x">
-                    <span class="alert-close" data-dismiss="alert"></span><i class="icon-camera"></i> &nbsp; No existen resultados para la busqueda que intenta realizar.
-                    <a routerLink="/productos"><strong>&nbsp; Regresar a los productos..</strong></a>
-                </div>
-            </div>
+            <app-barra-lateral (seleciontProd)="productos = $event"></app-barra-lateral>
         </div>
 
     </div>
-</div>
-
-<div class="padding-bottom-1x"></div>

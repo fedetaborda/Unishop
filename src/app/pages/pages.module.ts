@@ -42,6 +42,7 @@ import { BarraLateralComponent } from './componentes/barra-lateral/barra-lateral
 import { SidebarComponent } from './siderbar/sidebar.component';
 import { ErrorpageComponent } from './404/errorpage.component';
 import { ComprasComponent } from './perfil/compras/compras.component';
+import { DetallecompraComponent } from './perfil/detallecompra/detallecompra.component';
 
 
 
@@ -74,7 +75,8 @@ import { ComprasComponent } from './perfil/compras/compras.component';
         InicioCategoriasComponent,
         SidebarComponent,
         ErrorpageComponent,
-        ComprasComponent
+        ComprasComponent,
+        DetallecompraComponent
 
     ],
     exports: [

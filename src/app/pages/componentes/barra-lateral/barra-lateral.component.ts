@@ -3,7 +3,11 @@ import { Categoria } from '../../../models/categoria';
 import { CategoriaService, ProductoService } from '../../../service/service.index';
 import { Producto } from '../../../models/producto';
 
+
+declare function init_vendor();
 declare function init_plugins();
+
+
 
 @Component({
   selector: 'app-barra-lateral',
@@ -33,6 +37,7 @@ export class BarraLateralComponent implements OnInit {
 
   ngOnInit() {
 
+    init_vendor();
     init_plugins();
 
       this._productoService.cargarProductos()

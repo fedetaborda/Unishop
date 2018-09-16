@@ -20,7 +20,7 @@
         <div class="row animated fadeIn">
             <div class="col-lg-4">
                 <aside class="user-info-wrapper">
-                        <div class="user-cover" style="background-image: url(../assets/img/account/user-cover-img.jpg);">
+                    <div class="user-cover" style="background-image: url(../assets/img/account/user-cover-img.jpg);">
                         <!-- <i class="icon-medal"></i>290 points -->
                         <button (click)="cambiarImagen()" [disabled]="!imagenSubir" class="btn btn-sm btn-info">Cambiar</button>
                     </div>
@@ -30,15 +30,15 @@
                             <img [src]="usuario.img | imagen" alt="Foto">
                         </div>
                         <div class="user-data">
-                            <h4>{{ usuario.nombre }} {{ usuario.apellido }}</h4><span>{{ usuario.fecha | date:'longDate' }}</span>
+                            <h4>{{ usuario.nombre }} {{ usuario.apellido }}</h4><span>{{ usuario.fecha }}</span>
                         </div>
                     </div>
                 </aside>
                 <nav class="list-group">
-                        <a routerLink="/perfil" class="list-group-item active"><i class="icon-head"></i>Mi Perfil</a>
-                        <a class="list-group-item with-badge" routerLink="/compras">
-                            <i class="icon-bag"></i>Mis compras<span class="badge badge-primary badge-pill">6</span>
-                        </a>
+                    <a routerLink="/perfil" class="list-group-item active"><i class="icon-head"></i>Mi Perfil</a>
+                    <a class="list-group-item with-badge" routerLink="/compras">
+                        <i class="icon-bag"></i>Mis compras
+                    </a>
                 </nav>
             </div>
 

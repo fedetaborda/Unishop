@@ -51,6 +51,13 @@ precio = 0;
     
   }
 
+  cargarDestacados() {
+
+    let url = URL_SERVICIOS + '/producto/interes';
+    return this.http.get( url );
+   
+  }
+
   calcularCart(producto) {
 
     this.productos = producto;
@@ -118,6 +125,7 @@ precio = 0;
     this.subTotal = this._document.getElementById('subtotal').innerHTML = precio.toFixed(2);
   }
 
+  
 
   producinCart () {
     return this.productos;
@@ -135,11 +143,7 @@ precio = 0;
 
   addfPago ( pago: string) {
 
-    
- 
     this.fPago = pago;
-
-    console.log('servicio', this.fPago);
     
   }
  
@@ -188,17 +192,17 @@ precio = 0;
   }
 
 
-  vaciarProductos() {
+  limpiarCart () {
 
     let total = 0.00;
+
+    this.productos = [];
+
+    this.fPago = "";
 
     this._document.getElementById('cart').innerHTML = 0;
 
     this._document.getElementById('subtotal').innerHTML = total.toFixed(2);
-
-    this.productos = [];
-
-    this.fPago = '';
   }
 
 }

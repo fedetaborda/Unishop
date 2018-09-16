@@ -19,9 +19,6 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
     var body = req.body;
 
-    if (body.imagen) {
-        console.log(body.imagen);
-    }
 
     var producto = new Producto({
         nombre: body.nombre,
@@ -142,7 +139,7 @@ app.get('/findcat/:cat', (req, res) => {
 
     var cat = req.params.cat;
 
-    Producto.find( {categoria:cat} )
+    Producto.find({ categoria: cat })
         .populate('')
         .exec((err, producto) => {
             if (err) {

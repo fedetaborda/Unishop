@@ -19,13 +19,10 @@ var mercadopago = require('mercadopago');
 
 app.post('/', (req, res) => {
 
-
     var body = req.body;
 
-
-
     // Create a preference structure
-
+    console.log(body);
     preference = {
         items: [
             item = {
@@ -40,10 +37,6 @@ app.post('/', (req, res) => {
             email: body.email
         }
     };
-
-
-    console.log(preference);
-
 
     mercadopago.configure({
         client_id: '3640873518284384',

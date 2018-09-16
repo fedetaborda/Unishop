@@ -74,24 +74,39 @@ export class ConfirmpagoComponent implements OnInit {
 
 if ( this.fPago === 'Mercado Pago') {
 
+        // Nombre de archivo personalizado
+      // 12312312312-123.png
+      let idCompra = `${ new Date().getFullYear()}-${ new Date().getDate()}${ new Date().getHours()}${ new Date().getMinutes()}${ new Date().getMilliseconds()}`;
+
+      this._cartService.idcompra(idCompra);
+
+      this.cart = new Cart( this.productos, this.ubicacion, this.fPago, idCompra, this._productoService.subTotal );
+
+      this._cartService.crearCart( this.cart )
+                  .subscribe();
+
       this.router.navigate(['/mercadopago']);
 
     } else if (this.fPago === 'Pago en Efectivo') {
 
       // Nombre de archivo personalizado
       // 12312312312-123.png
-      let idCompra = `${ new Date().getFullYear()} - ${ new Date().getDate()}${ new Date().getHours()}${ new Date().getMinutes()}${ new Date().getMilliseconds()}`;
+  let idCompra = `${ new Date().getFullYear()}-${ new Date().getDate()}${ new Date().getHours()}${ new Date().getMinutes()}${ new Date().getMilliseconds()}`;
 
       this._cartService.idcompra(idCompra);
-      
-      this.cart = new Cart( this.productos, this.ubicacion, this.fPago, idCompra );
+
+      this.cart = new Cart( this.productos, this.ubicacion, this.fPago, idCompra, this._productoService.subTotal );
 
       this._cartService.crearCart( this.cart )
                   .subscribe( (resp: any) => {
                   this.router.navigate(['/pago-finalizado']);
               });
 
+      
+
       }
+
+      this._productoService.limpiarCart();
 
     }
 

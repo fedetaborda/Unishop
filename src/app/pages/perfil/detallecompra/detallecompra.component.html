@@ -1,0 +1,101 @@
+<!-- Page Title-->
+<div class="page-title">
+    <div class="container">
+        <div class="column">
+            <h1>Detalle de Compra</h1>
+        </div>
+        <div class="column">
+            <ul class="breadcrumbs">
+                <li><a routerLink="/productos">Inicio</a>
+                </li>
+                <li class="separator">&nbsp;</li>
+                <li>Mis Compras</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Page Content-->
+<div class="container padding-bottom-3x mb-1">
+
+    <div *ngIf="!productos.length" class="alert alert-primary alert-dismissible fade show text-center margin-bottom-1x">
+        <span class="alert-close" data-dismiss="alert">
+                </span><i class="icon-bag"></i>&nbsp;&nbsp;<strong>No existes compras realizadas..</strong>&nbsp;&nbsp;
+        <a routerLink="/productos"> Comprar </a>
+    </div>
+
+
+    <div *ngIf="productos.length" class="table-responsive shopping-cart">
+
+        <div *ngFor="let detalle of cart" class="shopping-cart-footer">
+            <div class="text-center">
+
+                <div class="column text-lg">
+                    <span class="text-medium">Número #: {{detalle.idCompra}} | {{detalle.pago}}</span>
+                </div>
+                <div class="column text-lg">
+                    <span class="text-medium"> Total Compra: 
+                        <span class="text-danger"> ${{ detalle.subTotal }}</span>
+                    </span>
+                </div>
+                <div class="column">
+                    <span class="text-medium"> 
+                        <small> {{ detalle.fecha }} - {{ detalle.hora }}hs</small>
+                    </span>
+                </div>
+                <div class="column">
+                    <span class="text-medium"> 
+                            <h5 class="text-warning">{{ detalle.estado }}</h5> 
+                        </span>
+                </div>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Producto Seleccionado</th>
+                    <th class="text-center">Cantidad</th>
+                    <th class="text-center">Precio</th>
+                    <th class="text-center">Subtotal</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let producto of productos; let i=index">
+                    <td>{{i+1}}</td>
+                    <td>
+                        <div class="product-item">
+                            <a class="product-thumb" href="shop-single.html"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}"></a>
+                            <div class="product-info">
+                                <h4 class="product-title"><a href="shop-single.html">{{ producto.nombre }}</a></h4>
+                                <span *ngIf="producto.descuento" class="text-danger"><em></em> Descuento %{{ producto.descuento }} </span>
+                                <span><em></em>  ${{ producto.descripcion }} </span>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="text-center">{{ producto.cantidad }}</td>
+                    <td *ngIf="producto.descuento" class="text-center text-lg text-medium">${{ producto.precio_desc }}</td>
+
+                    <td *ngIf="producto.descuento" class="text-center text-lg text-medium">${{ producto.precio_desc * producto.cantidad }}</td>
+
+
+
+                    <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio }}</td>
+
+                    <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio * producto.cantidad }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="text-right">
+            <a routerLink="/perfil" class="btn btn-primary btn-sm">Regrsar al Perfil</a>
+        </div>
+
+
+
+    </div>
+
+</div>

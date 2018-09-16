@@ -14,6 +14,32 @@ export class CartService {
               private http: HttpClient) { }
 
 
+detalleCompras( id: string) {
+
+  let url = URL_SERVICIOS + '/cart/num-compra/' + id;
+  return this.http.get( url )
+
+}
+
+detalleCompra( id: string) {
+
+  let url = URL_SERVICIOS + '/cart/num-compra/';
+  url += '?token=' + this._usuarioService.token;
+  
+  return this.http.post( url, {id: id} )
+        .map( (resp: any) => resp );
+
+}
+
+
+comprasPorUsuario( user: string) {
+
+  let url = URL_SERVICIOS + '/cart/' + user;
+  return this.http.get( url );
+
+  }
+
+
   crearCart( cart: Cart ) {
  
     let url = URL_SERVICIOS + '/cart';

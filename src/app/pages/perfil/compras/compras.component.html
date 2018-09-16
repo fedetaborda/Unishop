@@ -20,7 +20,7 @@
         <div class="row animated fadeIn">
             <div class="col-lg-4">
                 <aside class="user-info-wrapper">
-                        <div class="user-cover" style="background-image: url(../assets/img/account/user-cover-img.jpg);">
+                    <div class="user-cover" style="background-image: url(../assets/img/account/user-cover-img.jpg);">
                         <!-- <i class="icon-medal"></i>290 points -->
                         <button (click)="cambiarImagen()" [disabled]="!imagenSubir" class="btn btn-sm btn-info">Cambiar</button>
                     </div>
@@ -30,68 +30,58 @@
                             <img [src]="usuario.img | imagen" alt="Foto">
                         </div>
                         <div class="user-data">
-                            <h4>{{ usuario.nombre }} {{ usuario.apellido }}</h4><span>{{ usuario.fecha | date:'longDate' }}</span>
+                            <h4>{{ usuario.nombre }} {{ usuario.apellido }}</h4><span>{{ usuario.fecha }}</span>
                         </div>
                     </div>
                 </aside>
                 <nav class="list-group">
                     <a routerLink="/perfil" class="list-group-item"><i class="icon-head"></i>Mi Perfil</a>
                     <a class="list-group-item with-badge active" routerLink="/compras">
-                        <i class="icon-bag"></i>Mis compras<span class="badge badge-primary badge-pill">6</span>
+                        <i class="icon-bag"></i>Mis compras
                     </a>
                 </nav>
             </div>
 
-            <div class="col-lg-8">
+            <div *ngIf="cart.length > 0" class="col-lg-8">
                 <div class="padding-top-2x mt-2 hidden-lg-up"></div>
                 <div class="table-responsive">
-                  <table class="table table-hover margin-bottom-none">
-                    <thead>
-                      <tr>
-                        <th>Ticket Subject</th>
-                        <th>Date Submitted | Updated</th>
-                        <th>Type</th>
-                        <th>Priority</th>
-                        <th>Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td><a class="text-medium navi-link" href="account-single-ticket.html">My new ticket</a></td>
-                        <td>08/08/2017 | 08/14/2017</td>
-                        <td>Website problem</td>
-                        <td><span class="text-warning">High</span></td>
-                        <td><span class="text-primary">Open</span></td>
-                      </tr>
-                      <tr>
-                        <td><a class="text-medium navi-link" href="account-single-ticket.html">Another ticket</a></td>
-                        <td>07/21/2017 | 07/23/2017</td>
-                        <td>Partner request</td>
-                        <td><span class="text-info">Medium</span></td>
-                        <td><span class="text-muted">Closed</span></td>
-                      </tr>
-                      <tr>
-                        <td><a class="text-medium navi-link" href="account-single-ticket.html">Yet another ticket</a></td>
-                        <td>05/19/2017 | 05/20/2017</td>
-                        <td>Complaint</td>
-                        <td><span class="text-danger">Urgent</span></td>
-                        <td><span class="text-muted">Closed</span></td>
-                      </tr>
-                      <tr>
-                        <td><a class="text-medium navi-link" href="account-single-ticket.html">My old ticket</a></td>
-                        <td>05/19/2017 | 05/20/2017</td>
-                        <td>Info inquiry</td>
-                        <td><span class="text-success">Low</span></td>
-                        <td><span class="text-muted">Closed</span></td>
-                      </tr>
-                    </tbody>
-                  </table>
+                    <table class="table table-hover margin-bottom-none">
+                        <thead>
+                            <tr>
+                                <th>N° Compra</th>
+                                <th>Usuario</th>
+                                <th>Forma de Pago</th>
+                                <th class="text-center">Fecha</th>
+                                <th>Estado de Compra</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr *ngFor="let compra of cart">
+                                <td><a class="text-medium navi-link" routerLink="/detallecompra/{{compra.idCompra}}">{{compra.idCompra}}</a></td>
+                                <td>{{compra.usuario.email}}</td>
+                                <td>{{compra.pago}}</td>
+                                <td>{{compra.fecha}} {{compra.hora}}</td>
+                                <td><span class="text-warning">{{compra.estado}}</span></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
-                <hr class="mb-4">
-                <div class="text-right">
-                  <button class="btn btn-primary margin-bottom-none" data-toggle="modal" data-target="#openTicket">Submit New Ticket</button>
+
+            </div>
+
+            <div *ngIf="!cart.length" class="col-lg-8">
+
+                <div class="text-center">
+
+                    <h4>No existen compras por el momento. <small><a routerLink="/productos">Ver productos</a></small></h4>
+
+
                 </div>
-              </div>
+
+            </div>
+
 
         </div>
     </div>

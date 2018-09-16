@@ -11,6 +11,8 @@ export class Producto {
         public marca: string,
         public descuento?: String,
         public promocion?: boolean,
+        public interes?: boolean,
+        public destacado?: boolean,
         public precio_desc?: number,
         public imagen?: File,
         public cantidad?: number,
