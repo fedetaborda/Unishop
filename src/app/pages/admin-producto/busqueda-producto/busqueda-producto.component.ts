@@ -65,8 +65,6 @@ export class BusquedaProductoComponent implements OnInit {
 
           this.productos = resp.producto;
 
-          console.log( this.productos );
-
         });
 
       }
@@ -80,8 +78,6 @@ export class BusquedaProductoComponent implements OnInit {
         .subscribe( (resp: any) => {
 
           this.productos = resp.producto;
-
-          console.log( this.productos );
 
         });
 

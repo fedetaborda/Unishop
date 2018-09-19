@@ -17,10 +17,13 @@
 <!-- Page Content-->
 <div class="container padding-bottom-3x mb-1">
 
-    <div *ngIf="!productos.length" class="alert alert-primary alert-dismissible fade show text-center margin-bottom-1x">
-        <span class="alert-close" data-dismiss="alert">
-                </span><i class="icon-bag"></i>&nbsp;&nbsp;<strong>No existes compras realizadas..</strong>&nbsp;&nbsp;
-        <a routerLink="/productos"> Comprar </a>
+
+    <div *ngIf="!productos.length" class="alert alert-success text-center fade show">
+        <strong>Cargando...</strong>
+        <br>
+        <i class="fa fa-refresh fa-spin fa-2x"></i>
+        <br>
+        <span>Espere por favor!</span>
     </div>
 
 
@@ -91,7 +94,7 @@
         </table>
 
         <div class="text-right">
-            <a routerLink="/perfil" class="btn btn-primary btn-sm">Regrsar al Perfil</a>
+            <a routerLink="/compras" class="btn btn-primary btn-sm">Regresar a mis compras</a>
         </div>
 
 

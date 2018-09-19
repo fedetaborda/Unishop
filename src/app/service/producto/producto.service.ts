@@ -48,14 +48,14 @@ precio = 0;
     let url = URL_SERVICIOS + '/producto/id/' + id;
     return this.http.get( url )
     .map( (resp: any) => resp.producto );
-    
+
   }
 
   cargarDestacados() {
 
     let url = URL_SERVICIOS + '/producto/interes';
     return this.http.get( url );
-   
+
   }
 
   calcularCart(producto) {
@@ -76,7 +76,7 @@ precio = 0;
 
         precio += element['precio_desc'];
         cantidad = (cantidad + element['cantidad']);
-   
+
       } else if (element['precio']) {
 
       // Precio sin descuento
@@ -125,8 +125,6 @@ precio = 0;
     this.subTotal = this._document.getElementById('subtotal').innerHTML = precio.toFixed(2);
   }
 
-  
-
   producinCart () {
     return this.productos;
   }
@@ -144,9 +142,9 @@ precio = 0;
   addfPago ( pago: string) {
 
     this.fPago = pago;
-    
+
   }
- 
+
   crearProducto( producto: Producto , imagen: File ) {
 
     let url = URL_SERVICIOS + '/producto';
@@ -175,10 +173,18 @@ precio = 0;
           }) ;
   }
 
-  
+
   cargarProductos( desde: number = 0 ) {
 
     let url = URL_SERVICIOS + '/producto?desde=' + desde;
+    return this.http.get( url );
+
+  }
+
+
+  productosInteres() {
+
+    let url = URL_SERVICIOS + '/producto/interes';
     return this.http.get( url );
 
   }

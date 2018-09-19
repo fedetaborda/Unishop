@@ -46,7 +46,7 @@
                             <div class="product-info">
                                 <h4 class="product-title"><a href="shop-single.html">{{ producto.nombre }}</a></h4>
                                 <span *ngIf="producto.descuento" class="text-danger"><em></em> Descuento %{{ producto.descuento }} </span>
-                                <span><em></em>  ${{ producto.descripcion }} </span>
+                                <span><em></em> {{ producto.descripcion }} </span>
                             </div>
                         </div>
                     </td>
@@ -93,56 +93,45 @@
             </a>
         </div>
     </div>
-   <!-- Featured Products Carousel-->
-   <section *ngIf="!productos.length" class="container padding-top-3x padding-bottom-3x text-center animated fadeIn">
-    <h3 class="text-center mb-30">Puede Interesarte</h3>
+    <!-- Featured Products Carousel-->
+    <section *ngIf="!productos.length" class="padding-top-3x padding-bottom-3x text-center animated fadeIn">
+        <h3 class="text-center mb-30">Puede Interesarte</h3>
 
-    <!-- Product-->
-    <div class="col-md-3 d-inline-block">
-        <div class="grid-item">
-        <div class="product-card">
-          <div class="product-badge text-danger">22% Off</div><a class="product-thumb" href="shop-single.html"><img src="../assets/img/categorias/02.jpg" alt="Product"></a>
-          <h3 class="product-title"><a href="shop-single.html">Rocket Dog</a></h3>
-          <h4 class="product-price">
-            <del>$44.95</del>$34.99
-          </h4>
-          <div class="product-buttons">
-            <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-            <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-          </div>
-        </div>
-        </div>
-    </div>
+        <div class="animated fadeIn">
 
-      <!-- Product-->
-      <div class="col-md-3 d-inline-block">  
-         <div class="grid-item">
-        <div class="product-card">
-            <div class="rating-stars"><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>
-            </div><a class="product-thumb" href="shop-single.html"><img src="../assets/img/categorias/02.jpg" alt="Product"></a>
-          <h3 class="product-title"><a href="shop-single.html">Oakley Kickback</a></h3>
-          <h4 class="product-price">$155.00</h4>
-          <div class="product-buttons">
-            <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-            <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-          </div>
-        </div>
-        </div>
-      </div>
+            <!-- Product-->
+            <div *ngFor="let producto of prodInteres" class="col-md-3 d-inline-block">
+                <div *ngIf="producto.descuento" class="grid-item">
+                    <div class="product-card">
+                        <div class="product-badge text-danger">{{producto.descuento}}% Off</div>
+                        <a class="product-thumb" routerLink="/busqueda/{{producto.nombre}}"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}"></a>
+                        <h3 class="product-title"><a href="shop-single.html">{{producto.nombre}}</a></h3>
+                        <h4 class="product-price">
+                            <del>${{producto.precio}}</del>${{producto.precio_desc}}
+                        </h4>
+                        <div class="product-buttons">
+                            <a class="btn btn-outline-primary btn-sm" routerLink="/busqueda/{{producto.nombre}}">
+                                <i class="icon-search"></i> Ver Producto
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-      <!-- Product-->
-      <div class="col-md-3 d-inline-block">
-      <div class="grid-item">
-        <div class="product-card"><a class="product-thumb" href="shop-single.html"><img src="../assets/img/categorias/02.jpg" alt="Product"></a>
-          <h3 class="product-title"><a href="shop-single.html">Vented Straw Fedora</a></h3>
-          <h4 class="product-price">$49.50</h4>
-          <div class="product-buttons">
-            <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Whishlist"><i class="icon-heart"></i></button>
-            <button class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-icon="icon-circle-check" data-toast-title="Product" data-toast-message="successfuly added to cart!">Add to Cart</button>
-          </div>
+                <!-- Product-->
+                <div *ngIf="!producto.descuento" class="grid-item">
+                    <div class="product-card">
+                        <a class="product-thumb" routerLink="/busqueda/{{producto.nombre}}"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}"></a>
+                        <h3 class="product-title"><a href="shop-single.html">{{producto.nombre}}</a></h3>
+                        <h4 class="product-price">${{producto.precio}}</h4>
+                        <div class="product-buttons">
+                            <a class="btn btn-outline-primary btn-sm" routerLink="/busqueda/{{producto.nombre}}">
+                                <i class="icon-search"></i> Ver Producto
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      </div>
 
-  </section>
+    </section>
 </div>

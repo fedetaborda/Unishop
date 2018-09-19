@@ -50,15 +50,15 @@ const PagesRoutes: Routes = [
 
          // VerificaTokenGuard - Verifica Login
         { path: 'admin-prod',
-        component: AdminProductoComponent, canActivate: [ AdminGuard ]
-        
+        component: AdminProductoComponent, canActivate: [ AdminGuard ],
 
-       /* children: [
+      children: [
             { path: '', component: NuevoComponent },
             { path: 'categorias', component: DetalleCategoriaComponent },
             { path: 'marcas', component: DetalleMarcaComponent },
+            { path: 'nuevo', component: NuevoComponent }
 
-           ] */ 
+           ]
 
         },
 

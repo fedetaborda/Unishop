@@ -8,7 +8,7 @@
                         <div class="from-bottom"><img class="d-inline-block mb-4" src="assets/img/hero-slider/kcity.png">
                             <div class="h2 text-body text-normal mb-2 pt-1">Mochilas y Utiles</div>
                             <div class="h2 text-body text-normal mb-4 pb-1">Promociones y Descuentos <span class="text-bold">$590.00</span></div>
-                        </div><a class="btn btn-primary scale-up delay-1" href="shop-grid-ls.html">Ingresar</a>
+                        </div><a class="btn btn-primary scale-up delay-1" routerLink="/productos">Ingresar</a>
                     </div>
                     <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="assets/img/hero-slider/mochila.png" alt="Puma Backpack"></div>
                 </div>
@@ -21,7 +21,7 @@
                         <div class="from-bottom"><img class="d-inline-block mb-4" src="assets/img/hero-slider/kcity.png">
                             <div class="h2 text-body text-normal mb-2 pt-1">Varidad de Golosinas</div>
                             <div class="h2 text-body text-normal mb-4 pb-1">Promociones y Descuentos <span class="text-bold">$60.00</span></div>
-                        </div><a class="btn btn-primary scale-up delay-1" href="shop-single.html">Ingresar</a>
+                        </div><a class="btn btn-primary scale-up delay-1" routerLink="/productos">Ingresar</a>
                     </div>
                     <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="assets/img/hero-slider/golosinas.png" alt="Chuck Taylor All Star II"></div>
                 </div>
@@ -34,7 +34,7 @@
                         <div class="from-bottom"><img class="d-inline-block mb-4" src="assets/img/hero-slider/kcity.png">
                             <div class="h2 text-body text-normal mb-2 pt-1">Articulos de libreria</div>
                             <div class="h2 text-body text-normal mb-4 pb-1">Promociones y Descuentos <span class="text-bold">$79.00</span></div>
-                        </div><a class="btn btn-primary scale-up delay-1" href="shop-single.html">Ingresar</a>
+                        </div><a class="btn btn-primary scale-up delay-1" routerLink="/productos">Ingresar</a>
                     </div>
                     <div class="col-md-6 padding-bottom-2x mb-3"><img class="d-block mx-auto" src="assets/img/hero-slider/libreria.png" alt="Moto 360"></div>
                 </div>
@@ -48,7 +48,7 @@
     <div class="row animated fadeIn">
         <div class="col-md-4 col-sm-6">
             <div class="card mb-30">
-                <a class="card-img-tiles" href="shop-grid-ls.html">
+                <a class="card-img-tiles" routerLink="/busqueda/*5ba006ccdf73d50015489725">
                     <div class="inner">
                         <div class="main-img"><img src="assets/img/categorias/alfajor.jpg" alt="Category"></div>
                         <div class="thumblist"><img src="assets/img/categorias/caramelo.jpg" alt="Category"><img src="assets/img/categorias/chupetin.jpg" alt="Category"></div>
@@ -62,7 +62,7 @@
         </div>
         <div class="col-md-4 col-sm-6">
             <div class="card mb-30">
-                <a class="card-img-tiles" routerLink="/busqueda/*5b998857e04b112af4a939dc">
+                <a class="card-img-tiles" routerLink="/busqueda/*5ba006ccdf73d50015489725">
                     <div class="inner">
                         <div class="main-img"><img src="assets/img/categorias/cuaderno.jpg" alt="Category"></div>
                         <div class="thumblist"><img src="assets/img/categorias/lapices.jpg" alt="Category"><img src="assets/img/categorias/boligoma.jpg" alt="Category"></div>
@@ -70,13 +70,13 @@
                 </a>
                 <div class="card-body text-center">
                     <h4 class="card-title">Libreria</h4>
-                    <p class="text-muted">Caudernos desde dede $35.00</p><a class="btn btn-outline-primary btn-sm" routerLink="/busqueda/*5b998857e04b112af4a939dc"><i class="icon-search"></i> Ver Productos</a>
+                    <p class="text-muted">Caudernos desde dede $35.00</p><a class="btn btn-outline-primary btn-sm" routerLink="/busqueda/*5ba006ccdf73d50015489725"><i class="icon-search"></i> Ver Productos</a>
                 </div>
             </div>
         </div>
         <div class="col-md-4 col-sm-6">
             <div class="card mb-30">
-                <a class="card-img-tiles" routerLink="/busqueda/*5b9989b7e04b112af4a939e0">
+                <a class="card-img-tiles" routerLink="/busqueda/*5ba006ccdf73d50015489725">
                     <div class="inner">
                         <div class="main-img"><img src="assets/img/categorias/vasos.jpg" alt="Category"></div>
                         <div class="thumblist"><img src="assets/img/categorias/plato.jpg" alt="Category"><img src="assets/img/categorias/blobos.jpg" alt="Category"></div>
@@ -85,7 +85,7 @@
                 <div class="card-body text-center">
                     <h4 class="card-title">Cotillón</h4>
                     <p class="text-muted">Vasos 20 unid. $90.00</p>
-                    <a class="btn btn-outline-primary btn-sm" routerLink="/busqueda/*5b9989b7e04b112af4a939e0"> <i class="icon-search"></i> Ver Productos</a>
+                    <a class="btn btn-outline-primary btn-sm" routerLink="/busqueda/*5ba0277454e7fb00156ab130"> <i class="icon-search"></i> Ver Productos</a>
                 </div>
             </div>
         </div>
@@ -107,7 +107,7 @@
                     <a class="product-thumb" routerLink="/busqueda/{{producto.nombre}}"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}"></a>
                     <h3 class="product-title"><a routerLink="/busqueda/{{producto.nombre}}">{{producto.nombre}}</a></h3>
                     <h4 class="product-price">
-                        <del>${{producto.precio_desc}}</del>${{producto.precio}}
+                        <del>${{producto.precio}}</del>${{producto.precio_desc}}
                     </h4>
                     <div class="product-buttons">
                         <a class="btn btn-outline-primary btn-sm" routerLink="/busqueda/{{producto.nombre}}"><i class="icon-search"></i> ingresar</a>

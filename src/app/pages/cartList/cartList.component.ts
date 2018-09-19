@@ -12,6 +12,8 @@ export class CartListComponent implements OnInit {
 
   productos: Producto[] = [];
 
+  prodInteres: Producto[] = [];
+
   subTotal: string;
 
   @ViewChild('cboCant') cboCant: ElementRef;
@@ -23,7 +25,14 @@ export class CartListComponent implements OnInit {
 
     this.productos = this._productoService.producinCart();
 
+    this._productoService.productosInteres()
+        .subscribe( (resp: any) => {
+         this.prodInteres = resp.productos;
+        });
+
   }
+
+  
 
   cambioCantidad() {
 
@@ -48,7 +57,6 @@ export class CartListComponent implements OnInit {
     if (!this.productos.length) {
     this.resetCart();
     }
-
 
   }
 

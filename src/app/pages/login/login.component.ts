@@ -6,6 +6,7 @@ import { Usuario } from '../../models/usuario';
 import { UsuarioService } from '../../service/service.index';
 
 
+
 declare function init_vendor();
 declare function init_plugins();
 
@@ -19,15 +20,20 @@ export class LoginComponent implements OnInit {
   email: String;
   recuerdame: Boolean = false;
   formaregistro: FormGroup;
+  password: String;
+
   
   constructor(
     public _usuarioService: UsuarioService,
     public router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
 
-  
+    this.email = 'user@gmail.com';
+    this.password = '123';
+
+
     init_vendor();
     init_plugins();
 
@@ -40,7 +46,8 @@ export class LoginComponent implements OnInit {
     }, { validators: this.sonIguales( 'password1', 'password2' )});
 
     
-    this.email = localStorage.getItem('email') || '';
+   /* this.email = localStorage.getItem('email') || ''; */
+
     if ( this.email.length > 1 ) {
       this.recuerdame = true;
     }

@@ -25,7 +25,7 @@ var productoSchema = new Schema({
     interes: { type: Boolean, required: true, default: false },
     destacado: { type: Boolean, required: true, default: false },
     descripcion: { type: String, required: false },
-    fecha: { type: Date, required: true },
+    fecha: { type: String, required: true },
     estado: { type: Boolean, required: true, default: true },
 });
 

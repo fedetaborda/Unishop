@@ -73,11 +73,12 @@
 
             <div *ngIf="!cart.length" class="col-lg-8">
 
-                <div class="text-center">
-
-                    <h4>No existen compras por el momento. <small><a routerLink="/productos">Ver productos</a></small></h4>
-
-
+                <div class="alert alert-success text-center fade show">
+                    <strong>Cargando...</strong>
+                    <br>
+                    <i class="fa fa-refresh fa-spin fa-2x"></i>
+                    <br>
+                    <span>Espere por favor!</span>
                 </div>
 
             </div>

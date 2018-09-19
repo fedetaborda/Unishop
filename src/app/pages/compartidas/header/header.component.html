@@ -12,14 +12,14 @@
             <li routerLinkActive="active"><span><a routerLink="/productos"><span>Productos</span></a>
                 </span>
             </li>
-            <li routerLinkActive="active"><span><a routerLink="/perfil">Mi Perfil</a></span>
+            <li routerLinkActive="active"><span><a routerLink="/perfil">Mi Perfil</a></span></li>
 
         </ul>
     </nav>
 </div>
 <!-- Off-Canvas Mobile Menu-->
 <div class="offcanvas-container" id="mobile-menu">
-    <a class="account-link" routerlink="/perfil">
+    <a class="account-link" routerLink="/perfil">
         <div class="user-ava"><img [src]="usuario.img | imagen" alt="usuario">
         </div>
         <div class="user-info">
@@ -36,12 +36,14 @@
                 </span>
             </li>
             <li routerLinkActive="active"><span><a routerLink="/perfil">Mi Perfil</a></span>
+
+                <li routerLinkActive="active"><span><a (click)="_usuarioService.logout()">Salir</a></span></li>
         </ul>
     </nav>
 </div>
 <!-- Topbar-->
 <div class="topbar">
-    <div class="topbar-column"><a class="hidden-md-down" href="mailto:support@unishop.com"><i class="icon-mail"></i>&nbsp; unitshop@gmail.com</a><a class="hidden-md-down" href="tel:00331697720"><i class="icon-bell"></i>&nbsp; 00 33 169 7720</a><a class="social-button sb-facebook shape-none sb-dark"
+    <div class="topbar-column"><a class="hidden-md-down" href="mailto:support@unishop.com"><i class="icon-mail"></i>&nbsp; services@gmail.com</a><a class="hidden-md-down" href="tel:00331697720"><i class="icon-bell"></i>&nbsp; 00 33 169 7720</a><a class="social-button sb-facebook shape-none sb-dark"
             href="#" target="_blank"><i class="socicon-facebook"></i></a><a class="social-button sb-twitter shape-none sb-dark" href="#" target="_blank"><i class="socicon-twitter"></i></a>
         <a class="social-button sb-instagram shape-none sb-dark" href="#" target="_blank"><i class="socicon-instagram"></i></a><a class="social-button sb-pinterest shape-none sb-dark" href="#" target="_blank"><i class="socicon-pinterest"></i></a>
     </div>
@@ -69,7 +71,7 @@
             <!-- Off-Canvas Toggle (#mobile-menu)-->
             <a class="offcanvas-toggle menu-toggle" href="#mobile-menu" data-toggle="offcanvas"></a>
             <!-- Site Logo-->
-            <a class="site-logo" routerLink="/productos"><img src="assets/logo.png" alt="K city"></a>
+            <a class="site-logo" routerLink="/index/categorias"><img src="assets/logo.png" alt="K city"></a>
         </div>
     </div>
     <!-- Main Navigation-->

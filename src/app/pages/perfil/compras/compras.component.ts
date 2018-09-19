@@ -34,6 +34,7 @@ export class ComprasComponent implements OnInit {
     this._cartService.comprasPorUsuario( this.usuario._id )
     .subscribe( (resp: any) => {
      this.cart = resp.cart
+
     });
 
   }

@@ -3,22 +3,22 @@
 <aside class="sidebar sidebar-offcanvas">
 
     <section class="widget widget-categories">
-            <h3 class="widget-title">Shop Categories</h3>
-            <ul *ngFor="let categoria of filtro; let i = index">
-              <li class="has-children expanded"><a href="#">{{ categoria.categoria }}</a>
+        <h3 class="widget-title">Shop Categories</h3>
+        <ul *ngFor="let categoria of filtro; let i = index">
+            <li class="has-children expanded"><a href="#">{{ categoria.categoria }}</a>
                 <span>({{ categoria.productos.length }})</span>
                 <ul>
-                  <li *ngFor="let producto of filtro[i].productos">
-                      <a style="cursor: pointer;" (click)="selectProd( producto.id )">
+                    <li *ngFor="let producto of filtro[i].productos">
+                        <a style="cursor: pointer;" (click)="selectProd( producto.id )">
                         {{ producto.producto }}
                      </a>
-                  </li>
-                </ul> 
-              </li>
-            </ul>  
+                    </li>
+                </ul>
+            </li>
+        </ul>
 
     </section>
-    
+
     <!-- Widget Price Range-->
     <section class="widget widget-categories">
         <h3 class="widget-title">Filtro por Precio</h3>
@@ -48,7 +48,7 @@
             <li><a href="#">promocion01</a></li>
             <li><a href="#">promocion02</a></li>
             <li><a href="#">promocion03</a></li>
-        </ul>        
+        </ul>
 
 
     </section>
@@ -77,7 +77,7 @@
     <section class="promo-box" style="background-image: url(../assets/img/categorias/03.jpg);"><span class="overlay-dark" style="opacity: .4;"></span>
         <div class="promo-box-content text-center padding-top-2x padding-bottom-2x">
             <h4 class="text-light text-thin text-shadow">Nuevo Triciclo</h4>
-            <h3 class="text-bold text-light text-shadow">Apache</h3><a class="btn btn-outline-white btn-sm" href="shop-grid-ls.html">Ingresar</a>
+            <h3 class="text-bold text-light text-shadow">Apache</h3><a class="btn btn-outline-white btn-sm" routerLink="/busqueda/triciclo Apache">Ingresar</a>
         </div>
     </section>
 </aside>
