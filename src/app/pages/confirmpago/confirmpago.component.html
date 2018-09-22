@@ -18,7 +18,18 @@
 <div class="container padding-bottom-3x mb-2">
     <div class="row animated fadeIn">
         <!-- Checkout Adress-->
-        <div class="col-xl-12 col-lg-12">
+
+        <div *ngIf="total_ventas >= 3" class="col-xl-12 col-lg-12">
+
+            <div class="alert alert-danger text-center" role="alert">
+                Existen muchos pedidos
+                <strong>Pendientes</strong> debera finalizarlos, para seguir comprando.&nbsp;
+                <a routerLink="/compras">Mis compras</a>
+            </div>
+        </div>
+
+        <div *ngIf="total_ventas < 3" class="col-xl-12 col-lg-12">
+
             <div class="checkout-steps text-left">
                 <a class="active" routerLink="/confirm-pago">3. Confirmar Pago</a>
                 <a class="completed" routerLink="/checkout-pago">
@@ -97,7 +108,11 @@
             </div>
             <div class="checkout-footer margin-top-1x">
                 <div class="column hidden-xs-down"><a class="btn btn-outline-secondary" routerLink="/checkout-pago"><i class="icon-arrow-left"></i>&nbsp;Atras</a></div>
-                <div class="column"><a class="btn btn-primary" (click)="finalizarPago()">Comprletar Orden</a></div>
+
+                <div class="column">
+                    <a class="btn btn-primary" (click)="finalizarPago()">Comprletar Orden</a>
+                </div>
+
             </div>
         </div>
 

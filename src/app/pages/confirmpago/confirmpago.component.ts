@@ -30,6 +30,8 @@ export class ConfirmpagoComponent implements OnInit {
 
   cart: Cart;
 
+  total_ventas: Number;
+
   constructor(public _productoService: ProductoService,
     public _ubicacionService: UbicacionService,
     public _mercadopagoService: MercadopagoService,
@@ -41,6 +43,11 @@ export class ConfirmpagoComponent implements OnInit {
 
     // Productos
     this.productos = this._productoService.producinCart();
+
+    this._cartService.comprasTotales()
+    .subscribe( (resp: any) => {
+      this.total_ventas = resp.total_ventas; 
+    });
 
      /*
      let id = this._productoService.location['ubicacion'];

@@ -31,11 +31,23 @@ detalleCompra( id: string) {
 
 }
 
+comprasTotales() {
+
+  let url = URL_SERVICIOS + '/cart/cant-compras';
+  url += '?token=' + this._usuarioService.token;
+
+  return this.http.get( url )
+  .map( (resp: any) => resp );
+
+  }
+
 
 comprasPorUsuario( user: string) {
 
   let url = URL_SERVICIOS + '/cart/' + user;
   return this.http.get( url );
+
+  
 
   }
 

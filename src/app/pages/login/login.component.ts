@@ -91,8 +91,6 @@ export class LoginComponent implements OnInit {
       this._usuarioService.loginGoogle( token )
               .subscribe( () => window.location.href = '#/index/categorias'  
               );
-              console.log('paso',  token);
-
 
     });
 

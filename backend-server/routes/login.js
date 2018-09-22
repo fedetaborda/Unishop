@@ -18,24 +18,6 @@ const GOOGLE_SECRET = require('../config/config').GOOGLE_SECRET;
 var mdAutenticacion = require('../middlewares/autenticacion');
 
 
-var mdAutenticacion = require('../middlewares/autenticacion');
-
-// ==========================================
-//  Autenticación De Google
-// ==========================================
-app.get('/renuevatoken', mdAutenticacion.verificaToken, (req, res) => {
-
-    var token = jwt.sign({ usuario: req.usuario }, SEED, { expiresIn: 14400 }); // 4 horas
-
-    res.status(200).json({
-        ok: true,
-        token: token
-    });
-
-});
-
-
-
 // ==========================================
 //  Autenticación De Google
 // ==========================================
@@ -63,11 +45,9 @@ app.post('/google', (req, res) => {
 
 
             var payload = login.getPayload();
-            //var userid = payload['sub'];
+            var userid = payload['sub'];
             // If request specified a G Suite domain:
             //var domain = payload['hd'];
-
-            console.log(payload);
 
             Usuario.findOne({ email: payload.email }, (err, usuario) => {
 
@@ -96,8 +76,7 @@ app.post('/google', (req, res) => {
                             ok: true,
                             usuario: usuario,
                             token: token,
-                            id: usuario._id,
-                            menu: obtenerMenu(usuario.role)
+                            id: usuario._id
                         });
 
                     }
@@ -131,8 +110,7 @@ app.post('/google', (req, res) => {
                             ok: true,
                             usuario: usuarioDB,
                             token: token,
-                            id: usuarioDB._id,
-                            menu: obtenerMenu(usuarioDB.role)
+                            id: usuarioDB._id
                         });
 
                     });
@@ -147,6 +125,20 @@ app.post('/google', (req, res) => {
 
 
 
+
+});
+
+// ==========================================
+//  Autenticación Renueva token
+// ==========================================
+app.get('/renuevatoken', mdAutenticacion.verificaToken, (req, res) => {
+
+    var token = jwt.sign({ usuario: req.usuario }, SEED, { expiresIn: 86400 }); // 24 horas 86400 tiempo en segundo
+
+    res.status(200).json({
+        ok: true,
+        token: token
+    });
 
 });
 
