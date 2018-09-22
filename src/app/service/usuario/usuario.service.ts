@@ -98,6 +98,17 @@ export class UsuarioService {
     this.menu = menu;
   }
 
+  loginGoogle( token: string ) {
+
+    let url = URL_SERVICIOS + '/login/google';
+
+    return this.http.post( url, { token } )
+                .map( (resp: any) => {
+                  this.guardarStorage( resp.id, resp.token, resp.usuario, resp.menu );
+                  return true;
+                });
+  }
+
 
   crearUsuario( usuario: Usuario ) {
 
@@ -119,6 +130,7 @@ export class UsuarioService {
     }
 
     let url = URL_SERVICIOS + '/login';
+    
     return this.http.post( url, usuario )
                 .map( (resp: any) => {
                   this.guardarStorage( resp.id, resp.token, resp.usuario, resp.menu );

@@ -17,12 +17,15 @@ const GOOGLE_SECRET = require('../config/config').GOOGLE_SECRET;
 
 var mdAutenticacion = require('../middlewares/autenticacion');
 
+
+var mdAutenticacion = require('../middlewares/autenticacion');
+
 // ==========================================
-//  Autenticación Renueva token
+//  Autenticación De Google
 // ==========================================
 app.get('/renuevatoken', mdAutenticacion.verificaToken, (req, res) => {
 
-    var token = jwt.sign({ usuario: req.usuario }, SEED, { expiresIn: 86400 }); // 24 horas 86400 tiempo en segundo
+    var token = jwt.sign({ usuario: req.usuario }, SEED, { expiresIn: 14400 }); // 4 horas
 
     res.status(200).json({
         ok: true,
@@ -30,6 +33,8 @@ app.get('/renuevatoken', mdAutenticacion.verificaToken, (req, res) => {
     });
 
 });
+
+
 
 // ==========================================
 //  Autenticación De Google
@@ -58,9 +63,11 @@ app.post('/google', (req, res) => {
 
 
             var payload = login.getPayload();
-            var userid = payload['sub'];
+            //var userid = payload['sub'];
             // If request specified a G Suite domain:
             //var domain = payload['hd'];
+
+            console.log(payload);
 
             Usuario.findOne({ email: payload.email }, (err, usuario) => {
 
@@ -142,6 +149,7 @@ app.post('/google', (req, res) => {
 
 
 });
+
 
 // ==========================================
 //  Autenticación normal

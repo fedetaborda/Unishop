@@ -11,6 +11,8 @@ var moment = require('moment');
 
 var Producto = require('../models/producto');
 
+moment.locale('es');
+
 
 // ==========================================
 // Crear un nuevo producto
@@ -36,7 +38,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
         interes: body.interes,
         destacado: body.destacado,
         imagen: body.imagen,
-        fecha: moment().format('L')
+        fecha: moment().format('DD-MM-YYYY')
     });
 
 
@@ -104,6 +106,7 @@ app.get('/', (req, res, next) => {
     Producto.find({})
         .skip(desde)
         .limit(100)
+        .sort({ nombre: 1 })
         .populate('categoria')
         .exec(
             (err, productos) => {
@@ -140,7 +143,6 @@ app.get('/findcat/:cat', (req, res) => {
     var cat = req.params.cat;
 
     Producto.find({ categoria: cat })
-        .populate('')
         .exec((err, producto) => {
             if (err) {
                 return res.status(500).json({
@@ -164,8 +166,8 @@ app.get('/findcat/:cat', (req, res) => {
 // ==========================================
 app.get('/promociones', (req, res, next) => {
 
-    Producto.find({ promocion: true })
-        .populate('')
+    Producto.find({ promocion: true, pageprincipal: true })
+        .limit(3)
         .exec(
             (err, productos) => {
 

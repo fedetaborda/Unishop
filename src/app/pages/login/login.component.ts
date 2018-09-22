@@ -10,6 +10,8 @@ import { UsuarioService } from '../../service/service.index';
 declare function init_vendor();
 declare function init_plugins();
 
+declare const gapi: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html'
@@ -21,7 +23,8 @@ export class LoginComponent implements OnInit {
   recuerdame: Boolean = false;
   formaregistro: FormGroup;
   password: String;
-
+  auth2: any;
+  cargando: Boolean = false;
   
   constructor(
     public _usuarioService: UsuarioService,
@@ -37,6 +40,8 @@ export class LoginComponent implements OnInit {
     init_vendor();
     init_plugins();
 
+    this.googleInit();
+
     this.formaregistro = new FormGroup({
       nombre: new FormControl(null, Validators.required),
       apellido: new FormControl(null, Validators.required),
@@ -51,6 +56,45 @@ export class LoginComponent implements OnInit {
     if ( this.email.length > 1 ) {
       this.recuerdame = true;
     }
+
+  }
+
+  Cargando() {
+
+    this.cargando = true;
+
+  }
+
+  googleInit() {
+
+    gapi.load('auth2', () => {
+
+      this.auth2 = gapi.auth2.init({
+        client_id: '324226634105-u9sh7irp6atc1vk6sbndbrl9j09kqcgj.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        scope: 'profile email'
+      });
+
+      this.attachSignin( document.getElementById('btnGoogle') );
+
+    });
+
+  }
+
+  attachSignin( element ) {
+
+    this.auth2.attachClickHandler( element, {}, (googleUser) => {
+
+      // let profile = googleUser.getBasicProfile();
+      let token = googleUser.getAuthResponse().id_token;
+
+      this._usuarioService.loginGoogle( token )
+              .subscribe( () => window.location.href = '#/index/categorias'  
+              );
+              console.log('paso',  token);
+
+
+    });
 
   }
 
@@ -99,6 +143,8 @@ export class LoginComponent implements OnInit {
     if ( forma.invalid ) {
       return;
     }
+
+    this.cargando = true;
 
     let usuario_login = new Usuario(null, null, forma.value.email, forma.value.password );
 

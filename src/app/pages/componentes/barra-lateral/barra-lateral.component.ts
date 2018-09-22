@@ -33,24 +33,23 @@ export class BarraLateralComponent implements OnInit {
 
 
   constructor(public _categoriaService: CategoriaService,
-              public _productoService: ProductoService) { }
+              public _productoService: ProductoService) { 
 
-  ngOnInit() {
-
-    init_vendor();
-    init_plugins();
-
-      this._productoService.cargarProductos()
+    this._productoService.cargarProductos()
       .subscribe( (resp: any) => {
         this.productosbuscardor = resp.productos;
 
         this._categoriaService.cargarCategorias()
         .subscribe( (resp2: any) => {
           this.categorias = resp2.categorias;
+          console.log(this.categorias );
 
-          for (let c = 0; c < this.categorias.length; c++) {
+
+          for (let c = 0; c < this.categorias.length - 1; c++) {
   
             const categoria = this.categorias[c].nombre;
+
+            const id = this.categorias[c]._id;
 
                 for (let index = 0; index < this.productosbuscardor.length; index++) {
 
@@ -66,7 +65,10 @@ export class BarraLateralComponent implements OnInit {
 
           this.filtro.push(
 
-            { 'categoria' : categoria,
+            { 
+            'id' : id,
+
+            'categoria' : categoria,
 
             'productos' : this.arrayProducto});
 
@@ -77,8 +79,15 @@ export class BarraLateralComponent implements OnInit {
 
         });
 
-      });
+        
 
+      });
+              }
+
+  ngOnInit() {
+
+    init_vendor();
+    init_plugins();
 
 
   }

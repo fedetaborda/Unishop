@@ -1,11 +1,15 @@
-<button class="sidebar-toggle position-left" data-toggle="modal" data-target="#modalShopFilters"><i class="icon-layout"></i></button>
+<button class="sidebar-toggle position-left" data-toggle="modal" data-target="#modalShopFilters">
+<i class="icon-layout"></i>
+</button>
 
 <aside class="sidebar sidebar-offcanvas">
 
     <section class="widget widget-categories">
         <h3 class="widget-title">Shop Categories</h3>
+
+
         <ul *ngFor="let categoria of filtro; let i = index">
-            <li class="has-children expanded"><a href="#">{{ categoria.categoria }}</a>
+            <li class="has-children extended"><a routerLink="/busqueda/*{{ categoria.id }}">{{ categoria.categoria }}</a>
                 <span>({{ categoria.productos.length }})</span>
                 <ul>
                     <li *ngFor="let producto of filtro[i].productos">
@@ -19,7 +23,7 @@
 
     </section>
 
-    <!-- Widget Price Range-->
+    <!-- Widget Price Range
     <section class="widget widget-categories">
         <h3 class="widget-title">Filtro por Precio</h3>
         <form class="price-range-slider" method="post" data-start-min="250" data-start-max="650" data-min="0" data-max="1000" data-step="1">
@@ -40,7 +44,7 @@
                 </div>
             </footer>
         </form>
-    </section>
+    </section> -->
     <!-- Widget Brand Filter -->
     <section class="widget widget-categories">
         <h3 class="widget-title">Productos en Promoción</h3>
@@ -72,6 +76,8 @@
             <label class="custom-control-label" for="s">S&nbsp;<span class="text-muted">(213)</span></label>
         </div>
     </section> -->
+
+
     <!-- Promo Banner-->
 
     <section class="promo-box" style="background-image: url(../assets/img/categorias/03.jpg);"><span class="overlay-dark" style="opacity: .4;"></span>

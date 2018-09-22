@@ -10,6 +10,8 @@ var moment = require('moment');
 
 var Categoria = require('../models/categoria');
 
+moment.locale('es');
+
 
 // ==========================================
 // Crear un nueva Categoria
@@ -17,11 +19,11 @@ var Categoria = require('../models/categoria');
 app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
     var body = req.body;
-    var ingreso = moment().format('L');
+
 
     var categoria = new Categoria({
         nombre: body.nombre,
-        fecha: ingreso
+        fecha: moment().format('DD-MM-YYYY')
     });
 
     categoria.save((err, categoriaGuardada) => {
