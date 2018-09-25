@@ -45,11 +45,10 @@ export class NuevoComponent implements OnInit {
 
     this.form = new FormGroup({
       categoria: new FormControl({value: 'Seleccione categoria'}, [Validators.required]),
-      marca: new FormControl(null, [Validators.required]),
-      nombre: new FormControl(null, [ Validators.required, Validators.minLength(3), Validators.maxLength(25) ]),
+      nombre: new FormControl(null, [ Validators.required, Validators.minLength(3), Validators.maxLength(50) ]),
       precio: new FormControl(null, [ Validators.required]),
       precio_desc: new FormControl(null),
-      descripcion: new FormControl(null,[ Validators.required, Validators.minLength(15), , Validators.maxLength(50)]),
+      descripcion: new FormControl(null,[ Validators.required, Validators.minLength(15), , Validators.maxLength(100)]),
       descuento: new FormControl(null),
       costo: new FormControl(null, [ Validators.required]),
       rango: new FormControl(null, [ Validators.required]),

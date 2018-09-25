@@ -42,17 +42,13 @@ const PagesRoutes: Routes = [
         { path: 'mercadopago', component: MercadopagoComponent },
         { path: 'detallecompra/:id', component: DetallecompraComponent },
 
-        { path: '', redirectTo: 'index/categorias', pathMatch: 'full' }
+        { path: '', redirectTo: 'index/categorias', pathMatch: 'full' },
 
-        ],
-
-        },
-
-         // VerificaTokenGuard - Verifica Login
+        // VerificaTokenGuard - Verifica Login
         { path: 'admin-prod',
-        component: AdminProductoComponent, canActivate: [ AdminGuard ],
+        component: AdminProductoComponent, canActivate: [ AdminGuard , LoginGuardGuard, VerificaTokenGuard ],
 
-      children: [
+        children: [
             { path: '', component: NuevoComponent },
             { path: 'categorias', component: DetalleCategoriaComponent },
             { path: 'marcas', component: DetalleMarcaComponent },
@@ -60,7 +56,9 @@ const PagesRoutes: Routes = [
 
            ]
 
-        },
+        }
+
+        ]},
 
     ];
 

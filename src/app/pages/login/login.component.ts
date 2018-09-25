@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
 
-    this.email = 'user@gmail.com';
-    this.password = '123';
+    //this.email = 'user@gmail.com';
+    //this.password = '123';
 
 
     init_vendor();
@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
     }, { validators: this.sonIguales( 'password1', 'password2' )});
 
     
-   /* this.email = localStorage.getItem('email') || ''; */
+     this.email = localStorage.getItem('email') || ''; 
 
     if ( this.email.length > 1 ) {
       this.recuerdame = true;
@@ -89,7 +89,7 @@ export class LoginComponent implements OnInit {
       let token = googleUser.getAuthResponse().id_token;
 
       this._usuarioService.loginGoogle( token )
-              .subscribe( () => window.location.href = '#/index/categorias'  
+              .subscribe( () => window.location.href = '#/index/categorias'
               );
 
     });
