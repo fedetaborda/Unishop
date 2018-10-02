@@ -1,0 +1,158 @@
+<div class="table-responsive">
+
+    <table class="table shopping-cart">
+
+        <thead class="thead-inverse">
+            <tr>
+                <th class="text-center">Imagen</th>
+                <th>Nombre</th>
+                <th>Costo</th>
+                <th class="text-center">Precio Venta</th>
+                <th>Stock</th>
+                <th>Categoria</th>
+                <th>Descripcion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of productos; let i = index">
+
+                <td>
+                    <div *ngIf="producto.imagen" class="product-item">
+                        <a class="product-thumb"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}"></a>
+                    </div>
+
+                    <div style="padding-top: 5px; font-size: 80%" class="text-left">
+
+                        <a style="text-decoration:none">
+                            <span class="badge badge-pill badge-default">
+                                    <i class="fas fa-pencil-alt"></i>
+                            </span>
+                        </a>
+                        <a style="text-decoration:none;" href="">
+                            <span class="badge badge-pill badge-default">
+                                    <i class="fas fa-trash-alt"></i>
+                            </span>
+                        </a>
+                    </div>
+                </td>
+
+                <td>
+                    {{producto.nombre}} <br>
+
+                    <small *ngIf="producto.interes">  
+                      <a class="cursor-pointer" (click)="modal();">
+                        <span class="badge badge-pill badge-info">Interes</span>
+                      </a>
+                    </small>
+
+                </td>
+                <td>${{producto.costo}}</td>
+
+                <td class="text-center">
+
+                    <div *ngIf="producto.descuento">
+                        <del>${{producto.precio}}</del>
+                    </div>
+
+                    <div *ngIf="!producto.descuento">
+                        ${{producto.precio}}
+                    </div>
+
+                    <div *ngIf="producto.descuento" class="text-danger">
+
+                        <i>
+                            ${{producto.precio_desc}}
+                        </i>
+                        <br>
+                        <small>  
+                            <a href="">
+                            <span class="badge badge-pill badge-default">
+                                Promocional {{producto.descuento}}%
+                            </span>
+                            </a> 
+                        </small>
+                    </div>
+
+                </td>
+
+                <!-- stock  -->
+                <td>10</td>
+
+
+                <td>{{producto.categoria.nombre}} </td>
+
+                <td>
+                    <a (click)="modalCaracteristicas()" class="cursor-pointer">
+                        <span class="badge badge-pill badge-default">
+                            <i class="fas fa-eye"></i> ...
+                        </span>
+                    </a>
+                </td>
+
+        </tbody>
+    </table>
+
+
+</div>
+
+<!-- Default Modal-->
+<div #myModal class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Producto De <span class="badge badge-pill badge-info">Interes</span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <p>Este producto esta seleccionado como de interes..</p>
+                <div class="form-group">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input name="radio2" class="custom-control-input" id="ex-radio-4" type="radio">
+                        <label class="custom-control-label" for="ex-radio-4">Toggle this radio</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input name="radio2" class="custom-control-input" id="ex-radio-5" type="radio" checked="">
+                        <label class="custom-control-label" for="ex-radio-5">Toggle this radio</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div #caracteristicas class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Producto De <span class="badge badge-pill badge-info">Interes</span></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <p>Este producto esta seleccionado como de interes..</p>
+                <div class="form-group">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input name="radio2" class="custom-control-input" id="ex-radio-4" type="radio">
+                        <label class="custom-control-label" for="ex-radio-4">Toggle this radio</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input name="radio2" class="custom-control-input" id="ex-radio-5" type="radio" checked="">
+                        <label class="custom-control-label" for="ex-radio-5">Toggle this radio</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- fin Modal-->

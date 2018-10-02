@@ -43,8 +43,9 @@ import { SidebarComponent } from './siderbar/sidebar.component';
 import { ErrorpageComponent } from './404/errorpage.component';
 import { ComprasComponent } from './perfil/compras/compras.component';
 import { DetallecompraComponent } from './perfil/detallecompra/detallecompra.component';
-
-
+import { ListadoComponent } from './admin-producto/listado/listado.component';
+import { TablaProductosComponent } from './admin-producto/listado/tabla-productos/tabla-productos.component';
+import { EspecialesComponent } from './especiales/especiales.component';
 
 
 
@@ -76,7 +77,10 @@ import { DetallecompraComponent } from './perfil/detallecompra/detallecompra.com
         SidebarComponent,
         ErrorpageComponent,
         ComprasComponent,
-        DetallecompraComponent
+        DetallecompraComponent,
+        ListadoComponent,
+        TablaProductosComponent,
+        EspecialesComponent
 
     ],
     exports: [

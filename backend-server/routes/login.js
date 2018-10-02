@@ -217,7 +217,7 @@ function obtenerMenu(ROLE) {
                 titulo: 'Productos',
                 items: [
                     { titulo: 'Nuevo Producto', url: '/admin-prod/nuevo' },
-                    { titulo: 'Listado de Producto', url: '' }
+                    { titulo: 'Listado de Producto', url: '/admin-prod/listado' }
                 ]
             },
             {

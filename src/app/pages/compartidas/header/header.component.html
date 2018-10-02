@@ -36,6 +36,12 @@
             <li routerLinkActive="active"><span><a routerLink="/productos"><span>Productos</span></a>
                 </span>
             </li>
+
+            <li *ngIf="total_ventas >= 1" routerLinkActive="active"><span><a routerLink="/compras">
+                <span>Compras Pendientes ( {{total_ventas}} )</span></a>
+                </span>
+            </li>
+
             <li routerLinkActive="active"><span><a routerLink="/perfil">Mi Perfil</a></span>
 
                 <li routerLinkActive="active"><span><a (click)="_usuarioService.logout()">Salir</a></span></li>
@@ -87,27 +93,14 @@
             <li routerLinkActive="active"><a routerLink="/productos"><span>Productos</span></a>
             </li>
 
-            <!--  <li routerLinkActive="active"><a routerLink="/admin-prod"><span>Administracion</span></a>
-                <ul class="sub-menu">
-                    <li><a routerLink="/admin-prod">Listado Productos</a></li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/admin-prod/nuevo">Nuevo Producto</a>
-                    </li>
-
-                    <li routerLinkActive="active">
-                        <a routerLink="/admin-prod/categorias">Detalle categorias</a>
-                    </li>
-                    <li routerLinkActive="active">
-                        <a routerLink="/admin-prod/marcas">Detalle marcas</a>
-                    </li>
-                </ul>
-            </li> -->
-
             <li routerLinkActive="active"><a routerLink="/perfil"><span>Mi Perfil</span></a>
 
             </li>
 
-            <li *ngFor="let item of menu"><a href="shop-grid-ls.html"><span class="text-danger">{{item.titulo}}</span></a>
+            <li *ngFor="let item of menu">
+                <a style="cursor:pointer;">
+                    <span class="text-danger">{{item.titulo}}</span>
+                </a>
                 <ul class="sub-menu">
                     <li *ngFor="let submenu of item.submenu" class="has-children"><a style="cursor: pointer"><span>{{submenu.titulo}}</span></a>
                         <ul class="sub-menu">
@@ -150,15 +143,20 @@
 
                 <div class="cart">
                     <a routerLink="/cartList"></a><i class="icon-bag"></i><span class="count" id="cart">0</span><span id="subtotal" class="subtotal">$0.00</span> &nbsp;
+                </div>
+
+
+
+                <div *ngIf="total_ventas >= 3" class="account cart text-danger">
+
+                    <a routerLink="/compras"></a><i class="icon-tag"></i><span class="count"> {{total_ventas}} </span>
 
                 </div>
 
-                <div *ngIf="total_ventas < 3 " class="cart text-success">
-                    <a routerLink="/compras" title="Compras Pendientes"></a><i class="icon-tag"></i><span class="count">{{total_ventas}}</span>
-                </div>
+                <div *ngIf="total_ventas >=1 && total_ventas <= 2" class="account cart text-success">
 
-                <div *ngIf="total_ventas >= 3" class="cart text-danger">
-                    <a routerLink="/compras" title="Compras Pendientes"></a><i class="icon-tag"></i><span class="count">{{total_ventas}}</span>
+                    <a routerLink="/compras"></a><i class="icon-tag "></i><span class="count "> {{total_ventas}} </span>
+
                 </div>
 
             </div>

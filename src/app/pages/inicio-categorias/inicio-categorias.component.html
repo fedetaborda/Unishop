@@ -65,7 +65,7 @@
                 <a class="card-img-tiles" routerLink="/busqueda/*5ba006ccdf73d50015489725">
                     <div class="inner">
                         <div class="main-img"><img src="assets/img/categorias/cuaderno.jpg" alt="Category"></div>
-                        <div class="thumblist"><img src="assets/img/categorias/lapices.jpg" alt="Category"><img src="assets/img/categorias/boligoma.jpg" alt="Category"></div>
+                        <div class="thumblist"><img src="assets/img/categorias/lapices.jpg" alt="Category"><img src="assets/img/categorias/voligoma.jpg" alt="Category"></div>
                     </div>
                 </a>
                 <div class="card-body text-center">
@@ -104,6 +104,9 @@
             <div class="grid-item">
                 <div class="product-card">
                     <div class="product-badge text-danger">{{producto.descuento}}% OFF</div>
+                    <div *ngIf="producto.linkmercadopago" class="rating-stars">
+                        <img src="assets/img/mercadopago/mpago2.jpg" alt="mercado pago">
+                    </div>
                     <a class="product-thumb" routerLink="/busqueda/{{producto.nombre}}"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}"></a>
                     <h3 class="product-title"><a routerLink="/busqueda/{{producto.nombre}}">{{producto.nombre}}</a></h3>
                     <h4 class="product-price">
@@ -111,6 +114,9 @@
                     </h4>
                     <div class="product-buttons">
                         <a class="btn btn-outline-primary btn-sm" routerLink="/busqueda/{{producto.nombre}}"><i class="icon-search"></i> ingresar</a>
+                        <a *ngIf="producto.linkmercadopago" class="btn btn-outline-danger btn-sm" href="{{ producto.linkmercadopago }}" target="_black">
+                            <i class="icon-link"></i> pagar
+                        </a>
                     </div>
                 </div>
             </div>

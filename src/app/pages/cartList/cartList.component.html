@@ -42,7 +42,7 @@
                     <td>{{i+1}}</td>
                     <td>
                         <div class="product-item">
-                            <a class="product-thumb" href="shop-single.html"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}"></a>
+                            <a class="product-thumb"><img [src]="producto.imagen | imagen:'producto'" alt="{{ producto.nombre }}"></a>
                             <div class="product-info">
                                 <h4 class="product-title"><a href="shop-single.html">{{ producto.nombre }}</a></h4>
                                 <span *ngIf="producto.descuento" class="text-danger"><em></em> Descuento %{{ producto.descuento }} </span>

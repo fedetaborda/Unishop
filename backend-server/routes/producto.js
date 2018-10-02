@@ -107,7 +107,7 @@ app.get('/', (req, res, next) => {
         .skip(desde)
         .limit(100)
         .sort({ nombre: 1 })
-        .populate('categoria')
+        .populate('categoria', 'nombre')
         .exec(
             (err, productos) => {
 

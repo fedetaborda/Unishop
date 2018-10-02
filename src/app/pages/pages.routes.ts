@@ -17,7 +17,8 @@ import { MercadopagoComponent } from './mercadopago/mercadopago.component';
 import { InicioCategoriasComponent } from './inicio-categorias/inicio-categorias.component';
 import { ComprasComponent } from './perfil/compras/compras.component';
 import { DetallecompraComponent } from './perfil/detallecompra/detallecompra.component';
-
+import { ListadoComponent } from './admin-producto/listado/listado.component';
+import { EspecialesComponent } from './especiales/especiales.component';
 
 
 
@@ -41,6 +42,7 @@ const PagesRoutes: Routes = [
         { path: 'compras', component: ComprasComponent },
         { path: 'mercadopago', component: MercadopagoComponent },
         { path: 'detallecompra/:id', component: DetallecompraComponent },
+        { path: 'especiales', component: EspecialesComponent },
 
         { path: '', redirectTo: 'index/categorias', pathMatch: 'full' },
 
@@ -52,6 +54,7 @@ const PagesRoutes: Routes = [
             { path: '', component: NuevoComponent },
             { path: 'categorias', component: DetalleCategoriaComponent },
             { path: 'marcas', component: DetalleMarcaComponent },
+            { path: 'listado', component: ListadoComponent },
             { path: 'nuevo', component: NuevoComponent }
 
            ]

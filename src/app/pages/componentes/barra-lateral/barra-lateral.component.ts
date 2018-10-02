@@ -35,6 +35,9 @@ export class BarraLateralComponent implements OnInit {
   constructor(public _categoriaService: CategoriaService,
               public _productoService: ProductoService) { 
 
+          init_vendor();
+          init_plugins();
+
     this._productoService.cargarProductos()
       .subscribe( (resp: any) => {
         this.productosbuscardor = resp.productos;
@@ -86,11 +89,7 @@ export class BarraLateralComponent implements OnInit {
 
   ngOnInit() {
 
-    init_vendor();
-    init_plugins();
-
-
-  }
+     }
 
   selectProd (id: string) {
 
