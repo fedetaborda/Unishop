@@ -32,6 +32,10 @@ export class ConfirmpagoComponent implements OnInit {
 
   total_ventas: Number;
 
+  ids: any [] = [];
+
+  array: any [] = [];
+
   constructor(public _productoService: ProductoService,
     public _ubicacionService: UbicacionService,
     public _mercadopagoService: MercadopagoService,
@@ -41,12 +45,28 @@ export class ConfirmpagoComponent implements OnInit {
 
   ngOnInit() {
 
-    // Productos
-    this.productos = this._productoService.producinCart();
+     this.array = this._productoService.producinCart();
+
+    this.array.forEach( (element , i) => {
+
+      let idx = this.ids.indexOf( element._id );
+
+      if ( idx === -1 ) {
+
+        this.ids.push(element._id);
+
+        this.productos.push( element );
+
+      } else {
+
+       this.productos[idx].cantidad = ( this.productos[idx].cantidad + 1 );
+      }
+
+    });
 
     this._cartService.comprasTotales()
     .subscribe( (resp: any) => {
-      this.total_ventas = resp.total_ventas; 
+      this.total_ventas = resp.total_ventas;
     });
 
      /*
@@ -66,8 +86,6 @@ export class ConfirmpagoComponent implements OnInit {
 
      this.ubicacion = 'Local';
 
-     console.log(this.fPago);
-
      if (!this.fPago) {
       
       this.router.navigate(['/productos']);
@@ -83,22 +101,22 @@ if ( this.fPago === 'Mercado Pago') {
 
         // Nombre de archivo personalizado
       // 12312312312-123.png
-      let idCompra = `${ new Date().getFullYear()}-${ new Date().getDate()}${ new Date().getHours()}${ new Date().getMinutes()}${ new Date().getMilliseconds()}`;
+      const idCompra = `${ new Date().getFullYear()}-${ new Date().getDate()}${ new Date().getHours()}${ new Date().getMinutes()}${ new Date().getMilliseconds()}`;
 
       this._cartService.idcompra(idCompra);
 
       this.cart = new Cart( this.productos, this.ubicacion, this.fPago, idCompra, this._productoService.subTotal );
 
       this._cartService.crearCart( this.cart )
-                  .subscribe();
-
-      this.router.navigate(['/mercadopago']);
+                  .subscribe((resp: any) => {
+                    this.router.navigate(['/mercadopago'])
+                  });
 
     } else if (this.fPago === 'Pago en Efectivo') {
 
       // Nombre de archivo personalizado
       // 12312312312-123.png
-  let idCompra = `${ new Date().getFullYear()}-${ new Date().getDate()}${ new Date().getHours()}${ new Date().getMinutes()}${ new Date().getMilliseconds()}`;
+      const idCompra = `${ new Date().getFullYear()}-${ new Date().getDate()}${ new Date().getHours()}${ new Date().getMinutes()}${ new Date().getMilliseconds()}`;
 
       this._cartService.idcompra(idCompra);
 
@@ -109,9 +127,7 @@ if ( this.fPago === 'Mercado Pago') {
                   this.router.navigate(['/pago-finalizado']);
               });
 
-      
-
-      }
+     }
 
       this._productoService.limpiarCart();
 

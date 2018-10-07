@@ -28,6 +28,7 @@ var productoSchema = new Schema({
     descripcion: { type: String, required: false },
     fecha: { type: String, required: true },
     estado: { type: Boolean, required: true, default: true },
+    stock: { type: Number, required: true }
 });
 
 

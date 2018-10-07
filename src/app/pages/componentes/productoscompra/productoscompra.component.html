@@ -24,9 +24,9 @@
 
             <div class="product-buttons">
                 <button class="btn btn-outline-secondary btn-sm btn-wishlist" data-toggle="tooltip" title="Deseo"><i class="icon-heart"></i></button>
-                <button (click)="obtenerProducto(producto._id, producto.precio_desc)" class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-title="Correcto" data-toast-message="Producto Agregado!">
-                                <i class="fas fa-shopping-cart"></i> Agregar
-                </button>
+                <a (click)="obtenerProducto(producto._id, producto.precio_desc)" class="btn btn-outline-primary btn-sm" data-toast data-toast-type="success" data-toast-position="topRight" data-toast-title="Correcto" data-toast-message="Producto Agregado!">
+                    <i class="fas fa-shopping-cart"></i> Agregar
+                </a>
                 <a *ngIf="producto.linkmercadopago" class="btn btn-outline-danger btn-sm" href="{{ producto.linkmercadopago }}" target="_black">
                     <i class="icon-link"></i> pagar
                 </a>

@@ -19,18 +19,16 @@ export class ProductoscompraComponent implements OnInit {
     constructor(public _productoService: ProductoService,
               public _verificaTokenGuard: VerificaTokenGuard) { }
 
-  ngOnInit() { 
-
-    console.log(this.productos);
-  }
+  ngOnInit() {}
 
   obtenerProducto (id: string) {
 
     this._productoService.cargarProducto( id )
     .subscribe( producto => {
-      this.producto.push( producto );
 
-      this._productoService.calcularCart(this.producto);
+      //this.producto.push( producto );
+
+      this._productoService.calcularCart(producto);
     });
 
   }

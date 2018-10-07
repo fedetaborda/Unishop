@@ -20,7 +20,7 @@
     <div *ngIf="!productos.length" class="alert alert-primary alert-dismissible fade show text-center margin-bottom-1x">
         <span class="alert-close" data-dismiss="alert">
         </span><i class="icon-bag"></i>&nbsp;&nbsp;<strong>No hay Productos seleccionados para la compra</strong>&nbsp;&nbsp;
-        <a routerLink="/productos"> Comprar </a>
+        <a routerLink="/productos"> <strong> Ver Productos </strong></a>
     </div>
 
     <!-- Shopping Cart-->
@@ -58,6 +58,11 @@
                                 <option>3</option>
                                 <option>4</option>
                                 <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
                             </select>
                         </div>
                     </td>
@@ -71,7 +76,10 @@
 
                     <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio * producto.cantidad }}</td>
 
-                    <td class="text-center"><a (click)="eleminarCart(i)" class="remove-from-cart" [href]="" data-toggle="tooltip" title="Borrar"><i class="icon-cross"></i></a></td>
+                    <td class="text-center">
+                        <a (click)="eleminarCart(i)" class="remove-from-cart" style="cursor: pointer;" [href]="" data-toggle="tooltip" title="Borrar">
+                            <i class="icon-cross"></i></a>
+                    </td>
                 </tr>
 
             </tbody>
@@ -80,7 +88,7 @@
             <div class="column">
 
             </div>
-            <div class="column text-lg">Subtotal: <span class="text-medium"> ${{_productoService.subTotal}} </span></div>
+            <div class="column text-lg">Subtotal: <span class="text-medium text-danger"> {{_productoService.subTotal}} </span></div>
         </div>
     </div>
 

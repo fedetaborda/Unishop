@@ -12,6 +12,8 @@ var Cart = require('../models/cart');
 
 var Usuario = require('../models/usuario');
 
+var Producto = require('../models/producto');
+
 moment.locale('es');
 
 // ==========================================
@@ -115,6 +117,8 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
     var body = req.body;
 
+    var producStock = body.productos;
+
     var cart = new Cart({
         usuario: req.usuario._id,
         direccion: body.direccion,
@@ -127,25 +131,81 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
         hora: moment().format('HH:mm')
     });
 
-    cart.save((err, cartGuardado) => {
+    if (producStock) {
 
-        if (err) {
-            return res.status(400).json({
-                ok: false,
-                mensaje: 'Error al crear compra',
-                errors: err
+
+        for (let index = 0; index < producStock.length; index++) {
+
+            var id = producStock[index]._id;
+
+            var nombre = producStock[index].nombre;
+
+            Producto.findById(id, (err, producto) => {
+
+                if (err) {
+                    return res.status(500).json({
+                        ok: false,
+                        mensaje: 'Error al buscar producto',
+                        errors: err
+                    });
+                }
+
+                if (!producto) {
+                    return res.status(400).json({
+                        ok: true,
+                        mensaje: 'Producto no existente con ese ID',
+                        errors: { message: 'No existe el producto' }
+                    });
+                }
+
+                // Valido cantidad a descontar
+
+                if (producStock[index].cantidad <= producto.stock) {
+
+                    console.log('buscado: ', producto._id, producto.nombre, producto.stock, '-', producStock[index].cantidad);
+
+                    producto.stock = (producto.stock - producStock[index].cantidad);
+
+                } // if Valido cantidad a descontar
+                else {
+
+                    res.status(400).json({
+                        ok: false,
+                        error: 'No hay stock para el producto requerido: ' + nombre,
+                    });
+
+                }
+
+                producto.save(); // fin actualizacion de Stock 
+
             });
-        }
 
-        res.status(200).json({
-            ok: true,
-            cart: cartGuardado
-        });
+        } //fin for
+
+        cart.save((err, cartGuardado) => {
+
+            if (err) {
+                return res.status(400).json({
+                    ok: false,
+                    mensaje: 'Error al crear compra',
+                    errors: err
+                });
+            }
+
+            res.status(200).json({
+                ok: true,
+                cart: cartGuardado,
+            });
+
+        }); // fin guardar compra
+
+    } //if  existen productos  
 
 
-    });
+
 
 });
+
 
 
 module.exports = app;

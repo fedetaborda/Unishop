@@ -1,21 +1,16 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject, OnInit } from '@angular/core';
 import { Producto } from '../../models/producto';
 
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { URL_SERVICIOS } from '../../config/config';
 import { DOCUMENT } from '@angular/platform-browser';
 
 import { UsuarioService } from '../usuario/usuario.service';
 
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { NgForm } from '@angular/forms';
 
 import { SubirArchivoService } from '../subir-archivo/subir-archivo.service';
-import { Usuario } from '../../models/usuario';
-import { element } from 'protractor';
 
 
 
@@ -34,7 +29,12 @@ subTotal: string;
 
 fPago: string;
 
-precio = 0;
+ids: any[] = [];
+
+total_desc: number = 0;
+
+total_unit: number = 0;
+
 
   constructor(
     public http: HttpClient,
@@ -42,6 +42,8 @@ precio = 0;
     public _subirArchivoService: SubirArchivoService,
     @Inject(DOCUMENT) private _document
   ) {}
+
+  OnInit() {}
 
   cargarProducto( id: string ) {
 
@@ -58,72 +60,79 @@ precio = 0;
 
   }
 
-  calcularCart(producto) {
+  calcularCart( producto ) {
 
-    this.productos = producto;
+    let idx: number;
 
-    console.log(this.productos);
+     this.productos.forEach( () => {
 
-    let precio = 0;
-    let cantidad = 0;
+      idx = this.ids.indexOf( producto._id );
 
-    for (let i = 0; i < this.productos.length; i++) {
 
-      const element = this.productos[i];
+    });
 
-      // Precio con descuento
-      if (element['precio_desc']) {
+    //si producto no existe 
+    if ( idx === -1 ) {
 
-        precio += element['precio_desc'];
-        cantidad = (cantidad + element['cantidad']);
+      this.ids.push(producto._id);
 
-      } else if (element['precio']) {
+      this.productos.push( producto );
 
-      // Precio sin descuento
-      precio += element['precio'];
-      cantidad = (cantidad + element['cantidad']);
+    // si no es -1 o indefinido (existe)
 
-      }
+    } else if ( idx !== undefined ) {
+
+     this.productos[idx].cantidad  = this.productos[idx].cantidad  + 1;
 
     }
 
-    this._document.getElementById('cart').innerHTML = cantidad;
-    this.subTotal = this._document.getElementById('subtotal').innerHTML = precio.toFixed(2);
-  }
+      if ( !this.productos.length ) {
 
-  calcularCart2(producto) {
 
-    this.productos = producto;
+      this.ids.push(producto._id);
 
-    let precio = 0;
-    let cantidad = 0;
-
-    for (let i = 0; i < this.productos.length; i++) {
-
-      const element = this.productos[i];
-
-      // Precio con descuento
-      if (element['precio_desc']) {
-
-        cantidad += parseFloat( element['cantidad'].toString() );
-
-      precio += element['precio_desc'] * element['cantidad'];
-
-      } else if (element['precio']) {
-
-      // Precio sin descuento
-      cantidad += parseFloat( element['cantidad'].toString() );
-
-      precio += element['precio'] * element['cantidad'];
-      }
-
+      this.productos.push( producto );
 
     }
 
 
-    this._document.getElementById('cart').innerHTML = cantidad;
-    this.subTotal = this._document.getElementById('subtotal').innerHTML = precio.toFixed(2);
+    this.cartCalculo( this.productos );
+  
   }
+
+    cartCalculo( productos ) {
+
+      this.cantidad ++;
+
+      let total = 0;
+
+      productos.forEach( ( element ) => {
+
+      //console.log(this.productos);
+
+      if ( element.precio_desc) {
+
+   
+        total = total + ( element.precio_desc * element.cantidad );
+
+   
+     } else if ( element.precio ) {
+
+   
+      total = total + ( element.precio * element.cantidad );
+   
+     }
+
+     console.log( total, 'total' );
+
+
+     this._document.getElementById('cart').innerHTML = this.cantidad;
+     this.subTotal = this._document.getElementById('subtotal').innerHTML = '$' + total.toFixed(2);
+
+    });
+
+ }
+
 
   producinCart () {
     return this.productos;
@@ -133,7 +142,7 @@ precio = 0;
     return this.fPago;
   }
 
-  addLocation ( location: any) {
+  addLocation ( location: any ) {
 
     this.location = location;
 
@@ -142,6 +151,20 @@ precio = 0;
   addfPago ( pago: string) {
 
     this.fPago = pago;
+
+  }
+
+  resetProductos() {
+
+    this.ids = [];
+
+    this.productos = [];
+
+    this.cantidad = 0;
+
+    this.total_desc = 0;
+
+    this.total_unit = 0;
 
   }
 
@@ -210,5 +233,6 @@ precio = 0;
 
     this._document.getElementById('subtotal').innerHTML = total.toFixed(2);
   }
+
 
 }

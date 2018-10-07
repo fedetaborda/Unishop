@@ -15,6 +15,8 @@ export class MercadopagoComponent implements OnInit {
 
   idcompra: string;
 
+  fPago: string;
+
   constructor(public _mercadopagoService: MercadopagoService,
               public _usuarioService: UsuarioService,
               public _productoService: ProductoService,
@@ -22,8 +24,17 @@ export class MercadopagoComponent implements OnInit {
               public router: Router) {  }
 
   ngOnInit() {
+
+    // Forma de Pago
+    this.fPago = this._productoService.pagoCart();
+
+    if (!this.fPago) {
+
+      this.router.navigate(['/productos']);
+
+    } else {
   
-    let pago = {
+    const pago = {
       id: `${ new Date().getMilliseconds() }`,
       email: this._usuarioService.usuario.email,
       total: this._productoService.subTotal
@@ -38,9 +49,10 @@ export class MercadopagoComponent implements OnInit {
 
     this.idcompra = this._cartService.compra;
 
-    }
 
+    }
 
 
 }
 
+}

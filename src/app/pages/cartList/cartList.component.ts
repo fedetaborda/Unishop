@@ -2,6 +2,7 @@ import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core'
 import { ProductoService } from '../../service/service.index';
 import { Producto } from '../../models/producto';
 import { DOCUMENT } from '@angular/platform-browser';
+import { forEach } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -16,6 +17,10 @@ export class CartListComponent implements OnInit {
 
   subTotal: string;
 
+  ids: any [] = [];
+
+  array: any [] = [];
+
   @ViewChild('cboCant') cboCant: ElementRef;
 
   constructor(public _productoService: ProductoService,
@@ -23,26 +28,21 @@ export class CartListComponent implements OnInit {
 
   ngOnInit() {
 
-    this.productos = this._productoService.producinCart();
+   // this.array = this._productoService.producinCart();
 
-    this._productoService.productosInteres()
-        .subscribe( (resp: any) => {
-         this.prodInteres = resp.productos;
-        });
+    this.productos = this._productoService.producinCart();
 
   }
 
-  
-
   cambioCantidad() {
 
-   this._productoService.calcularCart2(this.productos);
+   this._productoService.cartCalculo( this.productos );
 
   }
 
   resetCart() {
     this._document.getElementById('cart').innerHTML = 0;
-    this.subTotal = this._document.getElementById('subtotal').innerHTML = '0.00';
+    this.subTotal = this._document.getElementById('subtotal').innerHTML = '$0.00';
   }
 
 
@@ -51,11 +51,13 @@ export class CartListComponent implements OnInit {
     this.productos.splice( i , 1 );
 
   if ( this.productos.length > 0) {
-    this._productoService.calcularCart2(this.productos);
+    this._productoService.cartCalculo( this.productos );
     }
 
     if (!this.productos.length) {
-    this.resetCart();
+
+    this.eliminartodo();
+
     }
 
   }
@@ -65,6 +67,9 @@ export class CartListComponent implements OnInit {
     this.productos.splice(0, this.productos.length);
 
     this.resetCart();
+
+    this._productoService.resetProductos();
+
   }
 
 }
