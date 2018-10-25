@@ -14,6 +14,8 @@ var Usuario = require('../models/usuario');
 
 var Producto = require('../models/producto');
 
+var validate;
+
 moment.locale('es');
 
 // ==========================================
@@ -81,7 +83,6 @@ app.get('/:id', (req, res) => {
     var id = req.params.id;
 
     Cart.find({ usuario: id })
-        .populate('usuario')
         .exec((err, cart) => {
 
             if (err) {
@@ -114,7 +115,6 @@ app.get('/:id', (req, res) => {
 // ==========================================
 app.post('/', mdAutenticacion.verificaToken, (req, res) => {
 
-
     var body = req.body;
 
     var producStock = body.productos;
@@ -131,14 +131,15 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
         hora: moment().format('HH:mm')
     });
 
-    if (producStock) {
 
 
-        for (let index = 0; index < producStock.length; index++) {
+    function addcart(callback) {
 
-            var id = producStock[index]._id;
+        producStock.forEach(element => {
 
-            var nombre = producStock[index].nombre;
+            var id = element._id;
+
+            //var nombre = element.nombre;
 
             Producto.findById(id, (err, producto) => {
 
@@ -147,7 +148,7 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
                         ok: false,
                         mensaje: 'Error al buscar producto',
                         errors: err
-                    });
+                    })
                 }
 
                 if (!producto) {
@@ -158,53 +159,109 @@ app.post('/', mdAutenticacion.verificaToken, (req, res) => {
                     });
                 }
 
-                // Valido cantidad a descontar
+                if (element.cantidad <= producto.stock) {
 
-                if (producStock[index].cantidad <= producto.stock) {
+                    producto.stock = (producto.stock - element.cantidad);
 
-                    console.log('buscado: ', producto._id, producto.nombre, producto.stock, '-', producStock[index].cantidad);
+                    return callback(null, true);
 
-                    producto.stock = (producto.stock - producStock[index].cantidad);
 
-                } // if Valido cantidad a descontar
-                else {
+                } else {
 
-                    res.status(400).json({
-                        ok: false,
-                        error: 'No hay stock para el producto requerido: ' + nombre,
-                    });
+                    return callback(null, false);
 
                 }
 
-                producto.save(); // fin actualizacion de Stock 
-
             });
 
-        } //fin for
+        });
 
-        cart.save((err, cartGuardado) => {
 
-            if (err) {
-                return res.status(400).json({
-                    ok: false,
-                    mensaje: 'Error al crear compra',
-                    errors: err
+    }
+
+
+    addcart((err, data) => {
+
+        if (err) return console.log(err.message);
+
+        if (data) {
+
+            cart.save((err, cartGuardado) => {
+
+                if (err) {
+                    return res.status(400).json({
+                        ok: false,
+                        mensaje: 'Error al crear compra',
+                        errors: err
+                    });
+                }
+
+                res.status(200).json({
+                    ok: true,
+                    cart: cartGuardado,
                 });
-            }
 
-            res.status(200).json({
-                ok: true,
-                cart: cartGuardado,
             });
 
-        }); // fin guardar compra
+        } else {
 
-    } //if  existen productos  
+            return res.status(400).json({
+                ok: false,
+                mensaje: 'Existen Productos fuera de Stock',
+            });
+
+        }
+
+    });
 
 
+    /*  if (stock(producStock, res)) {
+
+
+      } */
+
+
+    /*  if (validate == false) {
+
+          console.log('no tiene stock');
+
+          return res.status(400).json({
+              ok: false,
+              mensaje: 'Existen Productos fuera de Stock',
+          });
+
+
+      } else {
+
+          cart.save((err, cartGuardado) => {
+
+              if (err) {
+                  return res.status(400).json({
+                      ok: false,
+                      mensaje: 'Error al crear compra',
+                      errors: err
+                  });
+              }
+
+              res.status(200).json({
+                  ok: true,
+                  cart: cartGuardado,
+              });
+
+          });
+
+      } */
 
 
 });
+
+
+
+
+
+
+
+
 
 
 

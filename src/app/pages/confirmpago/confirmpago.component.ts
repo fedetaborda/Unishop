@@ -45,39 +45,15 @@ export class ConfirmpagoComponent implements OnInit {
 
   ngOnInit() {
 
-     this.array = this._productoService.producinCart();
+     this.productos = this._productoService.producinCart();
 
-    this.array.forEach( (element , i) => {
-
-      let idx = this.ids.indexOf( element._id );
-
-      if ( idx === -1 ) {
-
-        this.ids.push(element._id);
-
-        this.productos.push( element );
-
-      } else {
-
-       this.productos[idx].cantidad = ( this.productos[idx].cantidad + 1 );
-      }
-
-    });
 
     this._cartService.comprasTotales()
     .subscribe( (resp: any) => {
       this.total_ventas = resp.total_ventas;
     });
 
-     /*
-     let id = this._productoService.location['ubicacion'];
 
-     this._ubicacionService.cargarUbicacion( id )
-                .subscribe( ubicacion => {
-                  this.ubicacion = ubicacion;
-                  this.user = ubicacion.usuario;
-                 }); */
- 
      // Usuario
      this.usuario = this._usuarioService.usuario;
  
@@ -109,7 +85,7 @@ if ( this.fPago === 'Mercado Pago') {
 
       this._cartService.crearCart( this.cart )
                   .subscribe((resp: any) => {
-                    this.router.navigate(['/mercadopago'])
+                    this.router.navigate(['/mercadopago']);
                   });
 
     } else if (this.fPago === 'Pago en Efectivo') {
@@ -124,7 +100,14 @@ if ( this.fPago === 'Mercado Pago') {
 
       this._cartService.crearCart( this.cart )
                   .subscribe( (resp: any) => {
-                  this.router.navigate(['/pago-finalizado']);
+
+                    console.log(resp);
+                    if ( resp.ok === true) {
+
+                      this.router.navigate(['/pago-finalizado']);
+
+                    }
+
               });
 
      }

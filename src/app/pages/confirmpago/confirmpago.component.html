@@ -67,7 +67,7 @@
 
                             <td *ngIf="producto.descuento" class="text-center text-lg text-medium">${{ producto.precio_desc * producto.cantidad }}</td>
 
-                            <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio }} <small class="text-danger">x{{ producto.cantidad }}</small></td>
+                            <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio }} <small class="text-danger">{{ producto.cantidad }}</small></td>
 
                             <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio * producto.cantidad }}</td>
 
@@ -79,7 +79,7 @@
             </div>
             <div class="shopping-cart-footer">
                 <div class="column"></div>
-                <div class="column text-lg">Subtotal: <span class="text-medium">${{_productoService.subTotal}}</span></div>
+                <div class="column text-lg">Subtotal: <span class="text-medium">{{_productoService.subTotal}}</span></div>
             </div>
             <div class="row padding-top-1x mt-3">
                 <div class="col-sm-6">

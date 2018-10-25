@@ -42,7 +42,7 @@
                 </nav>
             </div>
 
-            <div *ngIf="cart.length > 0" class="col-lg-8">
+            <div *ngIf="compra.length > 0" class="col-lg-8">
                 <div class="padding-top-2x mt-2 hidden-lg-up"></div>
                 <div class="table-responsive">
                     <table class="table table-hover margin-bottom-none">
@@ -57,12 +57,12 @@
                         </thead>
                         <tbody>
 
-                            <tr *ngFor="let compra of cart">
-                                <td><a class="text-medium navi-link" routerLink="/detallecompra/{{compra.idCompra}}">{{compra.idCompra}}</a></td>
-                                <td>{{compra.usuario.email}}</td>
-                                <td>{{compra.pago}}</td>
-                                <td>{{compra.fecha}} {{compra.hora}}</td>
-                                <td><span class="text-warning">{{compra.estado}}</span></td>
+                            <tr *ngFor="let detalle of compra">
+                                <td><a class="text-medium navi-link" routerLink="/detallecompra/{{detalle.idCompra}}">{{detalle.idCompra}}</a></td>
+                                <td>{{ usuario.nombre }} {{ usuario.apellido }} </td>
+                                <td>{{detalle.pago}}</td>
+                                <td>{{detalle.fecha}} {{detalle.hora}}</td>
+                                <td><span class="text-warning">{{detalle.estado}}</span></td>
                             </tr>
 
                         </tbody>
@@ -71,7 +71,7 @@
 
             </div>
 
-            <div *ngIf="!cart.length" class="col-lg-8">
+            <div *ngIf="!compra.length" class="col-lg-8">
 
                 <div class="alert alert-success text-center fade show">
                     <strong>Por el momento no existen Compras..</strong>

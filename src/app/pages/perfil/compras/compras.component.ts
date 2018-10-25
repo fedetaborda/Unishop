@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../service/service.index';
 import { Usuario } from '../../../models/usuario';
 import { Router } from '@angular/router';
-import { Cart } from '../../../models/cart';
+
 import { CartService } from '../../../service/cart/cart.service';
+import { Compra } from '../../../models/compra';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ComprasComponent implements OnInit {
   usuario: Usuario;
   imagenTemp: string;
   imagenSubir: File;
-  cart: Cart[] = [];
+  compra: Compra[] = [];
 
   constructor(
     public _usuarioService: UsuarioService,
@@ -33,9 +34,12 @@ export class ComprasComponent implements OnInit {
 
     this._cartService.comprasPorUsuario( this.usuario._id )
     .subscribe( (resp: any) => {
-     this.cart = resp.cart
+
+     this.compra = resp.cart
 
     });
+
+    console.log(this.compra);
 
   }
 

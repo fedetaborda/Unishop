@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Producto } from '../../../models/producto';
+
+
 
 
 @Component({
@@ -7,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 
 
+
+
 export class ListadoComponent implements OnInit {
+
+  productos: Producto[]  = [];
 
   constructor() { }
 

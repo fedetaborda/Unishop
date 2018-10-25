@@ -31,10 +31,6 @@ fPago: string;
 
 ids: any[] = [];
 
-total_desc: number = 0;
-
-total_unit: number = 0;
-
 
   constructor(
     public http: HttpClient,
@@ -108,8 +104,6 @@ total_unit: number = 0;
 
       productos.forEach( ( element ) => {
 
-      //console.log(this.productos);
-
       if ( element.precio_desc) {
 
    
@@ -122,9 +116,6 @@ total_unit: number = 0;
       total = total + ( element.precio * element.cantidad );
    
      }
-
-     console.log( total, 'total' );
-
 
      this._document.getElementById('cart').innerHTML = this.cantidad;
      this.subTotal = this._document.getElementById('subtotal').innerHTML = '$' + total.toFixed(2);
@@ -161,10 +152,6 @@ total_unit: number = 0;
     this.productos = [];
 
     this.cantidad = 0;
-
-    this.total_desc = 0;
-
-    this.total_unit = 0;
 
   }
 
