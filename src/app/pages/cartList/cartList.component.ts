@@ -38,6 +38,8 @@ export class CartListComponent implements OnInit {
 
    this._productoService.cartCalculo( this.productos );
 
+   console.log( this.productos );
+
   }
 
   resetCart() {
@@ -47,8 +49,10 @@ export class CartListComponent implements OnInit {
 
 
   eleminarCart( i: number ) {
-  
+
     this.productos.splice( i , 1 );
+
+    //console.log(this.productos);
 
   if ( this.productos.length > 0) {
     this._productoService.cartCalculo( this.productos );

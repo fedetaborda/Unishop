@@ -19,11 +19,11 @@ export class ProductoService {
 
 productos: Producto[] = [];
 
+cantidad = 0;
+
 location: any;
 
 archivo: File;
-
-cantidad = 0;
 
 subTotal: string;
 
@@ -98,12 +98,17 @@ ids: any[] = [];
 
     cartCalculo( productos ) {
 
-      this.cantidad ++;
-
       let total = 0;
+
+      let cantidad = 0;
+
+      console.log(productos);
 
       productos.forEach( ( element ) => {
 
+        cantidad += element.cantidad;
+
+  
       if ( element.precio_desc) {
 
    
@@ -117,7 +122,7 @@ ids: any[] = [];
    
      }
 
-     this._document.getElementById('cart').innerHTML = this.cantidad;
+     this._document.getElementById('cart').innerHTML = cantidad;
      this.subTotal = this._document.getElementById('subtotal').innerHTML = '$' + total.toFixed(2);
 
     });

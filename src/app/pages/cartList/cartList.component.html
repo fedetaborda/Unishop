@@ -52,18 +52,8 @@
                     </td>
                     <td class="text-center">
                         <div class="count-input">
-                            <select (change)="cambioCantidad()" [(ngModel)]="producto.cantidad" name="cantidad" class="form-control" required>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>
+                            <input type="number" (change)="cambioCantidad()" [(ngModel)]="producto.cantidad" name="cantidad" class="form-control" required>
+
                         </div>
                     </td>
                     <td *ngIf="producto.descuento" class="text-center text-lg text-medium">${{ producto.precio_desc }}</td>
@@ -77,7 +67,7 @@
                     <td *ngIf="!producto.descuento" class="text-center text-lg text-medium"> ${{ producto.precio * producto.cantidad }}</td>
 
                     <td class="text-center">
-                        <a (click)="eleminarCart(i)" class="remove-from-cart" style="cursor: pointer;" [href]="" data-toggle="tooltip" title="Borrar">
+                        <a (click)="eleminarCart(i)" class="remove-from-cart" style="cursor: pointer;" title="Borrar">
                             <i class="icon-cross"></i></a>
                     </td>
                 </tr>

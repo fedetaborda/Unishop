@@ -13,8 +13,12 @@ app.get('/:tipo/:img', (req, res, next) => {
 
     fs.exists(path, existe => {
 
-        if (!existe) {
+        if (!existe && tipo === 'producto') {
             path = './assets/no-img.jpg';
+        }
+
+        if (!existe && tipo === 'usuarios') {
+            path = './assets/no-user.jpg';
         }
 
         res.sendfile(path);

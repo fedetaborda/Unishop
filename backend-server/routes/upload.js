@@ -13,9 +13,6 @@ var Producto = require('../models/producto');
 // default options
 app.use(fileUpload());
 
-
-
-
 app.put('/:tipo/:id', (req, res, next) => {
 
     var tipo = req.params.tipo;
